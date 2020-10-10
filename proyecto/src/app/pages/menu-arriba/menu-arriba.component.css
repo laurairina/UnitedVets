@@ -1,0 +1,18 @@
+.bs-example{
+    margin: 20px;
+}
+.navbar{
+    background-image: radial-gradient(circle at 12.5% 12.5%, #EAFFFF 0, #94ADE1 50%, #414142 100%);
+    font-family: 'Chela One', cursive; font-size: larger;
+}
+#perfil{
+    color: rgb(159, 221, 218);
+}
+.alinear > a{
+    float: right;
+    background-color: red;
+}
+.navbar-nav{
+    width: 90%;
+  
+}

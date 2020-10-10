@@ -1,0 +1,24 @@
+<div class="bs-example">
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="logo" href="#">
+            <img src="../../../assets/imagenes/image.png" width="77" height="48" class="d-inline-block align-top" alt="">
+          </a>
+        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+            <div class="navbar-nav">
+                <a *ngIf="usuarioService.usuario.rol=='Admin' " href="#" routerLink="homeAdmin" class="nav-item nav-link">Home admin</a>
+                <a *ngIf="usuarioService.usuario.rol=='Cliente' " href="#" routerLink="homeCliente" class="nav-item nav-link">Home Cliente</a>
+                <a *ngIf="usuarioService.usuario.rol=='Medico' " href="#" routerLink="homeMedico" class="nav-item nav-link">Home Medico</a>
+                <a *ngIf="usuarioService.usuario.rol=='Medico' " href="#" routerLink="citas" class="nav-item nav-link">Citas</a>
+                <a *ngIf="usuarioService.usuario.rol=='Cliente' || usuarioService.usuario.rol=='Medico' " href="#" routerLink="historiales" class="nav-item nav-link">Historiales</a>
+                <a *ngIf="usuarioService.usuario.rol=='Medico' " href="#" routerLink="listaCliente" class="nav-item nav-link">Clientes</a>
+                <a *ngIf="usuarioService.usuario.rol=='Admin' "  href="#" routerLink="resgistrarUser" class="nav-item nav-link">Registrar usuario</a>
+                <a *ngIf="usuarioService.usuario.rol=='Admin' "  href="#" routerLink="registrarPet" class="nav-item nav-link">Registrar mascota</a>
+                <a *ngIf="usuarioService.usuario.rol=='Cliente' || usuarioService.usuario.rol=='Medico' "  href="#" routerLink="perfil/:rol" class="nav-item nav-link">Perfil</a>
+            </div>
+        </div>
+           
+    </nav>
+</div>
