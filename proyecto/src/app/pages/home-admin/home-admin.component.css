@@ -1,0 +1,34 @@
+img{
+    height: 60px;
+    width: 60px;
+}
+
+#margenRol{
+    margin-top: 5%;
+}
+
+button{
+    margin-left:30%;
+    margin-top: 5%;
+}
+
+li{
+    list-style: none;
+}
+
+ul{
+    float: left;
+}
+
+#top{
+    margin-top: 5%;
+}
+
+#contenedorModal{
+   padding: 5%;
+  
+}
+
+.card{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif !important;
+}
