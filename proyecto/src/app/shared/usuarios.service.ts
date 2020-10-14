@@ -12,6 +12,14 @@ export class UsuariosService {
     this.usuario=null;
   }
 
+  setUsuario(usuario:User){
+    this.usuario=usuario;
+  }
+
+  getUsuario(){
+    return this.usuario;
+  }
+
   buscar(usuario:string):User{
     let user:User;
     let i:number=0;

@@ -1,1 +1,76 @@
-<p>historiales works!</p>
+
+
+    <h3>Historial</h3>
+    <div *ngIf="editBoton; else esFalsoM"> 
+        <form  class="form-inline formA">
+            <div  class="form-group alinear">
+              <div class="input-group">
+                <div class="espacio"><b class="title">Nombre:   </b><input [(ngModel)]="nombreCB" class="texto"type="text" id="nombreCB" [ngModelOptions]="{standalone: true}"/> </div> 
+                <div class="espacio"><b class="title" >Nombre de Mascota:   </b><input [(ngModel)]="nombreMB" class="texto" type="text" id="nombreMB" [ngModelOptions]="{standalone: true}"> </div> 
+                 <div class="espacio">   
+                  <input class="form-control" placeholder="Elegir fecha" 
+                  name="dp" [(ngModel)]="fromDate" ngbDatepicker #d="ngbDatepicker" >
+                 </div> 
+          
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"><i class="material-icons">
+                      calendar_today
+                  </i></button>
+                </div>
+                <button class="btn" (click)="buscar()" type="button"><i class="material-icons">
+                    search
+                </i></button>
+              </div>
+            </div>
+          </form>
+
+    </div>
+    <ng-template #esFalsoM>  
+    </ng-template>
+ 
+     
+      <br>
+      <div class="contenido">
+ 
+        <form class="form-inline">
+            <div class="form-group alinear">
+              <div class="input-group">
+                <div class="espacio"><b >Nombre Cliente:   </b><input [(ngModel)]="nombreC" class="texto"type="text" id="nombreC" [ngModelOptions]="{standalone: true}"  /> </div> 
+                <div class="espacio"><b  >Nombre de Mascota:   </b><input [(ngModel)]="nombreM" class="texto" type="text" id="nombreM" [ngModelOptions]="{standalone: true}"> </div> 
+                <div class="espacio "><b >Fecha de elaboración:   </b><input [(ngModel)]="fecha"  class="texto" type="text" id="fecha" [ngModelOptions]="{standalone: true}"/> </div>             
+              </div>
+          
+            </div>
+           
+          </form>
+          <br><br>
+          <div class="row">
+            <h5>Diagnósticos</h5> 
+             <textarea rows="10" cols="40"  [(ngModel)]="diagnostico">  </textarea>
+         </div>
+         <br><br>
+         <div class="row">
+             <h5>Tratamiento</h5> 
+             <textarea rows="10" cols="40"  [(ngModel)]="tratamiento"> </textarea>
+       
+         </div>
+
+  
+
+          <ngb-alert *ngIf="successMessage" type="success" (close)="successMessage = ''">{{ successMessage }}</ngb-alert>
+
+
+         <div class="row alinear botones">
+            <button *ngIf="!editBoton; else esFalsoM" class="boton_personalizado" (click)="anadir()" [disabled]="editBoton">Guardar</button>
+            <button *ngIf="editBoton; else esFalsoM" class="boton_personalizado" (click)="modificar()" [disabled]="!editBoton">Modificar</button>
+       
+            <ng-template #esFalsoM>  
+            </ng-template>
+        </div>
+ 
+      </div>
+   
+
+   
+
+  

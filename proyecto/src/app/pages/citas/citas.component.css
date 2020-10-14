@@ -1,0 +1,74 @@
+
+.formA{
+    padding-top: 10px;
+    background-image: linear-gradient(75deg, #b2e8ff 0, #5a7ec9 50%, #15223a 100%);
+    width: 95%;
+    padding-bottom: 7px;
+  
+}
+.texto{
+    width: 130px;
+    padding: 5px;
+    margin-right: 7px;
+  
+}
+.title{
+    color:white;
+
+}
+
+.form-control{
+   
+    margin-bottom: 10px;
+    font-size: 13px;
+}
+.alinear{
+    margin:0 auto;
+}
+
+.btn{
+    padding: 5px;
+    border: none;
+}
+form{
+    margin:0 auto;
+    width: 90%;
+}
+i{
+    color: white;
+}
+
+.btn:hover{
+    background-image: linear-gradient(75deg, #b2e8ff 0, #5a7ec9 50%, #15223a 100%);
+}
+
+table, th, td {
+    border: none;
+    margin:10px;
+  }
+  table{
+    width:70%;
+    margin: 0 auto;
+  }
+
+   td{
+    width: 70%;
+    text-align: center;
+  }
+
+  th{
+    text-align: center;
+    color:rgb(235, 239, 243);
+  }
+
+  .botones{
+    width: 100%;
+    margin:0 auto;
+   display: flex;
+
+  }
+
+  .alinearBtn{
+      margin-right:10px;
+      margin-left:10px;
+  }

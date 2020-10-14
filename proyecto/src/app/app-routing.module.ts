@@ -22,8 +22,8 @@ const routes: Routes = [
   {path:'login', component:LoginComponent},
   {path:'perfil/:rol', component:PerfilComponent},
   {path:'registrarPet', component:RegistrarPetComponent},
-  {path:'resgistrarUser', component:RegistrarUserComponent}
-
+  {path:'resgistrarUser', component:RegistrarUserComponent},
+  {path:'historiales/:valor', component:HistorialesComponent}
 
 ];
 
