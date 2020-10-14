@@ -1,14 +1,42 @@
-<p>login principal para logearse</p>
-<div>
-    <h1>Formulario </h1>
-    <div class="row"> 
-        <div class=" col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 "><b>usuario:   </b><input [(ngModel)]="usuario" class="texto" type="text" id="usuario"/> </div>
-        <div class=" col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 "><b>password:  </b> <input [(ngModel)]="password" class="texto" type="text" id="password"/> </div>
-    </div>
-    <br> <br>
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+<div class="my-container">
+
+
+  
+  
+    <p>Bienvenid@</p>
+
+  
+
+<div class="card">
+    <h1 id="login">Login  <img src="../../../assets/imagenes/image.png" width="83" height="54" class="d-inline-block align-top" alt=""></h1>
     
-    <div class="row">      
-      <div  class=" col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 "> <button class="boton" type="button"  (click)="enviar()">Iniciar</button></div> 
-    <br>
+    
+    <!-- <div class="row1"> 
+        <div class="fila1 col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 "><b>Usuario:   </b><input [(ngModel)]="usuario" class="texto" style="width: 15rem;" type="text" id="usuario"/> </div>
+        <div class="fila2 col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 "><b>Contraseña:  </b> <input [(ngModel)]="password" style="width: 15rem;" class="texto" type="password" id="password"/> </div>
+    </div> -->
+
+    <div class="input-container">
+      <input type="text" required="" [(ngModel)]="usuario" id="usuario"/>
+      <label>Usuario</label>		
+    </div>
+    <div class="input-container">		
+      <input type="password" required="" [(ngModel)]="password" id="password"/>
+      <label>Contraseña</label>
+    </div>
+ 
+   
+    
+    <div class="row2">      
+      <div  class="fila3 col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 "> <button class="boton"  (click)="enviar()"><b>Iniciar</b> </button></div> 
+    
     
 </div>
+
+</div>
+</div>
+
+
+
