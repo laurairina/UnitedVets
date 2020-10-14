@@ -1,10 +1,96 @@
-<p>home-cliente works!</p>
+<div class="row separacion">
 
-<br>
-<div>
-    <h3>Poner bonito esto div whatsapp</h3>
-  <a  target="_blank" title="Contact Us On WhatsApp" href="https://api.whatsapp.com/send?phone=+34659654276&amp;text=Buenas, Necesito informacion" class="whatsapplink hidemobile box">
-   <i class="material-icons fa fa-fw fa-whatsapp icono" title="chat">chat </i> Chat
+    <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 ">
+    </div>
+    <p>Bienvenido Sr. Bernardo Benitez. </p>
+</div>
 
-  </a>
+<div class="row">
+    <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+    </div>
+    <div class="card" style="width: 58rem;">
+        <ngb-carousel *ngIf="images">
+            <ng-template ngbSlide>
+                <div class="picsum-img-wrapper">
+                    <img src="../../../assets/imagenes/lading9.jpg" alt="Random first slide" class="imgCarrusel">
+                </div>
+                <div class="carousel-caption">
+                    <h3> Jornada de vacunas.</h3>
+                    <p>De lunes a viernes 9am a 3pm.</p>
+                </div>
+            </ng-template>
+            <ng-template ngbSlide>
+                <div class="picsum-img-wrapper">
+                    <img src="../../../assets/imagenes/esterilizacion3.webp" alt="Random second slide" class="imgCarrusel">
+                </div>
+                <div class="carousel-caption">
+                    <h3>Esterilizacion.</h3>
+                    <p>20% de descuento en todo el mes de Noviembre.</p>
+                </div>
+            </ng-template>
+            <ng-template ngbSlide>
+                <div class="picsum-img-wrapper">
+                    <img src="../../../assets/imagenes/alimento2.jpg" alt="Random third slide" class="imgCarrusel">
+                </div>
+                <div class="carousel-caption">
+                    <h3>Alimentación.</h3>
+                    <p>15 euros la consulta de Dieta.</p>
+                </div>
+            </ng-template>
+        </ngb-carousel>
+    </div>
+    <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+    </div>
+</div>
+
+<div class="row separacion">
+
+    <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2 ">
+    </div>
+    <p> Citas de mascota.</p>
+</div>
+
+<!-- tabla -->
+<div class="row">
+    <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+    </div>
+
+    <div class="card" style="width: 58rem;">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Fecha de Cita</th>
+                    <th scope="col">Hora de Cita</th>
+                    <th scope="col">Nombre de Mascota</th>
+                    <th scope="col">Especie</th>
+
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>15/10/2020</td>
+                    <td>13:45</td>
+                    <td>Pepita </td>
+                    <td>Serpiente </td>
+                </tr>
+                <tr>
+                    <td>18/10/2020</td>
+                    <td>14:00</td>
+                    <td>Tadeo </td>
+                    <td>Tarantula</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<!-- chat -->
+<div class="row">
+    <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+    </div>
+    <a target="_blank" title="Contact Us On WhatsApp" href="https://api.whatsapp.com/send?phone=+34659654276&amp;text=Buenas, Necesito informacion" class="whatsapplink hidemobile box">
+        <i class="material-icons fa fa-fw fa-whatsapp icono" title="chat">chat </i> Chat
+    </a>
 </div>

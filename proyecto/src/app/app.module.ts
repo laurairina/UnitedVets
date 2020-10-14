@@ -16,6 +16,7 @@ import { HistorialesComponent } from './pages/historiales/historiales.component'
 import { CitasComponent } from './pages/citas/citas.component';
 import { ListaClientesComponent } from './pages/lista-clientes/lista-clientes.component';
 import { MenuArribaComponent } from './pages/menu-arriba/menu-arriba.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { MenuArribaComponent } from './pages/menu-arriba/menu-arriba.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

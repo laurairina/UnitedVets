@@ -7,7 +7,7 @@ import { UsuariosService } from 'src/app/shared/usuarios.service';
   styleUrls: ['./home-cliente.component.css']
 })
 export class HomeClienteComponent implements OnInit {
-
+  images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
   constructor(public usuarioService:UsuariosService){
     console.log("cliente");
     console.log(usuarioService)
