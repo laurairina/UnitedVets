@@ -17,6 +17,7 @@ import { CitasComponent } from './pages/citas/citas.component';
 import { ListaClientesComponent } from './pages/lista-clientes/lista-clientes.component';
 import { MenuArribaComponent } from './pages/menu-arriba/menu-arriba.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { LadingPageComponent } from './pages/lading-page/lading-page.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HistorialesComponent,
     CitasComponent,
     ListaClientesComponent,
-    MenuArribaComponent
+    MenuArribaComponent,
+    LadingPageComponent
   ],
   imports: [
     BrowserModule,
