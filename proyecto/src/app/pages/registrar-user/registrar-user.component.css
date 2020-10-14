@@ -1,0 +1,253 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,400i,700,700i&subset=greek-ext');
+
+
+.my-container{
+    background-image: url('../../../assets/imagenes/fondoRegistroUser.jpg');
+    background-position: center;
+    background-origin: content-box;
+    background-repeat: no-repeat;
+    background-size: cover;
+	min-height:100vh;
+	font-family: 'Noto Sans', sans-serif;
+}
+.my-container
+{
+    margin-bottom: -37%;
+    
+}
+
+#seleccionable
+{
+    margin-left: 23%;
+    margin-top: 1%;
+    font-family: 'Chela One', cursive; font-size: medium;
+    color: blanchedalmond;
+}
+
+#tipoDeUsuario
+{
+    margin-left: 36%;
+}
+/* 
+p{
+
+    
+    margin-left: 23%;
+    margin-top: 1%;
+    font-family: 'Chela One', cursive; font-size: 4rem;
+    background: radial-gradient(circle at 12.5% 12.5%, #EAFFFF 0, #94ADE1 50%, #414142 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+} */
+
+
+
+.card
+{
+    position: absolute;
+    background-color: rgba(37, 35, 35, 0.89);
+    left: 31%;
+    top: 19%;
+    border-color: rgb(41, 41, 41);
+    border-radius: 3px;
+    padding: 0 100px;
+    height: 80%;  
+}
+
+label{
+    font-family: 'Chela One', cursive; font-size: medium;
+    color: rgb(165, 190, 216);
+}
+
+
+#register-user
+{
+    /* color: rgb(165, 190, 216); */
+    margin-left: 2%;
+    margin-top: 2%;
+    margin-bottom: 8%;
+    
+    font-family: 'Chela One', cursive; font-size: 250%;
+    width: 100%;
+    background: radial-gradient(circle at 12.5% 12.5%, #EAFFFF 0, #94ADE1 50%, #414142 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /* color: circle at 12.5% 12.5%, #EAFFFF 0, #94ADE1 50%, #414142 100%; */
+    
+}
+b 
+{
+    font-family: 'Chela One', cursive; font-size: medium;
+    background: radial-gradient(circle at 12.5% 12.5%, #EAFFFF 0, #94ADE1 50%, #414142 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+}
+
+
+.input-container{
+	position:relative;
+	margin-bottom:2%;
+}
+.input-container label{
+	position:absolute;
+	top:0px;
+	left:0px;
+	font-size:15px;
+	color:#fff;	
+    pointer-events:none;
+	transition: all 0.5s ease-in-out;
+}
+.input-container input{ 
+  border:0;
+  border-bottom:2px solid #555;  
+  background:transparent;
+  width:100%;
+  padding:8px 0 5px 0;
+  font-size:15px;
+  color:#fff;
+}
+.input-container input:focus{ 
+ border:none;	
+ outline:none;
+ border-bottom:1px solid #e74c3c;	
+}
+.input-container input:focus ~ label,
+.input-container input:valid ~ label{
+	top:-20px;
+	font-size:15px;
+	
+}
+
+
+button
+{
+    border: 0;
+    background: none;
+    text-transform: uppercase;
+    color: #14151b;
+    font-weight: bold;
+    position: relative;
+    outline: none;
+    padding: 10px 50px;
+    box-sizing: border-box;
+    margin-top: 9%;
+    margin-left: 90%;
+   
+}
+button::before, button::after{
+    box-sizing: inherit;
+    position: absolute;
+    content: '';
+    border: 2px solid transparent;
+    height: 0;
+    width: 0;
+}
+
+button::after{
+    bottom: 0;
+    right: 0;
+}
+
+button::before{
+    top: 0;
+    left: 0;
+
+}
+
+
+button:hover::before, button:hover::after{
+    width: 100%;
+    height: 100%;
+
+}
+
+button:hover::before{
+    border-top-color: #67aac5;
+    border-right-color: #67aac5;
+    transition: width 0.3s, height 0.3s ease-out 0.3s;
+}
+
+button:hover::after{
+    border-bottom-color: #67aac5;
+    border-left-color: #67aac5;
+    transition: border-color 0s ease-out 0.6s, width 0.3s ease-out 0.6s, heigth 0.3s ease-out 1s;
+}
+
+
+
+@media screen and (max-width: 1200px){
+
+    .my-container{
+        margin-bottom: -43%;
+    }
+
+}
+
+@media screen and (max-width: 1000px){
+
+    .my-container{
+        margin-bottom: -53%;
+    }
+
+}
+
+
+@media screen and (max-width: 900px){
+    .card{
+        width: auto;
+        height: auto;
+        left: 15%;
+    }
+
+    .my-container{
+        margin-bottom: -63%;
+    }
+
+    
+}
+
+@media screen and (max-width : 700px){
+
+    .my-container{
+        margin-bottom: -73%;
+    }
+
+
+}
+
+@media screen and (max-width : 600px){
+
+    .my-container{
+        margin-bottom: -87%;
+    }
+
+
+}
+
+@media screen and (max-width : 500px){
+
+    .card{
+        left: 0%;
+    }
+
+    button{
+        margin-left: 50%;
+    }
+
+    .my-container{
+        margin-bottom: -108%;
+    }
+
+}
+
+
+@media screen and (max-width : 400px){
+
+    .my-container{
+        margin-bottom: -128%;
+    }
+
+}
+
