@@ -12,11 +12,29 @@
                 <a *ngIf="usuarioService.usuario.rol=='Cliente' " href="#" routerLink="homeCliente" class="nav-item nav-link">Home Cliente</a>
                 <a *ngIf="usuarioService.usuario.rol=='Medico' " href="#" routerLink="homeMedico" class="nav-item nav-link">Home Medico</a>
                 <a *ngIf="usuarioService.usuario.rol=='Medico' " href="#" routerLink="citas" class="nav-item nav-link">Citas</a>
-                <a *ngIf="usuarioService.usuario.rol=='Cliente' || usuarioService.usuario.rol=='Medico' " href="#" routerLink="historiales" class="nav-item nav-link">Historiales</a>
+                <!--<a *ngIf="usuarioService.usuario.rol=='Cliente' || usuarioService.usuario.rol=='Medico' " href="#" routerLink="historiales" class="nav-item nav-link">Historiales</a>-->
+                
+                    <div ngbDropdown class="nav-item" *ngIf="usuarioService.usuario.rol=='Cliente' || usuarioService.usuario.rol=='Medico' ">
+                      <a href (click)="false" class="nav-link" ngbDropdownToggle>Historiales</a>
+                      <div ngbDropdownMenu>
+                        <button ngbDropdownItem routerLink="historiales/buscar"> Buscar </button>
+                        <button ngbDropdownItem routerLink="historiales/anadir">Añadir</button>
+                      </div>
+                    </div>
+               
                 <a *ngIf="usuarioService.usuario.rol=='Medico' " href="#" routerLink="listaCliente" class="nav-item nav-link">Clientes</a>
                 <a *ngIf="usuarioService.usuario.rol=='Admin' "  href="#" routerLink="resgistrarUser" class="nav-item nav-link">Registrar usuario</a>
                 <a *ngIf="usuarioService.usuario.rol=='Admin' "  href="#" routerLink="registrarPet" class="nav-item nav-link">Registrar mascota</a>
-                <a *ngIf="usuarioService.usuario.rol=='Cliente' || usuarioService.usuario.rol=='Medico' "  href="#" routerLink="perfil/:rol" class="nav-item nav-link">Perfil</a>
+               <!--<a *ngIf="usuarioService.usuario.rol=='Cliente' || usuarioService.usuario.rol=='Medico' "  href="#" routerLink="perfil/:rol" class="nav-item nav-link">Perfil</a>-->
+                <div ngbDropdown class="nav-item">
+                    <a href (click)="false" class="nav-link" ngbDropdownToggle>Opciones</a>
+                    <div ngbDropdownMenu>
+                      <button ngbDropdownItem routerLink="perfil/:rol" *ngIf="usuarioService.usuario.rol=='Cliente' || usuarioService.usuario.rol=='Medico' " > Perfil </button>
+                      <button ngbDropdownItem (click)="cerrar()" >Desconectar</button>
+                      <!--<div class="dropdown-divider"></div>
+                      <button ngbDropdownItem>Separated link</button>-->
+                    </div>
+                  </div>
             </div>
         </div>
            

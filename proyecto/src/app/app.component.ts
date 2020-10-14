@@ -12,4 +12,8 @@ export class AppComponent {
   constructor(public usuarioService:UsuariosService){
      console.log(usuarioService)
   }
+
+  ngOnInit(): void {
+    console.log("inicio")
+  }
 }

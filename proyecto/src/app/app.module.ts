@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +19,13 @@ import { ListaClientesComponent } from './pages/lista-clientes/lista-clientes.co
 import { MenuArribaComponent } from './pages/menu-arriba/menu-arriba.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LadingPageComponent } from './pages/lading-page/lading-page.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+
+import {HttpClientModule} from '@angular/common/http';
+import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -41,9 +49,18 @@ import { LadingPageComponent } from './pages/lading-page/lading-page.component';
     AppRoutingModule,
     FormsModule,
     NgbModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    MatNativeDateModule,
+    MatInputModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+

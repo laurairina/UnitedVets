@@ -1,5 +1,7 @@
 .bs-example{
-    margin: 20px;
+    margin: 0 auto;
+    width: 96%;
+    margin-bottom:10px;
 }
 .navbar{
     background-image: radial-gradient(circle at 12.5% 12.5%, #EAFFFF 0, #94ADE1 50%, #414142 100%);

@@ -1,1 +1,55 @@
-<p>citas works!</p>
+<h3>Citas</h3>
+<form  class="form-inline formA">
+    <div  class="form-group alinear">
+      <div class="input-group">
+        <div class="espacio"> 
+           
+        </div>
+          <div class="espacio">   
+          <input class="form-control" placeholder="Elegir fecha" 
+          name="dp" [(ngModel)]="fromDate" ngbDatepicker #d="ngbDatepicker" >
+         </div> 
+  
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"><i class="material-icons">
+              calendar_today
+          </i></button>
+        </div>
+        <button class="btn" (click)="buscar()" type="button"><i class="material-icons">
+            search
+        </i></button>
+        <button class="btn" (click)="anadir()" type="button"><i class="material-icons">
+            add_box
+        </i></button>
+     
+      </div>
+    </div>
+  </form>
+<br><br>
+ 
+    <table class="table table-striped">
+        <thead class="formA">
+            <tr>
+                <th scope="col">Nombre Cliente</th>
+                <th scope="col" >Codigo Cita</th>
+                <th scope="col" >Fecha</th>
+                <th scope="col" >Opciones </th> 
+              </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let cita of citas">
+                <td  >{{cita.nombre}}</td>
+                <td >{{cita.codigoCita}}</td>
+                <td >{{cita.fechaCita}}</td>
+                <td class="botones"> 
+                    <button class="alinearBtn" type="button"  (click)="editar(ciudad)">Editar</button> 
+                    <button class="alinearBtn" type="button"  (click)="eliminar(ciudad)">Eliminar</button> 
+                 </td>
+            </tr>
+        </tbody>
+ 
+     </table> 
+     <div class=" d-flex justify-content-between p-2">
+        <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="refreshCountries()">
+        </ngb-pagination>
+    
