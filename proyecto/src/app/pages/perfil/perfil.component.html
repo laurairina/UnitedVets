@@ -10,8 +10,6 @@
                         <div class="col-md-12 col-md-12-sm-12 col-xs-12 user-image text-center">
                             <img src="../../../assets/imagenes/fotousuario.png" class="rounded-circle">
                         </div>
-
-
                     </div>
                 </div>
                 <div class="col-md-9 col-sm-9 col-xs-12 pull-right profile-right-section">
@@ -19,8 +17,8 @@
                         <div class="col-md-12 profile-header">
                             <div class="row">
                                 <div class="col-md-8 col-sm-6 col-xs-6 profile-header-section1 pull-left">
-                                    <h1>Nancy.</h1>
-                                    <h5> United Vets</h5>
+                                    <h1>{{usuarioService.lista[1].nameUser}}</h1>
+                                    <!-- <h5> United Vets</h5> -->
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-6 profile-header-section1 text-right pull-rigth">
                                     <h5></h5>
@@ -35,57 +33,67 @@
                                         <div role="tabpanel" class="tab-pane fade show active" id="profile">
                                             <div class="row">
                                                 <div class="col-md-2">
-                                                    <label>NIE</label>
+                                                    <label>Nombre:</label>
                                                 </div>
-                                                <div class="col-md-6">
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="row  largo">
+                                                    <p>{{usuarioService.lista[1].nameUser}}</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-2">
+                                                    <label>NIE:</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="row  largo">
                                                     <p>509230671</p>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-2">
-                                                    <label>Nombre</label>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <p>Nancy Lopez Tellez</p>
+                                                    <label>Email:</label>
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-md-2">
-                                                    <label>Email</label>
-                                                </div>
-                                                <div class="col-md-6">
+                                            <div class="col-md-2">
+                                                <div class="row  largo">
                                                     <p>nancy@gmail.com</p>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-2">
-                                                    <label>Teléfono</label>
+                                                    <label>Teléfono:</label>
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <p>12345678</p>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="row  largo">
+                                                    <p>12345678 </p>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-2">
-                                                    <label>Direccion</label>
+                                                    <label>Direccion: </label>
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <p>Av. America 51</p>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="row  largo">
+                                                    <p> Av. America 51</p>
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-2">
                                                     <label>Mascotas:</label>
                                                 </div>
-                                                <div class="col-md-6">
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="row  largo">
                                                     <p>Pepito Miau <button type="button" class="btn btn-link">Ver perfil</button>
                                                         <p>Lala Araña <button type="button" class="btn btn-link">Ver perfil</button>
                                                 </div>
                                             </div>
-
                                         </div>
                                     </div>
-
                                 </div>
                                 <div class="col-md-4 img-main-rightPart">
                                     <div class="row">
@@ -95,10 +103,7 @@
                                                     <h5></h5>
                                                 </div>
                                             </div>
-
                                         </div>
-
-
                                         <!-- <a href=""  ngIf =""> -->
                                         <div class="col-md-12 image-right">
                                             <div class="card" style="width: 18rem;">
@@ -116,7 +121,6 @@
                                         </div>
                                         <!-- </a> -->
                                         <div class="col-md-12 image-right-detail-section2">
-
                                         </div>
                                     </div>
                                 </div>
@@ -127,12 +131,4 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
 </body>

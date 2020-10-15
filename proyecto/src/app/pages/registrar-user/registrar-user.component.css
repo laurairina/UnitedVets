@@ -177,77 +177,18 @@ button:hover::after{
 
 
 
-@media screen and (max-width: 1200px){
-
-    .my-container{
-        margin-bottom: -43%;
-    }
-
-}
-
-@media screen and (max-width: 1000px){
-
-    .my-container{
-        margin-bottom: -53%;
-    }
-
-}
-
-
 @media screen and (max-width: 900px){
     .card{
         width: auto;
         height: auto;
-        left: 15%;
+        left: 5%;
     }
-
-    .my-container{
-        margin-bottom: -63%;
-    }
-
-    
 }
-
-@media screen and (max-width : 700px){
-
-    .my-container{
-        margin-bottom: -73%;
-    }
-
-
-}
-
-@media screen and (max-width : 600px){
-
-    .my-container{
-        margin-bottom: -87%;
-    }
-
-
-}
-
 @media screen and (max-width : 500px){
-
     .card{
         left: 0%;
     }
-
     button{
         margin-left: 50%;
     }
-
-    .my-container{
-        margin-bottom: -108%;
-    }
-
 }
-
-
-@media screen and (max-width : 400px){
-
-    .my-container{
-        margin-bottom: -128%;
-    }
-
-}
-

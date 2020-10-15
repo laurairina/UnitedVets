@@ -16,3 +16,14 @@ img{
     height: 60px;
     width: 60px;
 }
+a{
+    
+    font-size: x-large;
+    font-family: 'Chela One', cursive !important;
+}
+
+.bs-example{
+    margin: 0 auto;
+    width: 96%;
+    margin-bottom:10px;
+}

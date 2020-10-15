@@ -8,13 +8,11 @@
     background-repeat: no-repeat;
     background-size: cover;
 	min-height:100vh;
-	font-family: 'Noto Sans', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
+    height: 800px;
+    width: 100%;
 }
-.my-container
-{
-    margin-bottom: -33%;
-    
-}
+
 
 p{
 
@@ -195,58 +193,24 @@ button:hover::after{
     transition: border-color 0s ease-out 0.6s, width 0.3s ease-out 0.6s, heigth 0.3s ease-out 1s;
 }
 
-@media screen and (max-width: 770px){
-    .my-container
-    {
-        margin-bottom: -56%;
-        
-    }
-}
-
-
-@media screen and (max-width: 1100px){
-    
-    .my-container
-    {
-        margin-bottom: -47%;
-        
-    }
-}
-
 
 @media screen and (max-width: 900px){
-
     p{
         font-size: 3rem;
     }
-
     .card{
         width: auto;
         height: auto;
         left: 20%;
     }
 
-    .my-container
-    {
-        margin-bottom: -66%;
-        
-    }
 }
-
 @media screen and (max-width: 520px){
-
     .card{
-        left: 0%;
+        left: 5%;
     }
-
-    .my-container
-    {
-        margin-bottom: -120%;
-        
-    }
-
+ 
 }
-
 
 
 

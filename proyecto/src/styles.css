@@ -7,7 +7,7 @@
     font-size: smaller;
     height: 100%;
     font-weight: normal;
-    padding-bottom: 15%;
+
     padding-top: 10px;
     width: 96%;
 }
@@ -30,9 +30,9 @@ body{
  .footer-copyright {
     position: absolute;
     bottom: 0;
-    margin-left: 20px;
+   
   
-    width: 96%;
+    width: 100%;
     /* Set the fixed height of the footer here */
     height: 80px;
     line-height: 60px;
@@ -54,4 +54,14 @@ footer{
 }
 section{
     background-color: red;
+}
+
+#btnDelete{
+ color: red;
+    
+    
+}
+
+#BotonModificar{
+    color:green;
 }

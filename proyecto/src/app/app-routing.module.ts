@@ -10,6 +10,7 @@ import { CitasComponent } from './pages/citas/citas.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
 import { RegistrarPetComponent } from './pages/registrar-pet/registrar-pet.component';
 import { RegistrarUserComponent } from './pages/registrar-user/registrar-user.component';
+import { LadingPageComponent } from './pages/lading-page/lading-page.component';
 
 const routes: Routes = [
   {path:'', component:LoginComponent},
@@ -23,7 +24,8 @@ const routes: Routes = [
   {path:'perfil/:rol', component:PerfilComponent},
   {path:'registrarPet', component:RegistrarPetComponent},
   {path:'resgistrarUser', component:RegistrarUserComponent},
-  {path:'historiales/:valor', component:HistorialesComponent}
+  {path:'historiales/:valor', component:HistorialesComponent},
+  {path:'landingPage', component:LadingPageComponent}
 
 ];
 

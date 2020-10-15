@@ -30,5 +30,17 @@ ul{
 }
 
 .card{
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif !important;
+    font-family: 'Nunito', sans-serif, Black 900 italic;
 }
+
+.alinearBoton{
+    display: flex;
+    margin-left: 20px;
+}
+
+i{
+   color:white;
+   
+}
+
+

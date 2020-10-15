@@ -1,63 +1,64 @@
-<mdb-navbar SideClass="navbar navbar-expand-md navbar-dark indigo lighten-1" [containerInside]="false">
-
-  <!-- Navbar brand -->
-  <mdb-navbar-brand><a class="navbar-brand" href="#"><img src="../../../assets/imagenes/image.png" width="77" height="48" class="d-inline-block align-top" alt=""></a></mdb-navbar-brand>
-
-  <!-- Collapsible content -->
-  <links>
-
-    <!-- Links -->
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item  alinear ">
-          <a *ngIf="usuarioService.usuario.rol=='Admin' " routerLink="homeAdmin" class="nav-link waves-light" mdbWavesEffect>Home admin</a>
-      </li>
-      <li class="nav-item alinear">
-          <a *ngIf="usuarioService.usuario.rol=='Admin' "   routerLink="resgistrarUser" class="nav-link waves-light" mdbWavesEffect>Registrar usuario</a>
-      </li>
-      <li class="nav-item alinear">
-          <a *ngIf="usuarioService.usuario.rol=='Admin' "   routerLink="registrarPet" class="nav-link waves-light" mdbWavesEffect>Registrar mascota</a>
-      </li>
-     
-      <li class="nav-item alinear">
-          <a *ngIf="usuarioService.usuario.rol=='Medico' "  routerLink="homeMedico" class="nav-link waves-light" mdbWavesEffect>Home Medico</a>
-      </li>
-      <li class="nav-item alinear">
-          <a *ngIf="usuarioService.usuario.rol=='Medico' "  routerLink="citas" class="nav-link waves-light" mdbWavesEffect>Citas</a>
-      </li>
-      <li class="nav-item alinear">
-          <a *ngIf="usuarioService.usuario.rol=='Cliente' "  routerLink="homeCliente" class="nav-link waves-light" mdbWavesEffect>Home Cliente</a>
-      </li>
-      <li *ngIf="usuarioService.usuario.rol=='Cliente' || usuarioService.usuario.rol=='Medico' " class="nav-item avatar dropdown alinear " dropdown>
-        <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
-          Historiales</a>
-        <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
-          <a *ngIf="usuarioService.usuario.rol=='Cliente' || usuarioService.usuario.rol=='Medico' " class="dropdown-item waves-light" mdbWavesEffect routerLink="historiales/anadir">Añadir</a>
-          <a   class="dropdown-item waves-light" mdbWavesEffect routerLink="historiales/buscar">Buscar</a>
-        </div>
-      </li>
-      <li class="nav-item alinear">
-          <a *ngIf="usuarioService.usuario.rol=='Medico' "  routerLink="listaCliente" class="nav-link waves-light" mdbWavesEffect>Clientes</a>
-      </li>
-
-    </ul>
-
-
-    <ul  class="navbar-nav ml-auto nav-flex-icons" id="perfil">
-     
-      <li class="nav-item avatar dropdown " dropdown>
-        <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
-          <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" alt="" class="img-fluid rounded-circle z-depth-0"></a>
-        <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
-          <a *ngIf="usuarioService.usuario.rol=='Cliente' || usuarioService.usuario.rol=='Medico' " class="dropdown-item waves-light" mdbWavesEffect routerLink="perfil/:rol">Mi perfil</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Cerrar sesión</a>
-        </div>
-      </li>
-    </ul>
-  </links>
-  <!-- Collapsible content -->
-
-</mdb-navbar>
-<!--/.Navbar-->
-
-
+<div class="bs-example">
+    
+    <mdb-navbar SideClass="navbar navbar-expand-md navbar-dark rgba-blue-strong lighten-1" [containerInside]="false">
+    
+      <!-- Navbar brand -->
+      <mdb-navbar-brand><a class="navbar-brand" href="#"><img src="../../../assets/imagenes/image.png" width="77" height="48" class="d-inline-block align-top" alt=""></a></mdb-navbar-brand>
+    
+      <!-- Collapsible content -->
+      <links>
+      
+        <!-- Links -->
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item  alinear ">
+              <a *ngIf="usuarioService.usuario.rol=='Admin' " routerLink="homeAdmin" class="nav-link waves-light" mdbWavesEffect>Home admin</a>
+          </li>
+          <li class="nav-item alinear">
+              <a *ngIf="usuarioService.usuario.rol=='Admin' "   routerLink="resgistrarUser" class="nav-link waves-light" mdbWavesEffect>Registrar usuario</a>
+          </li>
+          <li class="nav-item alinear">
+              <a *ngIf="usuarioService.usuario.rol=='Admin' "   routerLink="registrarPet" class="nav-link waves-light" mdbWavesEffect>Registrar mascota</a>
+          </li>
+        
+          <li class="nav-item alinear">
+              <a *ngIf="usuarioService.usuario.rol=='Medico' "  routerLink="homeMedico" class="nav-link waves-light" mdbWavesEffect>Home Medico</a>
+          </li>
+          <li class="nav-item alinear">
+              <a *ngIf="usuarioService.usuario.rol=='Medico' "  routerLink="citas" class="nav-link waves-light" mdbWavesEffect>Citas</a>
+          </li>
+          <li class="nav-item alinear">
+              <a *ngIf="usuarioService.usuario.rol=='Cliente' "  routerLink="homeCliente" class="nav-link waves-light" mdbWavesEffect>Home Cliente</a>
+          </li>
+          <li *ngIf="usuarioService.usuario.rol=='Cliente' || usuarioService.usuario.rol=='Medico' " class="nav-item avatar dropdown alinear " dropdown>
+            <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+              Historiales</a>
+            <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
+              <a *ngIf="usuarioService.usuario.rol=='Cliente' || usuarioService.usuario.rol=='Medico' " class="dropdown-item waves-light" mdbWavesEffect routerLink="historiales/anadir">Añadir</a>
+              <a   class="dropdown-item waves-light" mdbWavesEffect routerLink="historiales/buscar">Buscar</a>
+            </div>
+          </li>
+          <li class="nav-item alinear">
+              <a *ngIf="usuarioService.usuario.rol=='Medico' "  routerLink="listaCliente" class="nav-link waves-light" mdbWavesEffect>Clientes</a>
+          </li>
+        
+        </ul>
+      
+      
+        <ul  class="navbar-nav ml-auto nav-flex-icons" id="perfil">
+        
+          <li class="nav-item avatar dropdown " dropdown>
+            <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+              <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" alt="" class="img-fluid rounded-circle z-depth-0"></a>
+            <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
+              <a *ngIf="usuarioService.usuario.rol=='Cliente' || usuarioService.usuario.rol=='Medico' " class="dropdown-item waves-light" mdbWavesEffect routerLink="perfil/:rol">Mi perfil</a>
+              <a class="dropdown-item waves-light" mdbWavesEffect href="#">Cerrar sesión</a>
+            </div>
+          </li>
+        </ul>
+      </links>
+      <!-- Collapsible content -->
+    
+    </mdb-navbar>
+    <!--/.Navbar-->
+</div>
 
