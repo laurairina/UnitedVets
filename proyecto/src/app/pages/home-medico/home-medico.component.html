@@ -1,1 +1,40 @@
-<p>home-medico works!</p>
+<div class="row" id="top">
+    <div class="col-0 col-sm-0 col-md-2 col-lg-2 col-xl-2 "></div>
+    <div class="card col-10 col-sm-10 col-md-8 col-lg-8 col-xl-8 " style="width: 40rem;" id="lista">
+        <div class="row">
+            <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
+          <div class=" col-10 col-sm-10 col-md-8 col-lg-8 col-xl-8 ">
+            <h5 class="card-title ">Citas de hoy</h5>
+            <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
+            <form class="form-inline">
+              <input class="form-control mr-sm-2 btn-sm" type="search" placeholder="Buscar cliente" aria-label="Buscar">
+              <button class="btn btn-sm btn-outline-primary my-2 my-sm-0" type="submit">Buscar</button>
+            </form>
+          </div>
+        </div>
+        <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                
+                
+                <th scope="col">Cliente</th>
+                <th scope="col">Mascota</th>
+                <th scope="col">Hora</th>
+                <th scope="col">
+                
+                </th>
+              </tr>
+            </thead>
+            <tbody *ngFor= "let cita of citas; let i = index;" [ngClass]= "i%2 === 0 ? 'filaPar' : ''">
+              <tr > 
+               
+                
+                <td >  {{ cita.nombre }}  </td>
+                <td >  {{ cita.codigoCita }}  </td>           
+                <td > {{cita.fechaCita }}  </td>           
+                <td > <button  type="button" class="btn btn-primary btn-sm">Ver historial</button>  </td> 
+              </tr>
+            </tbody>
+          </table>
+    </div>
+  </div>

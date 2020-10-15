@@ -1,2 +1,105 @@
-
-<p>home-admin works!</p>
+<div class="row " id="top">
+    <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 "></div>
+    <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 ">
+      <form class="form-inline ">
+        <input class="form-control mr-sm-2 btn-sm" type="search" placeholder="Buscar usuario" aria-label="Buscar">
+        <button class="btn btn-sm btn-outline-primary my-2 my-sm-0" type="submit">Buscar</button>
+      </form>
+    </div>
+    <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 "></div>
+  </div>
+  
+  
+  <div class="row " id="top">
+    <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 "></div>
+    <div>
+      <ul *ngFor= "let usuario of usuarios; let i = index;">
+        <li>
+          <div class="card" style="width: 15rem;">
+            <div class="card-body row">
+              <img  src="../../../assets/imagenes/Usuario-Vacio.png" alt="Card image cap">
+              <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 "></div>
+              <h5 class="card-title">Nombre: {{ usuario.nameUser }}</h5>
+              <p class="card-text" id="margenRol">Rol: {{usuario.rol }}</p>
+              <div >
+                <button type="button" class="btn btn-danger btn-sm" (click)="confirmar()">Eliminar</button>  
+                <button id="BotonModificar" type="button" (click)="open(content)" class="btn btn-primary btn-sm">Modificar</button>
+              </div>
+            </div>
+          </div>
+        </li>
+  
+      </ul>
+    </div>
+  </div>
+  
+  
+  <ng-template #content let-modal>
+    <div id="contenedorModal">
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">Editar perfil</h4>
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" >
+  
+          <form >
+  
+            <div class="form-group">
+              <div class="input-group">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Email </label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                </div>
+              
+                
+              
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Contraseña</label>
+                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña">
+                </div>
+              
+                
+              
+                <div class="form-group">
+                  <label >Nombre</label>
+                  <input type="text" class="form-control"  placeholder="Nombre">
+                </div>
+              
+                
+              
+                <div class="form-group">
+                  <label >Apellidos</label>
+                  <input type="text" class="form-control"  placeholder="Apellidos">
+                </div>
+              
+                
+              
+                <div class="form-group">
+                  <label >DNI</label>
+                  <input type="text" class="form-control"  placeholder="DNI">
+                </div>
+              
+                
+              
+                <div class="form-group">
+                  <label >Dirección</label>
+                  <input type="text" class="form-control"  placeholder="Dirección">
+                </div>
+  
+                
+              
+                <div class="form-group">
+                  <label >Nombre mascota</label>
+                  <input type="text" class="form-control"  placeholder="Nombre mascota">
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-primary" (click)="modal.close('Save click')">Guardar</button>
+        </div>
+    </div>
+  </ng-template>

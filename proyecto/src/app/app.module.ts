@@ -26,6 +26,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 
 import {HttpClientModule} from '@angular/common/http';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
     MatNativeDateModule,
     MatInputModule,
     HttpClientModule,
+    MDBBootstrapModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
