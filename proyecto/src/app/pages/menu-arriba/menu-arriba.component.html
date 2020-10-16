@@ -26,7 +26,7 @@
             <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
               Historiales</a>
             <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
-              <a *ngIf="usuarioService.usuario.rol=='Cliente' || usuarioService.usuario.rol=='Medico' " class="dropdown-item waves-light" mdbWavesEffect routerLink="historiales/anadir">Añadir</a>
+              <a *ngIf=" usuarioService.usuario.rol=='Medico' " class="dropdown-item waves-light" mdbWavesEffect routerLink="historiales/anadir">Añadir</a>
               <a   class="dropdown-item waves-light" mdbWavesEffect routerLink="historiales/buscar">Buscar</a>
             </div>
           </li>
