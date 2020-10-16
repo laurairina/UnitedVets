@@ -98,8 +98,14 @@
             </div>
           </form>
         </div>
+        <div class="alerta">
+          <ngb-alert class="col-md-5" *ngIf="successMessage" type="success" (close)="successMessage = ''">{{ successMessage }}</ngb-alert>
+
+        </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-outline-primary" (click)="modal.close('Save click')">Guardar</button>
+
+          <button type="button" class="btn btn-outline-primary" (click)="guardar()">Guardar</button>
+          <button type="button" class="btn btn-outline-primary" (click)="modal.close('Save click')">Cancelar</button>
         </div>
     </div>
   </ng-template>

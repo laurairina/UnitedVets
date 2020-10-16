@@ -70,7 +70,8 @@ textarea{
 
 .botones{
   width: 12%;
-margin-top: 10%;
+margin-top: 5%;
+margin-bottom: 5%;
 
 }
 
@@ -92,9 +93,11 @@ margin-top: 10%;
   }
 
   ngb-alert{
-      width: 50%;
-      margin:0 auto;
-      text-align: center;
-  }
- 
+    width: 100%;
+}
+
+.alerta{
+  width: 70%;
+  margin:0 auto;
+}
 

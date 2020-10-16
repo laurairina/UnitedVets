@@ -15,11 +15,11 @@ export class HomeMedicoComponent implements OnInit {
     console.log(usuarioService)
 
     this.citas = [
-      new Cita ("Paco", "Pancho", "10:30"),
-      new Cita ("Maria", "Calcetines", "11:00"),
-      new Cita ("Ester", "Perico", "11:30"),
-      new Cita ("Carlos", "Toby", "12:00"),
-      new Cita ("Marta", "Leo", "12:30")
+      new Cita ("Paco", "Pancho","10/11/2020" ,"10:30"),
+      new Cita ("Maria", "Calcetines","11/11/2020" ,"11:00"),
+      new Cita ("Ester", "Perico","12/11/2020"  ,"11:30"),
+      new Cita ("Carlos", "Toby","13/11/2020"  ,"12:00"),
+      new Cita ("Marta", "Leo","14/11/2020"  ,"12:30")
     ]
  }
 

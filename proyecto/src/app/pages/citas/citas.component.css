@@ -42,29 +42,34 @@ i{
     background-image: linear-gradient(75deg, #b2e8ff 0, #5a7ec9 50%, #15223a 100%);
 }
 
+.btnA:hover{
+    background-image: linear-gradient(75deg, #ffffff 0, #ffffff 16.67%, #fffff3 33.33%, #e8e7df 50%, #c2c2ca 66.67%, #a3a0b7 83.33%, #8c83a4 100%);
+
+}
 table, th, td {
     border: none;
-    margin:10px;
+  
   }
   table{
-    width:70%;
-    margin: 0 auto;
+    width:100%;
+
   }
 
    td{
-    width: 70%;
+
     text-align: center;
   }
 
   th{
     text-align: center;
-    color:rgb(235, 239, 243);
+    color:black;
   }
 
   .botones{
-    width: 100%;
-    margin:0 auto;
+    width: 45%;
+ 
    display: flex;
+
 
   }
 
@@ -72,3 +77,46 @@ table, th, td {
       margin-right:10px;
       margin-left:10px;
   }
+
+  ngb-alert{
+    width: 100%;
+    margin:0 auto;
+}
+
+.alerta{
+  width: 70%;
+  margin:0 auto;
+
+}
+
+#contenedorModal{
+    background-color: #292b2c;
+      color: white;
+}
+.close{
+    color: white;
+}
+
+.alinearInput{
+    margin: 5px;
+    justify-content: center;
+}
+
+.alinearInputF{
+
+    margin-top: 3px;
+}
+.row{
+    width: 98%;
+    margin: 0 auto;
+}
+
+
+
+.input-group{
+    display: flex;
+    justify-content: center;
+}
+.card{
+    margin: auto;
+}

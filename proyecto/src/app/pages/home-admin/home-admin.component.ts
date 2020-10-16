@@ -3,6 +3,8 @@ import { UsuariosService } from 'src/app/shared/usuarios.service';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { User } from 'src/app/model/user';
+import {Subject} from 'rxjs';
+import {debounceTime} from 'rxjs/operators';
 
 @Component({
   selector: 'app-home-admin',
@@ -25,10 +27,14 @@ import { User } from 'src/app/model/user';
 export class HomeAdminComponent implements OnInit {
  
   closeResult = '';
-  usuarios: User [] = []
+  usuarios: User [] = [];
+  private _success = new Subject<string>();
+  public successMessage:string;
+  staticAlertClosed = false;
   constructor(public usuarioService:UsuariosService,private modalService: NgbModal) { 
     console.log("admin")
     console.log(usuarioService)
+    this.successMessage = '';
     this.usuarios.push(this.usuarioService.lista[this.usuarioService.lista.length - 1])
     this.usuarios.push(this.usuarioService.lista[this.usuarioService.lista.length - 2])
     this.usuarios.push(this.usuarioService.lista[this.usuarioService.lista.length - 3])
@@ -36,6 +42,14 @@ export class HomeAdminComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+
+    setTimeout(() => this.staticAlertClosed = true, 20000);
+
+    this._success.subscribe(message => this.successMessage = message);
+    this._success.pipe(
+      debounceTime(5000)
+    ).subscribe(() => this.successMessage = '');
   }
 
   confirmar()
@@ -59,5 +73,14 @@ export class HomeAdminComponent implements OnInit {
     } else {
       return `with: ${reason}`;
     }
+  }
+
+  guardar(){
+    this.changeSuccessMessage("Guardados");
+
+  }
+
+  public changeSuccessMessage(mensaje:string) {
+    this._success.next(`Datos `+mensaje);
   }
 }

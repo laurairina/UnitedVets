@@ -43,4 +43,11 @@ i{
    
 }
 
+ngb-alert{
+    width: 100%;
+}
 
+.alerta{
+  width: 70%;
+  margin:0 auto;
+}
