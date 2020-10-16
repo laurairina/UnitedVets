@@ -1,6 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,400i,700,700i&subset=greek-ext');
-
-
 .my-container{
     background-image: url('../../../assets/imagenes/fondoLogin.jpg');
     background-position: center;
@@ -12,60 +10,49 @@
     height: 800px;
     width: 100%;
 }
-
-
-p{
-
-    font-family: 'Chela One', cursive; font-size: 5rem;
-    /* color: rgb(219, 222, 224); */
-    background: radial-gradient(circle at 12.5% 12.5%, #EAFFFF 0, #94ADE1 50%, #414142 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    
-}
-
 .card
 {
     position: absolute;
-    background-color: rgba(37, 35, 35, 0.89);
-    left: 34%;
-    top: 30%;
+    background-color: rgba(14, 13, 13, 0.89);
+    /* background-image: radial-gradient(circle at 38.83% 63.31%, #0f262c 0, #102124 12.5%, #111b1d 25%, #101516 37.5%, #0e0d0d 50%, #0c0102 62.5%, #0a0000 75%, #060000 87.5%, #030000 100%); */
+    left: 15%;
+    top: 20%;
     border-color: rgb(41, 41, 41);
     border-radius: 3px;
     padding: 40px 120px;
-   
-   
 }
-
 label{
-    font-family: 'Chela One', cursive; font-size: medium;
-    color: rgb(165, 190, 216);
+    /* font-family: 'Chela One', cursive; font-size: medium;
+    color: rgb(165, 190, 216); */
+    font-family: 'Noto Serif', serif;
 }
-
-
+img{
+    margin-left: 24%;
+    margin-top: -15%;
+}
 #login
 {
     /* color: rgb(165, 190, 216); */
-    margin-left: 2%;
+    margin-left: 20%;
     margin-top: -2%;
     margin-bottom: 15%;
-    
-    font-family: 'Chela One', cursive; font-size: 250%;
+    /* font-family: 'Chela One', cursive; font-size: 250%; */
+    font-family: 'Noto Serif', serif;
+    background: white;
     width: 100%;
-    background: radial-gradient(circle at 12.5% 12.5%, #EAFFFF 0, #94ADE1 50%, #414142 100%);
+    /* background: radial-gradient(circle at 12.5% 12.5%, #EAFFFF 0, #94ADE1 50%, #414142 100%); */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    
 }
 b 
 {
-    font-family: 'Chela One', cursive; font-size: medium;
-    /* color: rgb(165, 190, 216); */
-    background: radial-gradient(circle at 12.5% 12.5%, #EAFFFF 0, #94ADE1 50%, #414142 100%);
+    /* font-family: 'Chela One', cursive; font-size: medium;
+    background: radial-gradient(circle at 12.5% 12.5%, #EAFFFF 0, #94ADE1 50%, #414142 100%); */
+    font-family: 'Noto Serif', serif;
+    background: white;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-
 /* input
 {
     border:0;
@@ -76,7 +63,6 @@ b
     font-size:16px;
     color:#fff;
     border-radius: 3px;
-    
 }
 input:focus
 {
@@ -84,7 +70,6 @@ input:focus
     outline:none;
     border-bottom:1px solid #e74c3c;
 } */
-
 .input-container{
 	position:relative;
 	margin-bottom:60px;
@@ -116,30 +101,21 @@ input:focus
 .input-container input:valid ~ label{
 	top:-20px;
 	font-size:15px;
-	
 }
-
-
-
 /* .row1
 {
     width: 100%;
     margin-left: 13%;
     margin-top: 10%;
-    
 }
-
 .fila2{
     margin-top: 10%;
-    
 }
-
 .row2
 {
     margin-left: 33%;
     margin-top: 10%;
 } */
-
 button
 {
     border: 0;
@@ -152,7 +128,7 @@ button
     padding: 10px 35px;
     box-sizing: border-box;
     margin-top: -10%;
-   
+    left: 60%;
 }
 button::before, button::after{
     box-sizing: inherit;
@@ -162,38 +138,28 @@ button::before, button::after{
     height: 0;
     width: 0;
 }
-
 button::after{
     bottom: 0;
     right: 0;
 }
-
 button::before{
     top: 0;
     left: 0;
-
 }
-
-
 button:hover::before, button:hover::after{
     width: 100%;
     height: 100%;
-
 }
-
 button:hover::before{
     border-top-color: #67aac5;
     border-right-color: #67aac5;
     transition: width 0.3s, height 0.3s ease-out 0.3s;
 }
-
 button:hover::after{
     border-bottom-color: #67aac5;
     border-left-color: #67aac5;
     transition: border-color 0s ease-out 0.6s, width 0.3s ease-out 0.6s, heigth 0.3s ease-out 1s;
 }
-
-
 @media screen and (max-width: 900px){
     p{
         font-size: 3rem;
@@ -201,20 +167,12 @@ button:hover::after{
     .card{
         width: auto;
         height: auto;
-        left: 20%;
+        left: 10%;
     }
-
 }
 @media screen and (max-width: 520px){
     .card{
         left: 5%;
+        right: 5%;
     }
- 
 }
-
-
-
-
-
-
-
