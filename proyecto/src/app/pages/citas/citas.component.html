@@ -7,7 +7,6 @@
           <input class="form-control" placeholder="Elegir fecha" 
           name="dp" [(ngModel)]="fromDate" ngbDatepicker #d="ngbDatepicker" >
          </div> 
-  
         <div class="input-group-append">
           <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"><i class="material-icons" ngbTooltip="Calendario">
               calendar_today
@@ -20,14 +19,11 @@
         <button class="btn" (click)="open(content,'anadir',null)" type="button"><i class="material-icons" ngbTooltip="Añadir">
             add_box
         </i></button>
-     
       </div>
     </div>
   </form>
 <br><br>
-
 <div class="row">
-  
 <div class="card" style="width: 54rem;">
     <table class="table table-striped">
         <thead>
@@ -48,18 +44,12 @@
                 <td class="botones"> 
                     <button ngbTooltip="Modificar"  type="button" (click)="open(content,'modificar',cita)" class="btnA btn btn-sm"><mdb-icon fas icon="edit fa-2x " id="BotonModificar" ></mdb-icon></button>
                     <button ngbTooltip="Eliminar" type="button" class="btnA btn btn-sm " (click)="confirmar()"><mdb-icon fas icon="minus fa-2x " id="btnDelete" ></mdb-icon></button>  
-
                  </td>
             </tr>
         </tbody>
     </table>
 </div>
- 
- 
-
 </div>
-
-
     <!--<table class="table table-striped">
         <thead >
             <tr>
@@ -79,17 +69,13 @@
                 <td class="botones"> 
                     <button  type="button" (click)="open(content,'modificar',cita)" class="btnA btn btn-sm"><i class="material-icons" ngbTooltip="Modificar" id="BotonModificar">edit</i></button>
                     <button type="button" class="btnA btn btn-sm " (click)="confirmar()"><i class="material-icons " ngbTooltip="Borrar" id="btnDelete">delete</i></button>  
-
                  </td>
             </tr>
         </tbody>
- 
      </table>--> 
      <div class=" d-flex justify-content-between p-2">
         <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="refreshCountries()">
         </ngb-pagination>
-    
-
         <ng-template #content let-modal>
             <div id="contenedorModal">
                 <div class="modal-header">
@@ -99,39 +85,49 @@
                   </button>
                 </div>
                 <div class="modal-body" >
-          
                   <form >
-          
                     <div class="form-group">
                       <div class="input-group">
-                    
-                        <div class="form-group alinearInput">
+                        <!-- <div class="form-group alinearInput">
                             <label >Nombre</label>
                             <input type="text" class="form-control" [(ngModel)]="nombreC" id="nombreC" [ngModelOptions]="{standalone: true}"  placeholder="Nombre">
-                        </div>
-                        
+                        </div> -->
                         <div class="form-group alinearInput">
+                          <label >Nombre</label>
+                          <input type="text" placeholder="Nombre" [(ngModel)]="nombreC" id="nombreC" [ngModelOptions]="{standalone: true}" >
+                      </div>
+                        <!-- <div class="form-group alinearInput">
                           <label >Apellidos</label>
                           <input type="text" class="form-control"  placeholder="Apellidos" [(ngModel)]="apellidosC" id="apellidosC" [ngModelOptions]="{standalone: true}" >
-                        </div>
-                      
-                        
-                      
+                        </div> -->
                         <div class="form-group alinearInput">
+                          <label >Apellidos</label>
+                          <input type="text"  placeholder="Apellidos" [(ngModel)]="apellidosC" id="apellidosC" [ngModelOptions]="{standalone: true}" >
+                        </div>
+                        <!-- <div class="form-group alinearInput">
                           <label >DNI</label>
                           <input type="text" class="form-control"  placeholder="DNI" [(ngModel)]="dniC" id="dniC" [ngModelOptions]="{standalone: true}" >
-                        </div>
-                      
+                        </div> -->
                         <div class="form-group alinearInput">
+                          <label >DNI</label>
+                          <input type="text"  placeholder="DNI" [(ngModel)]="dniC" id="dniC" [ngModelOptions]="{standalone: true}" >
+                        </div>
+                        <!-- <div class="form-group alinearInput">
                             <label >Nombre mascota</label>
                             <input type="text" class="form-control"  placeholder="Nombre mascota" [(ngModel)]="nombreM" id="nombreM" [ngModelOptions]="{standalone: true}" >
-                        </div>
-  
+                        </div> -->
                         <div class="form-group alinearInput">
+                          <label >Nombre mascota</label>
+                          <input type="text"  placeholder="Nombre mascota" [(ngModel)]="nombreM" id="nombreM" [ngModelOptions]="{standalone: true}" >
+                      </div>
+                        <!-- <div class="form-group alinearInput">
                             <label for="fechaC">Fecha</label>
                             <input type="date" class="form-control" id="fechaC" placeholder="Fecha" [(ngModel)]="fechaC" id="fechaC" [ngModelOptions]="{standalone: true}" >
+                          </div> -->
+                          <div class="form-group alinearInput">
+                            <label for="fechaC">Fecha</label>
+                            <input type="date" id="fechaC" placeholder="Fecha" [(ngModel)]="fechaC" id="fechaC" [ngModelOptions]="{standalone: true}" >
                           </div>
-
                         <div class="form-group alinearInputF selector">		
                             <label>Escoger una opcion</label>
                             <select class="form-control" name="opcionS" [(ngModel)]="opcionS">
@@ -140,20 +136,15 @@
                                  {{opcion}}
                              </option>
                             </select>
-                    
                            <!--<p id="seleccionable" >Seleccionar hora</p> 
                             <select name="users" id="tipoDeUsuario">
-                              
                                 <option value="">9:00am</option>
                                 <option value="">9:30am</option>
                                 <option value="">10:00am</option>
                                 <option value="">10:30am</option>
                                 <option value="">11:00am</option>
                             </select>-->
-                            
                           </div>
-
-
                       </div>
                     </div>
                   </form>
@@ -162,7 +153,6 @@
                     <ngb-alert class="col-md-5" *ngIf="successMessage" type="success" (close)="successMessage = ''">{{ successMessage }}</ngb-alert>
                     <br>
                 </div>
-
                 <div class="modal-footer">
                     <button  *ngIf="editBoton; else esFalsoM"  type="button" class="btn btn-outline-primary" (click)=" editar()">Modificar</button>
                     <ng-template #esFalsoM>  

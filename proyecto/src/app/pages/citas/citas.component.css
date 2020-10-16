@@ -4,28 +4,22 @@
     background-image: linear-gradient(75deg, #b2e8ff 0, #5a7ec9 50%, #15223a 100%);
     width: 95%;
     padding-bottom: 7px;
-  
 }
 .texto{
     width: 130px;
     padding: 5px;
     margin-right: 7px;
-  
 }
 .title{
     color:white;
-
 }
-
 .form-control{
-   
     margin-bottom: 10px;
     font-size: 13px;
 }
 .alinear{
     margin:0 auto;
 }
-
 .btn{
     padding: 5px;
     border: none;
@@ -37,58 +31,41 @@ form{
 i{
     color: white;
 }
-
 .btn:hover{
     background-image: linear-gradient(75deg, #b2e8ff 0, #5a7ec9 50%, #15223a 100%);
 }
-
 .btnA:hover{
     background-image: linear-gradient(75deg, #ffffff 0, #ffffff 16.67%, #fffff3 33.33%, #e8e7df 50%, #c2c2ca 66.67%, #a3a0b7 83.33%, #8c83a4 100%);
-
 }
 table, th, td {
     border: none;
-  
   }
   table{
     width:100%;
-
   }
-
    td{
-
     text-align: center;
   }
-
   th{
     text-align: center;
     color:black;
   }
-
   .botones{
     width: 45%;
- 
    display: flex;
-
-
   }
-
   .alinearBtn{
       margin-right:10px;
       margin-left:10px;
   }
-
   ngb-alert{
     width: 100%;
     margin:0 auto;
 }
-
 .alerta{
   width: 70%;
   margin:0 auto;
-
 }
-
 #contenedorModal{
     background-color: #292b2c;
       color: white;
@@ -96,27 +73,44 @@ table, th, td {
 .close{
     color: white;
 }
-
 .alinearInput{
     margin: 5px;
     justify-content: center;
 }
-
 .alinearInputF{
-
     margin-top: 3px;
+    background: transparent;
 }
 .row{
     width: 98%;
     margin: 0 auto;
 }
-
-
-
 .input-group{
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
 }
 .card{
     margin: auto;
 }
+.modal-body input{
+    border:0;
+  border-bottom:2px solid #555;  
+  background:transparent;
+  width:90%;
+  padding:8px 0 5px 0;
+  font-size:15px;
+  color:#fff;
+}
+/* input[type=date]{
+   color: white;
+} */
+.modal-body input:focus{ 
+    border:none;	
+    outline:none;
+    border-bottom:1px solid #e74c3c;	
+   }
+.modal-body input:focus ~ label,
+.modal-body input:valid ~ label{
+       top:-20px;
+       font-size:15px;
+   }
