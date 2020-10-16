@@ -1,7 +1,15 @@
   
-#top{
-    margin-top: 5%;
+.separacion {
+    /* margin: 15px; */
+    margin-top: 25px;
 }
-.filaPar{
-    background-image: radial-gradient(circle at 12.5% 12.5%, #EAFFFF 0, #94ADE1 50%, #414142 100%);
+
+p {
+    color: black;
+    font-size: 35px;
+    font-weight: 350;
+}
+
+#colorIcono{
+    color:blue
 }

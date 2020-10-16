@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { User } from 'src/app/model/user';
 import { UsuariosService } from 'src/app/shared/usuarios.service';
 
 @Component({
@@ -8,9 +10,23 @@ import { UsuariosService } from 'src/app/shared/usuarios.service';
 })
 export class ListaClientesComponent implements OnInit {
 
-  constructor(public usuarioService:UsuariosService) { }
+  public usuario:string;
+  usuarios: User [] = []
+  constructor(public usuarioService:UsuariosService,private router: Router) 
+  {
+    this.usuarios.push(this.usuarioService.lista[this.usuarioService.lista.length - 1])
+    this.usuarios.push(this.usuarioService.lista[this.usuarioService.lista.length - 2])
+    this.usuarios.push(this.usuarioService.lista[this.usuarioService.lista.length - 3])
+    this.usuarios.push(this.usuarioService.lista[this.usuarioService.lista.length - 4])
+    
+  }
 
   ngOnInit(): void {
   }
 
+  public enviar():void{
+
+    this.router.navigateByUrl('/perfil/:rol') 
+
+  }
 }

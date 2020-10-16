@@ -1,4 +1,63 @@
-<div class="row" id="top">
+
+
+
+
+
+
+<div class="container main-secction">
+    <div class="row " id="top">
+      <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 "></div>
+      <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 ">
+        <form class="form-inline ">
+          <input class="form-control mr-sm-2 " type="search" placeholder="Buscar usuario" aria-label="Buscar">
+          <button class="btn  btn-outline-primary my-2 my-sm-0" type="submit">Buscar</button>
+        </form>
+      </div>
+      <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 "></div>
+    </div>
+
+
+    <div class="row " id="top">
+      <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 "></div>
+      <div>
+        <ul *ngFor= "let usuario of usuarios; let i = index;">
+          <li>
+            <div class="card" style="width: 15rem;">
+              <div class="card-body row">
+                <img  src="../../../assets/imagenes/Usuario-Vacio.png" alt="Card image cap">
+                <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 "></div>
+                <button  type="button" class="btn btn-sm " (click)="enviar()"><mdb-icon fas icon="id-card fa-3x " id="colorIcono" ngbTooltip="Ver Perfil"></mdb-icon></button>
+              </div>
+              <div class="margen">
+                <h6 class="card-title ">Nombre: {{ usuario.nameUser }}</h6>
+                <h6 class="card-title ">Apellidos: apellido1 apellido2 </h6>
+              </div>
+            </div>
+          </li>
+        
+        </ul>
+      </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="row" id="top">
     <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2"></div>
     <div class="card" style="width: 40rem;" id="lista">
         <div class="row">
@@ -30,4 +89,4 @@
             </tbody>
           </table>
     </div>
-  </div>
+  </div> -->

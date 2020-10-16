@@ -1,7 +1,62 @@
+img{
+    height: 60px;
+    width: 60px;
+}
+
+#margenRol{
+    margin-top: 5%;
+}
+
+button{
+    margin-left:30%;
+    margin-top: 5%;
+}
+
+li{
+    list-style: none;
+}
+
+ul{
+    float: left;
+}
+
 #top{
     margin-top: 5%;
 }
 
-.filaPar{
-    background-image: radial-gradient(circle at 12.5% 12.5%, #EAFFFF 0, #94ADE1 50%, #414142 100%);
+#contenedorModal{
+   padding: 5%;
+  
 }
+
+.card{
+    font-family: 'Nunito', sans-serif, Black 900 italic;
+}
+
+.alinearBoton{
+    display: flex;
+    margin-left: 20px;
+}
+
+i{
+   color:white;
+   
+}
+
+#iconoPerfil{
+    color:#5cb85c;
+    
+}
+
+.margen
+{
+    margin-left: 10px;
+}
+
+#colorIcono{
+    color:blue
+}
+
+/* .main-secction {
+    box-shadow: 10px 10px 10px;
+} */
