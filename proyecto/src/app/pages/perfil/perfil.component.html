@@ -48,7 +48,7 @@
                                             </div>
                                             <div class="col-md-3">
                                                 <div class="row  largo">
-                                                    <p>509230671</p>
+                                                    <p>{{perfil.name}}</p>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -58,7 +58,7 @@
                                             </div>
                                             <div class="col-md-2">
                                                 <div class="row  largo">
-                                                    <p>nancy@gmail.com</p>
+                                                    <p>{{perfil.dni}}</p>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -68,7 +68,7 @@
                                             </div>
                                             <div class="col-md-2">
                                                 <div class="row  largo">
-                                                    <p>12345678 </p>
+                                                    <p>{{perfil.telefono}}</p>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -78,7 +78,7 @@
                                             </div>
                                             <div class="col-md-2">
                                                 <div class="row  largo">
-                                                    <p> Av. America 51</p>
+                                                    <p>{{perfil.direccion}}</p>
                                                 </div>
                                             </div>
 
@@ -89,9 +89,9 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2">
-                                                    <div class="row  largo">
-                                                        <p>Pepito Miau <button type="button" class="btn btn-link">Ver perfil</button>
-                                                            <p>Lala Araña <button type="button" class="btn btn-link">Ver perfil</button>
+                                                    <div class="row  largo" *ngFor="let mascota of mascotas;">
+                                                        <p>{{mascota.nameM}} <button type="button" class="btn btn-link" (click)="verPerfil(mascota)">Ver perfil</button>
+                                                        <!--<p>Lala Araña <button type="button" class="btn btn-link" (click)="verPerfil('lala')">Ver perfil</button>-->
                                                     </div>
                                                 </div>
                                             </div>
@@ -99,7 +99,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4 img-main-rightPart">
+                                <div *ngIf="btnCerrar"  class="col-md-4 img-main-rightPart">
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="row image-right-part">
@@ -113,13 +113,14 @@
                                             <div class="card" style="width: 18rem;">
                                                 <img class="card-img-top" src="../../../assets/imagenes/gatoperfil.webp" alt="Card image cap">
                                                 <div class="card-body">
-                                                    <h5 class="card-title">Pepito Miau</h5>
-                                                    <p>Edad: 12 meses</p>
-                                                    <p>Alergias: Apio,Paracetamol</p>
+                                                    <h5 class="card-title">{{perfilMascota.nameM}}</h5>
+                                                    <p>Edad: {{perfilMascota.edad}}</p>
+                                                    <p>Alergias: {{perfilMascota.alergias}}</p>
                                                     <p>Historial:</p>
                                                     <p>Gripe el 12/10/2020</p>
                                                     <p>Desparasitación 05/08/20</p>
                                                     <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                                                    <button (click)="cerrar()">Cerrar</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -128,6 +129,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                
                             </div>
                         </div>
                     </div>
