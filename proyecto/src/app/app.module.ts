@@ -27,6 +27,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {HttpClientModule} from '@angular/common/http';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { PreHistorialComponent } from './pages/pre-historial/pre-historial.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     CitasComponent,
     ListaClientesComponent,
     MenuArribaComponent,
-    LadingPageComponent
+    LadingPageComponent,
+    PreHistorialComponent
   ],
   imports: [
     BrowserModule,
