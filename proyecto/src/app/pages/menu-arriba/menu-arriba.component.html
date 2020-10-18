@@ -22,7 +22,11 @@
               <a *ngIf="usuarioService.usuario.rol=='Medico' "  routerLink="citas" class="nav-link waves-light" mdbWavesEffect>Citas</a>
           </li>
 
-          <li *ngIf="usuarioService.usuario.rol=='Cliente' || usuarioService.usuario.rol=='Medico' " class="nav-item avatar dropdown alinear " dropdown>
+          <li class="nav-item alinear">
+            <a *ngIf="usuarioService.usuario.rol=='Medico' "  routerLink="pre-historial" class="nav-link waves-light" mdbWavesEffect>Historiales</a>
+        </li>
+
+          <li *ngIf="usuarioService.usuario.rol=='Cliente' " class="nav-item avatar dropdown alinear " dropdown>
             <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
               Historiales</a>
             <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">

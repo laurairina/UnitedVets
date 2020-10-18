@@ -61,9 +61,8 @@
 
 
          <div class="row alinear botones">
-            <button *ngIf="!editBoton; else esFalsoM" class="boton_personalizado" (click)="anadir()" [disabled]="editBoton">Guardar</button>
-            <button *ngIf="editBoton; else esFalsoM" class="boton_personalizado" (click)="modificar()" [disabled]="!editBoton">Modificar</button>
-       
+            <button *ngIf="!editBoton; else esFalsoM" (click)="anadir()" class="btn  btn-outline-primary my-2 my-sm-0" type="submit" [disabled]="editBoton">Guardar nueva historia</button>
+            <button *ngIf="editBoton; else esFalsoM" (click)="modificar()" class="btn  btn-outline-primary my-2 my-sm-0" type="submit" [disabled]="!editBoton">Modificar historia</button>
             <ng-template #esFalsoM>  
             </ng-template>
         </div>
