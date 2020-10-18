@@ -21,20 +21,6 @@ export class MascotaService {
     return this.mascota;
   }
 
-  /*buscar(mascota:string):Mascota{
-    let pet:Mascota;
-    let i:number=0;
-    let encontrado:boolean;
-
-      while(i<this.listaMacota.length && !encontrado){
-        if(this.listaMacota[i].nameM.toLocaleLowerCase()== mascota.toLocaleLowerCase()){
-           pet=this.listaMacota[i];
-           encontrado=true;
-        }
-        i++;
-      }
-      return pet; 
-  }*/
 
   buscarLista(user:string):Mascota[]{
     let pet:Mascota[];
