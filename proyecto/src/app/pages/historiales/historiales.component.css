@@ -7,11 +7,13 @@
     
   
 }
-.texto{
-    width: 130px;
-    padding: 5px;
-    margin-right: 7px;
-  
+
+#botonLupa
+{
+    margin-top: -5px;
+}
+input{
+    border: none;
 }
 .title{
     color:white;
@@ -20,11 +22,7 @@
 .espacio{
     margin-top: 5px;
 }
-.form-control{
-   
-    margin-bottom: 10px;
-    font-size: 13px;
-}
+
 .alinear{
     margin:0 auto;
 
@@ -37,9 +35,6 @@
 form{
     margin:0 auto;
     width: 90%;
-}
-i{
-    color: white;
 }
 
 

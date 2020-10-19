@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Data, ActivatedRoute } from '@angular/router';
 import {Subject} from 'rxjs';
 import {debounceTime} from 'rxjs/operators';
+import { Historial } from 'src/app/model/historial';
+import { HistorialService } from 'src/app/shared/historial.service';
 
 
 
@@ -20,7 +22,7 @@ export class HistorialesComponent implements OnInit {
   public nombreCB:string;
   public nombreMB:string;
   public tratamiento:String;
-  public diagnostico:string;
+  public ananmnesis:string;
   public editBoton:boolean;
 
   
@@ -28,29 +30,38 @@ export class HistorialesComponent implements OnInit {
   public successMessage:string;
   staticAlertClosed = false;
 
-  constructor(private rutaActiva: ActivatedRoute) { 
+  constructor(private rutaActiva: ActivatedRoute, private historialService: HistorialService) { 
     this.successMessage = '';
   }
 
   ngOnInit(): void {
 
     this.rutaActiva.params.subscribe(routeParams => {
-       if(routeParams.valor =="buscar"){
-          this.editBoton=true;
-       }
-       else{
-        this.editBoton=false;
-        this.fromDate="";
-        this.fecha="";
-        this.nombreC="";
-        this.nombreM="";
-        this.nombreCB="";
-        this.nombreMB="";
-        this.tratamiento="";
-        this.diagnostico="";
-       }
+      // if(routeParams.valor =="buscar"){
+      //     this.editBoton=true;
+      //  }
+      //  else{
+      //   this.editBoton=false;
+      //   this.fromDate="";
+      //   this.fecha="";
+      //   this.nombreC="";
+      //   this.nombreM="";
+      //   this.nombreCB="";
+      //   this.nombreMB="";
+      //   this.tratamiento="";
+      //   this.diagnostico="";
+      //  }
    
-    });
+       console.log(routeParams.valor)
+        let historial:Historial;
+        historial=this.historialService.buscar(routeParams.valor)
+        this.nombreC = historial.mascota.nameP;
+        this.nombreM = historial.mascota.nameM;
+        this.ananmnesis = historial.ananmnesis;
+        this.tratamiento = historial.tratamiento;
+        this.fecha = historial.fecha;
+        
+     });
 
     setTimeout(() => this.staticAlertClosed = true, 20000);
 
@@ -71,19 +82,24 @@ export class HistorialesComponent implements OnInit {
    }
 
   buscar(){
-    this.onDateSelect(this.fromDate);
-    this.nombreC=this.nombreCB;
-    this.nombreM=this.nombreMB;
-     console.log(this.nombreCB)
+    // this.onDateSelect(this.fromDate);
+    // this.nombreC=this.nombreCB;
+    // this.nombreM=this.nombreMB;
+    console.log(this.fecha)
+    let historial:Historial;  
+    historial=  this.historialService.buscarFecha(this.fecha, this.nombreM, this.nombreC)
+    this.ananmnesis = historial.ananmnesis;
+    this.tratamiento = historial.tratamiento;
    }
 
   anadir(){
     this.changeSuccessMessage("Guardados");
-     console.log(this.diagnostico +"   "+this.tratamiento)
+     console.log(this.ananmnesis +"   "+this.tratamiento)
   }
 
   modificar(){
     this.changeSuccessMessage("Modificados");
+    
   }
   public changeSuccessMessage(mensaje:string) {
     this._success.next(`Datos `+mensaje);

@@ -47,7 +47,7 @@
             <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
               <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" alt="" class="img-fluid rounded-circle z-depth-0"></a>
             <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
-              <a *ngIf="usuarioService.usuario.rol=='Cliente' || usuarioService.usuario.rol=='Medico' " class="dropdown-item waves-light" mdbWavesEffect routerLink="perfil/:rol">Mi perfil</a>
+              <a *ngIf="usuarioService.usuario.rol=='Cliente' || usuarioService.usuario.rol=='Medico' || usuarioService.usuario.rol=='Admin' " class="dropdown-item waves-light" mdbWavesEffect routerLink="perfil/:rol">Mi perfil</a>
               <a class="dropdown-item waves-light" mdbWavesEffect href="#">Cerrar sesión</a>
             </div>
           </li>

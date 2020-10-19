@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Cita } from 'src/app/model/cita';
+import { Mascota } from '../../model/mascota';
+import { Persona } from './../../model/persona';
+import { Historial } from 'src/app/model/historial';
 import { UsuariosService } from 'src/app/shared/usuarios.service';
+import { ClienteService } from 'src/app/shared/cliente.service';
+import { MascotaService } from 'src/app/shared/mascota.service';
+import { HistorialService } from 'src/app/shared/historial.service';
 
 @Component({
   selector: 'app-pre-historial',
@@ -10,26 +15,41 @@ import { UsuariosService } from 'src/app/shared/usuarios.service';
 })
 export class PreHistorialComponent implements OnInit {
 
-  public citas: Cita [] = []
-  constructor(public usuarioService:UsuariosService,private router: Router) { 
+  public historiales: Historial [] = []
+  
+  constructor(public usuarioService:UsuariosService,private router: Router, private clienteService: ClienteService, private mascotaService: MascotaService, private historialService: HistorialService) { 
 
     console.log("medico")
     console.log(usuarioService)
-
-    this.citas = [
-      new Cita ("Paco", "Pancho","10/11/2020" ,"10:30"),
-      new Cita ("Maria", "Calcetines","11/11/2020" ,"11:00"),
-      new Cita ("Ester", "Perico","12/11/2020"  ,"11:30"),
-      new Cita ("Carlos", "Toby","13/11/2020"  ,"12:00"),
-      new Cita ("Marta", "Leo","14/11/2020"  ,"12:30")
-    ]
+     
+    this.historiales = this.historialService.historiales
   }
 
   ngOnInit(): void {
   }
 
-  verHistorial()
+  verHistorial(codigo:string)
   {
-    this.router.navigateByUrl('/historiales')
+    this.router.navigateByUrl('/historiales/' + codigo)
+  }
+
+  buscarCliente(nombre:HTMLInputElement)
+  {
+    let clientesFiltrados: Historial [] = []
+    
+    for(let i: number = 0; i< this.historiales.length; i++)
+    {
+      if(this.historiales[i].mascota.nameP === nombre.value)
+      {
+        clientesFiltrados.push(this.historiales[i])
+      }
+    }
+
+    this.historiales = clientesFiltrados
+
+    if (this.historiales.length === 0)
+      {
+        this.historiales = this.historialService.historiales
+      }  
   }
 }

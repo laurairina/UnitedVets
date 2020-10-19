@@ -33,11 +33,14 @@
       <div class="contenido">
  
         <form class="form-inline">
-            <div class="form-group alinear">
+            <div class="form-group alinear form-control mr-sm-2">
               <div class="input-group">
-                <div class="espacio"><b >Nombre Cliente:   </b><input [(ngModel)]="nombreC" class="texto"type="text" id="nombreC" [ngModelOptions]="{standalone: true}"  /> </div> 
-                <div class="espacio"><b  >Nombre de Mascota:   </b><input [(ngModel)]="nombreM" class="texto" type="text" id="nombreM" [ngModelOptions]="{standalone: true}"> </div> 
-                <div class="espacio "><b >Fecha de elaboración:   </b><input [(ngModel)]="fecha"  class="texto" type="text" id="fecha" [ngModelOptions]="{standalone: true}"/> </div>             
+                <div ><b >Nombre Cliente:   </b><input [(ngModel)]="nombreC" class="texto "type="text" id="nombreC" [ngModelOptions]="{standalone: true}"  /> </div> 
+                <div ><b  >Nombre de Mascota:   </b><input [(ngModel)]="nombreM" class="texto" type="text" id="nombreM" [ngModelOptions]="{standalone: true}"> </div> 
+                <div ><b >Fecha de elaboración:   </b><input [(ngModel)]="fecha"  class="texto" type="date" id="fecha" [ngModelOptions]="{standalone: true}"/> </div> 
+                <button class="btn" (click)="buscar()" id="botonLupa" type="button" ><i class="material-icons">
+                  search
+              </i></button>            
               </div>
           
             </div>
@@ -45,13 +48,13 @@
           </form>
           <br><br>
           <div class="row">
-            <h5>Diagnósticos</h5> 
-             <textarea rows="10" cols="40"  [(ngModel)]="diagnostico">  </textarea>
+            <h5>Ananmnesis</h5> 
+             <textarea rows="10" cols="40" id="ananmnesis" [(ngModel)]="ananmnesis">  </textarea>
          </div>
          <br><br>
          <div class="row">
              <h5>Tratamiento</h5> 
-             <textarea rows="10" cols="40"  [(ngModel)]="tratamiento"> </textarea>
+             <textarea rows="10" cols="40" id="tratamiento" [(ngModel)]="tratamiento"> </textarea>
        
          </div>
 
@@ -61,8 +64,8 @@
 
 
          <div class="row alinear botones">
-            <button *ngIf="!editBoton; else esFalsoM" (click)="anadir()" class="btn  btn-outline-primary my-2 my-sm-0" type="submit" [disabled]="editBoton">Guardar nueva historia</button>
-            <button *ngIf="editBoton; else esFalsoM" (click)="modificar()" class="btn  btn-outline-primary my-2 my-sm-0" type="submit" [disabled]="!editBoton">Modificar historia</button>
+            <button *ngIf="!editBoton; else esFalsoM" (click)= "modificar()" class="btn  btn-outline-primary my-2 my-sm-0" type="submit" [disabled]="editBoton">Modificar historia</button>
+            <button *ngIf="editBoton; else esFalsoM" (click)="anadir()" class="btn  btn-outline-primary my-2 my-sm-0" type="submit" [disabled]="!editBoton">Crear nueva historia</button>
             <ng-template #esFalsoM>  
             </ng-template>
         </div>
