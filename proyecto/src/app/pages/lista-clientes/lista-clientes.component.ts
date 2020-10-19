@@ -14,10 +14,7 @@ export class ListaClientesComponent implements OnInit {
   usuarios: User [] = []
   constructor(public usuarioService:UsuariosService,private router: Router) 
   {
-    this.usuarios.push(this.usuarioService.lista[this.usuarioService.lista.length - 1])
-    this.usuarios.push(this.usuarioService.lista[this.usuarioService.lista.length - 2])
-    this.usuarios.push(this.usuarioService.lista[this.usuarioService.lista.length - 3])
-    this.usuarios.push(this.usuarioService.lista[this.usuarioService.lista.length - 4])
+  
     
   }
 

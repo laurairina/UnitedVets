@@ -27,18 +27,21 @@ import {debounceTime} from 'rxjs/operators';
 export class HomeAdminComponent implements OnInit {
  
   closeResult = '';
-  usuarios: User [] = [];
+  public usuarios: User [];
   private _success = new Subject<string>();
   public successMessage:string;
   staticAlertClosed = false;
   constructor(public usuarioService:UsuariosService,private modalService: NgbModal) { 
     console.log("admin")
-    console.log(usuarioService)
+    console.log(usuarioService.usuario);
     this.successMessage = '';
-    this.usuarios.push(this.usuarioService.lista[this.usuarioService.lista.length - 1])
-    this.usuarios.push(this.usuarioService.lista[this.usuarioService.lista.length - 2])
-    this.usuarios.push(this.usuarioService.lista[this.usuarioService.lista.length - 3])
-    this.usuarios.push(this.usuarioService.lista[this.usuarioService.lista.length - 4])
+     this.usuarioService.obtenerUsuarios()
+    .subscribe((data:User[])=>{
+       this.usuarios=data;
+      
+       console.log(this.usuarios)
+    });
+
   }
 
   ngOnInit(): void {

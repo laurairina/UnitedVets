@@ -18,6 +18,8 @@
             <input type="password" required="" [(ngModel)]="password" id="password" />
             <label>Contraseña</label>
         </div>
+        <ngb-alert *ngIf="successMessage" type="success" (close)="successMessage = ''">{{ successMessage }}</ngb-alert>
+
         <div class="row2">
             <div class="fila3 col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 "> <button class="boton" (click)="enviar()"><b>Iniciar</b> </button></div>
         </div>
