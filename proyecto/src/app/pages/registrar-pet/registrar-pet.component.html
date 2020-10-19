@@ -1,20 +1,49 @@
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.5/chosen.jquery.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.5/chosen.min.css">
+
+
+
 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
 <div class="my-container ">
 <div class="card">
     <!-- <div class="row"> -->
       <img id="logo" src="../../../assets/imagenes/image.png" width="83" height="54" class="d-inline-block align-top" alt="">
     <h2 id="register-pet">Registrar Mascota</h2>
-  <!-- </div> -->
+ 
+
+       
       <div class="input-container">
-        <!-- <div class="row"> -->
-      <p id="seleccionable">Seleccionar dueño:</p> 
-        <select name="users" id="seleccionarUsuario">
+       
+      
+      <p id="seleccionable">Seleccionar dueño:</p>
+     
+        <select class="chosen" id="seleccionarUsuario">
             <option value="">Dani</option>
             <option value="">Tania</option>
             <option value="">Paul</option>
             <option value="">Laura</option>
-        </select>
+        </select> 
+        <script type="text/javascript">
+          $("chosen").chosen();
+      </script>
+
     </div>
+
+    
+
+
+
+
+
+    
+   
+    
   <!-- </div> -->
       <div class="input-container">	
         <!-- <div class="row">	 -->
@@ -55,3 +84,6 @@
 </div>
 </div>
 </div>
+
+
+

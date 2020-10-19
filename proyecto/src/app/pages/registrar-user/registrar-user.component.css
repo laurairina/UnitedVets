@@ -11,7 +11,7 @@
 #seleccionable
 {
     margin-left: 23%;
-    margin-top: 1%;
+    margin-top: -3%;
     font-family: 'Chela One', cursive; font-size: medium;
     color: blanchedalmond;
 }
@@ -67,7 +67,8 @@ b
 }
 .input-container{
 	position:relative;
-	margin-bottom:2%;
+    margin-bottom:5%;
+    height: 10%;
 }
 .input-container label{
 	position:absolute;
