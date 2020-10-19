@@ -25,7 +25,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-12 nuevaClase">
                             <div class="row">
                                 <div class="col-md-8">
                                     <!-- Tab panes -->
@@ -39,6 +39,28 @@
                                             <div class="col-md-2">
                                                 <div class="row  largo">
                                                     <p>{{usuarioService.usuario.nameUser}}</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-2">
+                                                    <label>Apellido:</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="row  largo">
+                                                    <p>{{perfil.apellido1}}</p>
+                                                    <p>{{perfil.apellido2}}</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-2">
+                                                    <label>Fecha de Nacimiento:</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="row  largo">
+                                                    <p>{{perfil.fechaNacimiento}}</p>
+
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -82,7 +104,7 @@
                                                 </div>
                                             </div>
 
-                                            <div *ngIf="usuarioService.usuario.rol == 'Cliente'" >
+                                            <div *ngIf="usuarioService.usuario.rol == 'Cliente'">
                                                 <div class="row">
                                                     <div class="col-md-2">
                                                         <label>Mascotas:</label>
@@ -91,7 +113,7 @@
                                                 <div class="col-md-2">
                                                     <div class="row  largo" *ngFor="let mascota of mascotas;">
                                                         <p>{{mascota.nameM}} <button type="button" class="btn btn-link" (click)="verPerfil(mascota)">Ver perfil</button>
-                                                        <!--<p>Lala Araña <button type="button" class="btn btn-link" (click)="verPerfil('lala')">Ver perfil</button>-->
+                                                            <!--<p>Lala Araña <button type="button" class="btn btn-link" (click)="verPerfil('lala')">Ver perfil</button>-->
                                                     </div>
                                                 </div>
                                             </div>
@@ -99,7 +121,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div *ngIf="btnCerrar"  class="col-md-4 img-main-rightPart">
+                                <div *ngIf="btnCerrar" class="col-md-4 img-main-rightPart">
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="row image-right-part">
@@ -129,7 +151,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                
+
                             </div>
                         </div>
                     </div>
