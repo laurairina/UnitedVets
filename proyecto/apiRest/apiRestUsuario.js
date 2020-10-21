@@ -74,6 +74,9 @@ app.get('/usuario',
     }
 });
 
+
+
+
 //Seguir usuario --> GET http://localhost:3000/usuario/datos?nombre=Dani&passw=123456
 /*app.get('/usuario/datos',
 (req, res) => {
@@ -136,6 +139,62 @@ app.delete('/usuario', function (req, res) {
 
 
 
+
+
+
+//-------------------------------Endpoint Dani Mascotas-----------------------------------
+
+//------------------------------ GET MASCOTA--------------------------------
+app.get('/mascota',
+(req, res) => {
+    let usuario_id = req.query.usuario_id;
+        params = usuario_id;
+        sql="SELECT * FROM `mascota` WHERE usuario_id = ?";    
+        ejecutar(sql,params,res);
+        console.log("con id")
+ 
+});
+
+//---------------------------GET CLIENTES Dani-----------------------------------------
+
+app.get('/cliente',
+(req, res) => {
+    let nombre = req.query.nombre;
+    
+        params= nombre;
+        sql="SELECT * FROM `usuario`where usuario.rol='Cliente'";    
+        ejecutar(sql,params,res);
+        console.log("con id")
+    
+ 
+});
+//-------------------------------- POST MASCOTA-------------------------------
+
+app.post('/mascota', function (req, res) {
+    let data = req.body;
+    params = new Array(data.nombreM, data.chip, data.especie, data.raza, data.usuario_id, data.fechaNacimiento, data.alergias);
+    sql= "INSERT INTO `mascota` (`nombreM`, `chip`, `especie`, `raza`, `usuario_id`, `fechaNacimiento`, `alergias`) VALUES ( ?, ?, ?, ?, ?, ?, ?)";
+
+    console.log(data);
+    console.log("holi");
+    ejecutar(sql,params,res);
+
+
+    console.log('Mascota añadida');
+});  
+
+//----------------------------------- PUT MASCOTA ---------------------------------------------------
+
+app.put('/mascota', function(req,res) {
+    let data = req.body;
+    params = new Array( data.nombreM, data.chip, data.especie, data.raza, data.fechaNacimiento, data.alergias,data.id);
+   sql= "UPDATE `mascota` SET `nombreM`=?, `chip`=?, `especie`=?, `raza`=?, `fechaNacimiento`=?, `alergias`=? WHERE `id`=?";
+    console.log(params)
+   ejecutar(sql,params,res);
+
+});
+
+//-------------------------Final de endpoint Mascota-----------------------------------
 //---------- Metodo sin pagina y escuchar servidor   
 /*si no pasan correctamente un 
 url entraria en este metodo llamado use, usaria next
@@ -147,6 +206,7 @@ app.use(
         //next();
     }
 );
+
 
 app.listen(3000, function () {
     console.log('Server is running..');

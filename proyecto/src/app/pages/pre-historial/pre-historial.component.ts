@@ -33,13 +33,13 @@ export class PreHistorialComponent implements OnInit {
     this.router.navigateByUrl('/historiales/' + codigo)
   }
 
-  buscarCliente(nombre:HTMLInputElement)
+  buscarCliente(usuario_id:number)
   {
     let clientesFiltrados: Historial [] = []
     
     for(let i: number = 0; i< this.historiales.length; i++)
     {
-      if(this.historiales[i].mascota.nameP === nombre.value)
+      if(this.historiales[i].mascota.usuario_id === usuario_id)
       {
         clientesFiltrados.push(this.historiales[i])
       }

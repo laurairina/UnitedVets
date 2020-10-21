@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Mascota } from '../model/mascota';
 
@@ -7,9 +8,10 @@ import { Mascota } from '../model/mascota';
 export class MascotaService {
 
   public mascota:Mascota;
-  public listaMacota:Mascota[]=[new Mascota("Pepito Miau","12 meses","Apio,Paracetamol","Tania"),new Mascota("Lala Araña","09 meses","cebolla,Ibuprofeno","Tania"),new Mascota("Boa tita","11 meses","Tomate,Ibuprofeno","Paul")];
-
-  constructor() { 
+  public listaMacota:Mascota[]=[new Mascota(1,"Pepito Miau","461646","Gato","Común Europeo",3,"2018-03-22","No tiene"),new Mascota(2,"Pancho","461646","Perro","Labrador",4,"2018-03-22","No tiene"),new Mascota(3,"Pedrín","461646","Gato","Común Europeo",3,"2016-03-3","A la gente mala")];
+  
+  private url= "http://localhost:3000/";
+  constructor(private http: HttpClient) { 
     this.mascota=null;
   }
   
@@ -22,19 +24,10 @@ export class MascotaService {
   }
 
 
-  buscarLista(user:string):Mascota[]{
-    let pet:Mascota[];
-
-      pet=[];
-      for (let i = 0; i < this.listaMacota.length; i++) {
-   
-        if(this.listaMacota[i].nameP.toLocaleLowerCase()== user.toLocaleLowerCase()){
-          console.log(this.listaMacota[i])
-          pet.push(this.listaMacota[i]);
-        }
-        
-      }
-      return pet; 
+  postMascota(nuevaMascota:Mascota)
+  {
+  
+    return this.http.post( this.url + "mascota", nuevaMascota )
   }
 
 }

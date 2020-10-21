@@ -29,9 +29,9 @@
             <tbody>
                 <tr *ngFor="let historial of historiales">
                     <td>{{historial.codigo}}</td>
-                    <td>{{historial.mascota.nameP}}</td>
-                    <td>{{historial.mascota.nameM}}</td>
-                    <td><button ngbTooltip="Ver historial" class="btn" (click)="verHistorial(historial.codigo)" type="button"><mdb-icon fas icon="id-card fa-3x " id="colorIcono" ></mdb-icon></button></td>
+                    <td>{{historial.mascota.usuario_id}}</td>
+                    <td>{{historial.mascota.nombreM}}</td>
+                    <td><button ngbTooltip="Ver historial" class="btn" (click)="verHistorial(historial.mascota.usuario_id)" type="button"><mdb-icon fas icon="id-card fa-3x " id="colorIcono" ></mdb-icon></button></td>
                 </tr>
             </tbody>
         </table>

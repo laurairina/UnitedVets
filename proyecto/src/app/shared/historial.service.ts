@@ -36,14 +36,14 @@ export class HistorialService {
       return hist; 
   }
 
-  public buscarFecha (fecha:string,nombreM: string, nombreP:string): Historial
+  public buscarFecha (fecha:string,nombreM: string, usuario_id:number): Historial
   {
     let hist:Historial;
     let i:number=0;
     let encontrado:boolean;
 
       while(i<this.historiales.length && !encontrado){
-        if(this.historiales[i].fecha == fecha && this.historiales[i].mascota.nameM == nombreM && this.historiales[i].mascota.nameP == nombreP ){
+        if(this.historiales[i].fecha == fecha && this.historiales[i].mascota.nombreM == nombreM && this.historiales[i].mascota.usuario_id == usuario_id ){
            hist=this.historiales[i];
            encontrado=true;
         }

@@ -18,7 +18,7 @@
  
 
        
-      <div class="input-container">
+      <!-- <div class="input-container">
        
       
       <p id="seleccionable">Seleccionar dueño:</p>
@@ -33,10 +33,32 @@
           $("chosen").chosen();
       </script>
 
+    </div> -->
+
+    <div class="ng-autocomplete " style="background-color: blue;"   >
+      
+      <ng-autocomplete 
+        [data]="usuarios"
+        [searchKeyword]="keyword"
+        (selected)='selectEvent($event)'
+        (inputChanged)='onChangeSearch($event)'
+        [itemTemplate]="itemTemplate"
+        [notFoundTemplate]="notFoundTemplate"
+        placeHolder = "Seleccione nombre de usuario">  
+          
+                                     
+      </ng-autocomplete>
+            
+      <ng-template #itemTemplate let-item >
+        <a   [innerHTML]="item.nombre_usuario"> </a>
+        
+      </ng-template>
+
+       
+      <ng-template #notFoundTemplate let-notFound>
+      <div [innerHTML]="notFound"></div>
+      </ng-template>
     </div>
-
-    
-
 
 
 
@@ -47,31 +69,36 @@
   <!-- </div> -->
       <div class="input-container">	
         <!-- <div class="row">	 -->
-        <input type="text" required="" id="nombre"/>
+        <input type="text" required="" #nombre id="nombre"/>
         <label>Nombre</label>
       </div>
       <!-- </div> -->
       <div class="input-container">	
         <!-- <div class="row">	 -->
-        <input type="text" required="" id="chip"/>
+        <input type="text" required="" #chip id="chip"/>
         <label>Numero CHIP</label>
       </div>
     <!-- </div> -->
       <div class="input-container">
         <!-- <div class="row"> -->
-        <input type="text" required=""  id="especie"/>
+        <input type="text" required="" #especie id="especie"/>
         <label>Especie</label>		
       <!-- </div> -->
     </div>
     <div class="input-container">
       <!-- <div class="row"> -->
-      <input type="text" required=""  id="raza"/>
+      <input type="text" required="" #raza id="raza"/>
       <label>Raza</label>		
     <!-- </div> -->
   </div>
+  <div class="input-container">	
+    <!-- <div class="row">	 -->
+    <input type="text" required="" #fechaNacimiento id="fechaNacimiento"/>
+    <label>Fecha de nacimiento</label>
+  </div>
     <div class="input-container">	
       <!-- <div class="row">	 -->
-      <input type="text" required="" id="alergias" value=""/>
+      <input type="text" required="" #alergias id="alergias" value=""/>
       <label>Alergias</label>
     </div>
   <!-- </div> -->
@@ -80,7 +107,7 @@
         <label>Confirmar contraseña</label>
       </div> -->
     <div class="row">      
-      <div  class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 "> <button type="button" class="boton" id="boton" value="boton"><b>Registrar</b> </button></div> 
+      <div  class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 "> <button (click)="crearMascota(nombre,chip,especie,raza,fechaNacimiento,alergias)" type="button" class="boton" id="boton" value="boton"><b>Registrar</b> </button></div> 
 </div>
 </div>
 </div>

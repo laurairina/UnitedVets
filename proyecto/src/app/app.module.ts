@@ -24,6 +24,7 @@ import {MatInputModule} from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 
+import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 import {HttpClientModule} from '@angular/common/http';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
@@ -60,7 +61,8 @@ import { PreHistorialComponent } from './pages/pre-historial/pre-historial.compo
     MatNativeDateModule,
     MatInputModule,
     HttpClientModule,
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
+    AutocompleteLibModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -17,7 +17,7 @@ export class HistorialesComponent implements OnInit {
   
   public fromDate:string;
   public fecha:string;
-  public nombreC:string;
+  public usuario_id:number;
   public nombreM:string;
   public nombreCB:string;
   public nombreMB:string;
@@ -55,8 +55,8 @@ export class HistorialesComponent implements OnInit {
        console.log(routeParams.valor)
         let historial:Historial;
         historial=this.historialService.buscar(routeParams.valor)
-        this.nombreC = historial.mascota.nameP;
-        this.nombreM = historial.mascota.nameM;
+        this.usuario_id = historial.mascota.usuario_id;
+        this.nombreM = historial.mascota.nombreM;
         this.ananmnesis = historial.ananmnesis;
         this.tratamiento = historial.tratamiento;
         this.fecha = historial.fecha;
@@ -87,7 +87,7 @@ export class HistorialesComponent implements OnInit {
     // this.nombreM=this.nombreMB;
     console.log(this.fecha)
     let historial:Historial;  
-    historial=  this.historialService.buscarFecha(this.fecha, this.nombreM, this.nombreC)
+    historial=  this.historialService.buscarFecha(this.fecha, this.nombreM, this.usuario_id)
     this.ananmnesis = historial.ananmnesis;
     this.tratamiento = historial.tratamiento;
    }

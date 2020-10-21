@@ -22,9 +22,11 @@ export class PerfilComponent implements OnInit {
 
   constructor(public usuarioService:UsuariosService, public clienteService:ClienteService,public mascotaService:MascotaService) { 
      this.mostrarUsuario(usuarioService.usuario.nombre_usuario);
-    this.mascotas=mascotaService.buscarLista(usuarioService.usuario.nombre_usuario);
-
-
+    // this.mascotas=mascotaService.buscarLista(usuarioService.usuario.id);
+    usuarioService.obtenerMascota().subscribe((data:Mascota[])=>{
+      this.mascotas=data;
+      console.log(this.mascotas)
+    });
   }
   ngOnInit(): void {
 

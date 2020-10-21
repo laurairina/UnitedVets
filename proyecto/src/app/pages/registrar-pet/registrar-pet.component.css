@@ -91,7 +91,7 @@ b
     pointer-events:none;
 	transition: all 0.5s ease-in-out;
 }
-.input-container input{ 
+.input-container input { 
   border:0;
   border-bottom:2px solid #555;  
   background:transparent;
@@ -106,6 +106,7 @@ b
  outline:none;
  border-bottom:1px solid #e74c3c;	
 }
+
 .input-container input:focus ~ label,
 .input-container input:valid ~ label{
 	top:-20px;
@@ -155,6 +156,17 @@ button:hover::after{
     border-left-color: #67aac5;
     transition: border-color 0s ease-out 0.6s, width 0.3s ease-out 0.6s, heigth 0.3s ease-out 1s;
 }
+
+.ng-autocomplete{
+    background-color: yellow;
+    background: transparent;
+    border-radius: 20%;
+
+    position:relative;
+    margin-bottom:5%;
+    width: 100%;
+    height: 80%;
+}
 @media screen and (max-width: 900px){
     #register-pet{
        font-family: 'Chela One', cursive; font-size: 170%;
@@ -167,6 +179,11 @@ button:hover::after{
 button{
    margin-left: 50%;
 }
+
+#autocompletar {
+    background-color: yellow !important;
+}
+
 }
 @media screen and (max-width: 490px)
 {

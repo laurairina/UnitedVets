@@ -1,5 +1,5 @@
 export class Mascota {
-     constructor(public nameM:string, public edad:string, public alergias:string, public nameP:string){
+     constructor(public id:number, public nombreM:string, public chip:string, public especie:string, public raza:string, public usuario_id:number, public fechaNacimiento:string, public alergias:string,){
 
      }
 }
