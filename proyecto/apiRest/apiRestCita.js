@@ -54,7 +54,7 @@ function ejecutar(sql, params, res){
     });
 }
 
-//SELECT c.* FROM citas as c JOIN mascota as m ON(c.mascota_id=m.id) JOIN usuario as u ON(m.usuario_id=u.id) JOIN usuario as u1 ON (c.vet_id=u1.id) WHERE u1.nombre="Laura"
+//SELECT c.* FROM citas as c JOIN mascota as m ON(c.mascota_id=m.id) JOIN usuario as u ON(m.usuario_id=u.id) JOIN usuario as u1 ON (c.vet_id=u1.id) WHERE u1.id=2
 //-----------------------------------------GET-----------------------------------------------
 
 app.get('/citas/listaPacientes',

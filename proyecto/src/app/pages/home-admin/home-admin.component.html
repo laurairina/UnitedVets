@@ -22,7 +22,7 @@
               <h5 class="card-title">Nombre: {{ usuario.nombre }}</h5>
               <p class="card-text" id="margenRol">Rol: {{usuario.rol }}</p>
               <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 alinearBoton">
-                <button  type="button" class="btn btn-sm " (click)="confirmar()"><i class="material-icons " ngbTooltip="Borrar" id="btnDelete">delete</i></button>  
+                <button  type="button" class="btn btn-sm " (click)="confirmar(usuario)"><i class="material-icons " ngbTooltip="Borrar" id="btnDelete">delete</i></button>  
                 <button  type="button" (click)="open(content)" class="btn btn-sm btnModificar"><i class="material-icons" ngbTooltip="Modificar" id="BotonModificar">edit</i></button>
               </div>
             </div>

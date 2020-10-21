@@ -10,14 +10,16 @@
 }
 #seleccionable
 {
-    margin-left: 23%;
-    margin-top: -3%;
-    font-family: 'Chela One', cursive; font-size: medium;
-    color: blanchedalmond;
+    margin-left: 2%;
+    margin-top: 2%;
+    font-family: 'Noto Sans', sans-serif; font-size: smaller;
+    color: white;
 }
 #tipoDeUsuario
 {
-    margin-left: 36%;
+    position: absolute;
+    margin-left: 50%;
+    margin-top: -15%;
 }
 .card
 {
@@ -67,14 +69,15 @@ b
 }
 .input-container{
 	position:relative;
-    margin-bottom:5%;
-    height: 10%;
+    margin-bottom:8%;
+    height: 3%;
+    padding-bottom: 7%;
 }
 .input-container label{
 	position:absolute;
 	top:0px;
 	left:0px;
-	font-size:15px;
+	font-size:10px;
 	color:#fff;	
     pointer-events:none;
 	transition: all 0.5s ease-in-out;
@@ -85,7 +88,7 @@ b
   background:transparent;
   width:100%;
   padding:8px 0 5px 0;
-  font-size:15px;
+  font-size:10px;
   color:#fff;
 }
 .input-container input:focus{ 
@@ -95,8 +98,8 @@ b
 }
 .input-container input:focus ~ label,
 .input-container input:valid ~ label{
-	top:-20px;
-	font-size:15px;
+	top:-3px;
+	font-size:10px;
 }
 button
 {
@@ -110,7 +113,7 @@ button
     padding: 10px 50px;
     box-sizing: border-box;
     margin-top: 9%;
-    margin-left: 80%;
+    margin-left: 5%;
 }
 button::before, button::after{
     box-sizing: inherit;
@@ -145,24 +148,22 @@ button:hover::after{
 @media screen and (max-width: 900px){
     .card{
         width: auto;
-        height: auto;
+        height: 80%;
         left: 5%;
-    }
-}
-@media screen and (max-width: 550px){
-    .card{
-        width: auto;
-        height: auto;
-        left: 5%;
-        right: 5%;
     }
 }
 @media screen and (max-width : 500px){
     .card{
+        width: auto;
+        height: 80%;
         left: 5%;
         right: 5%;
     }
     button{
         margin-left: 50%;
     }
+}
+
+ngb-alert{
+    margin-top: 10px !important;
 }

@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuariosService } from 'src/app/shared/usuarios.service';
 import { ClienteService } from 'src/app/shared/cliente.service';
-import { Persona } from 'src/app/model/persona';
+
 import { Mascota } from 'src/app/model/mascota';
 import { MascotaService } from 'src/app/shared/mascota.service';
 import { User } from 'src/app/model/user';
+
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-perfil',
@@ -13,43 +15,59 @@ import { User } from 'src/app/model/user';
 })
 export class PerfilComponent implements OnInit {
 
-  public btnCerrar:boolean;
-  public nameMascota:string;
-  public perfil:User;
-  public mascotas:Mascota[];
-  public perfilMascota:Mascota;
+  public btnCerrar: boolean;
+  public nameMascota: string;
+  public perfil: User;
+  public mascotas: Mascota[];
+  public perfilMascota: Mascota;
 
 
-  constructor(public usuarioService:UsuariosService, public clienteService:ClienteService,public mascotaService:MascotaService) { 
-     this.mostrarUsuario(usuarioService.usuario.nombre_usuario);
-    // this.mascotas=mascotaService.buscarLista(usuarioService.usuario.id);
-    usuarioService.obtenerMascota().subscribe((data:Mascota[])=>{
-      this.mascotas=data;
-      console.log(this.mascotas)
-    });
+
+  constructor(public usuarioService: UsuariosService, public clienteService: ClienteService, public mascotaService: MascotaService, private rutaActiva: ActivatedRoute) {
+    if(this.usuarioService.userActual!=null){
+      console.log("Perfil de usuario Pasado  ");
+       this.perfil=this.usuarioService.userActual;
+       this.mascotaService.obtenerMascota(this.perfil.id).subscribe((data:Mascota[])=>{
+        this.mascotas=data;
+        console.log(this.mascotas)
+      });
+
+
+    }
+    else{
+      console.log("Perfil de usuario logueado")
+      this.usuarioService.userActual=null;
+      this.mostrarUsuario(this.usuarioService.usuario.nombre_usuario);
+
+    }
   }
   ngOnInit(): void {
 
-   
-  }
- 
-  
-  public mostrarUsuario(nombre:string){
-    this.usuarioService.obtenerUsuario(nombre)
-    .subscribe((data:User)=>{
-      this.perfil=data[0];
-      console.log(this.perfil)
-    });
-  }
-  public verPerfil(pet:Mascota):void{
-    this.btnCerrar=true;
-    this.perfilMascota=pet;
-     
   }
 
-  public cerrar():void{
-    this.btnCerrar=false;
-     
+
+  public mostrarUsuario(nombre: string) {
+    this.usuarioService.obtenerUsuario(nombre)
+      .subscribe((data: User) => {
+        console.log("Perfil")
+        this.perfil = data[0];
+        this.mascotaService.obtenerMascota(this.perfil.id).subscribe((data:Mascota[])=>{
+          this.mascotas=data;
+          console.log(this.mascotas)
+        });
+
+        console.log(this.perfil)
+      });
+  }
+  public verPerfil(pet: Mascota): void {
+    this.btnCerrar = true;
+    this.perfilMascota = pet;
+
+  }
+
+  public cerrar(): void {
+    this.btnCerrar = false;
+
   }
 
 }

@@ -55,7 +55,7 @@ function ejecutar(sql, params, res){
 }
 
 
-//-----------------------------------------GET-----------------------------------------------
+//----------------------------------------- Usuario L -----------------------------------------------
 //GET   "http://localhost:3000/usuario?nombre=Tania"  ó "http://localhost:3000/usuario"
 app.get('/usuario',
 (req, res) => {
@@ -74,25 +74,6 @@ app.get('/usuario',
     }
 });
 
-
-
-
-//Seguir usuario --> GET http://localhost:3000/usuario/datos?nombre=Dani&passw=123456
-/*app.get('/usuario/datos',
-(req, res) => {
-    let nombre = req.query.nombre;
-    let passw=req.query.passw;
-    params= new Array(nombre,passw);
-        //todos los usuarios
-        sql="SELECT * FROM `usuario` where nombre_usuario=? AND password=?";
-        ejecutar(sql,params,res);
-        console.log("sin id")
-    
-});
-*/
-
-
-//----------------------------------------POST-----------------------------------------
 //para loguearse
 app.post('/usuario/datos', function (req, res) {
     let nombre =req.body.nombre;
@@ -106,36 +87,65 @@ app.post('/usuario/datos', function (req, res) {
     console.log('Nuevo entrada');
 });
 
+app.post('/usuario/dni', function (req, res) {
+    let dni =req.body.dni;
+
+    params= dni;
+        //todos los usuarios
+        sql="SELECT * FROM `usuario` where dni=?";
+        ejecutar(sql,params,res);
+        console.log("DNI "+dni)
+
+});
+
+
+
+app.post('/usuario/mascota', function (req, res) {
+    let id =req.body.id;
+
+    params= id;
+        //todos los usuarios
+        sql="SELECT u.* FROM mascota as m JOIN usuario as u ON(m.usuario_id=u.id) where m.id=?";
+        ejecutar(sql,params,res);
+        console.log("Id de mascota "+id);
+
+});
+
+//INSERT INTO `usuario` (`id`, `nombre`, `apellido1`, `apellido2`, `password`, `rol`, `fechaNacimiento`, `dni`, `foto`, `email`, `telefono`, `direccion`, `nColegiado`, `especialidad`, `nombre_usuario`) VALUES (NULL, 'Maria', 'Mendoza', 'Morales', '123', 'Cliente', '1991-04-12', '12312123', NULL, 'maria@gmail.com', '66662222', 'C/ Topacio 50,28360, Galapagar, Madrid', '', '', 'Maria')
 app.post('/usuario', function (req, res) {
     let data = req.body;
-    params = new Array(data.titulo, data.interprete, data.anyoPublicacion);
-    sql= "INSERT INTO discos(titulo, interprete, anyoPublicacion) VALUES (?,?,?)";
+    params = new Array( data.nombre, data.apellido1, data.apellido2, data.password, data.rol, data.fechaNacimiento, data.dni, data.foto, data.email, data.telefono, data.direccion, data.nColegiado, data.especialidad, data.nombre_usuario);
+    sql= "INSERT INTO `usuario` ( `nombre`, `apellido1`, `apellido2`, `password`, `rol`, `fechaNacimiento`, `dni`, `foto`, `email`, `telefono`, `direccion`, `nColegiado`, `especialidad`, `nombre_usuario`) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     ejecutar(sql,params,res);
 
-
-    console.log('Nuevo disco');
+    console.log('Nuevo Usuario');
 });  
-//---------------------------------------------PUT--------------------------------------------
+
 
 app.put('/usuario', function(req,res) {
     let data = req.body;
-    params=new Array(data.titulo, data.interprete, data.anyoPublicacion,data.id)
-   sql= "UPDATE discos SET titulo=?, interprete=?, anyoPublicacion=? WHERE id=?";
+
+    params=new Array(data.nombre, data.apellido1, data.apellido2, data.password, data.rol, data.fechaNacimiento, data.dni, data.foto, data.email, data.telefono, data.direccion, data.nColegiado, data.especialidad, data.nombre_usuario, data.id);
+   sql= "UPDATE usuario SET nombre=?, apellido1=?, apellido2=?, password=?, rol=?, fechaNacimiento=?, dni=?, foto=?, email=?, telefono=?, direccion=?, nColegiado=?, especialidad=?, nombre_usuario=? WHERE id=?";
     
    ejecutar(sql,params,res);
 
 });
 
-//---------------------------------------DELETE---------------------------------------------
-
 app.delete('/usuario', function (req, res) {
-    let data = req.query.id;//req.body;
+    let data = req.query.id;
      
-    sql ="DELETE FROM discos WHERE id="+data;
+    sql ="DELETE FROM usuario WHERE id="+data;
     ejecutar(sql,params,res);
 
 });
+
+//----------------------- Fin Usuario -----------------------------------
+
+
+
+
 
 
 

@@ -30,4 +30,8 @@ export class MascotaService {
     return this.http.post( this.url + "mascota", nuevaMascota )
   }
 
+  obtenerMascota(id:number)
+  {
+    return this.http.get(this.url + "mascota/?usuario_id=" + id )
+  }
 }
