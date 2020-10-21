@@ -39,7 +39,7 @@
                   <td>{{cita.nombre}}</td>
                   <td>{{cita.codigoCita}}</td>
                   <td>{{cita.fechaCita}}</td>
-                  <td><button ngbTooltip="Ver historial" class="btn"  type="button"><mdb-icon fas icon="id-card fa-3x " id="colorIcono" ></mdb-icon></button></td>
+                  <td><button ngbTooltip="Ver historial" class="btn"  type="button" (click)="mostrarPerfil(cita)"><mdb-icon fas icon="id-card fa-3x " id="colorIcono" ></mdb-icon></button></td>
               </tr>
           </tbody>
       </table>

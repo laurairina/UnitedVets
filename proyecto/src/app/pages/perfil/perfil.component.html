@@ -17,7 +17,7 @@
                         <div class="col-md-12 profile-header">
                             <div class="row">
                                 <div class="col-md-8 col-sm-6 col-xs-6 profile-header-section1 pull-left">
-                                    <h1>{{usuarioService.usuario.nombre_usuario}}</h1>
+                                    <h1>{{perfil.nombre_usuario}}</h1>
                                     <!-- <h5> United Vets</h5> -->
                                 </div>
                                 <div class="col-md-4 col-sm-6 col-xs-6 profile-header-section1 text-right pull-rigth">
@@ -38,7 +38,7 @@
                                             </div>
                                             <div class="col-md-2">
                                                 <div class="row  largo">
-                                                    <p>{{usuarioService.usuario.nombre}}</p>
+                                                    <p>{{perfil.nombre}}</p>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -48,8 +48,7 @@
                                             </div>
                                             <div class="col-md-2">
                                                 <div class="row  largo">
-                                                    <p>{{perfil.apellido1}}</p>
-                                                    <p>{{perfil.apellido2}}</p>
+                                                    <p>{{perfil.apellido1}}  {{perfil.apellido2}}</p>
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -104,7 +103,7 @@
                                                 </div>
                                             </div>
 
-                                            <div *ngIf="usuarioService.usuario.rol == 'Cliente'">
+                                            <div *ngIf="perfil.rol == 'Cliente'">
                                                 <div class="row">
                                                     <div class="col-md-2">
                                                         <label>Mascotas:</label>

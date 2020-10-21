@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { UsuariosService } from 'src/app/shared/usuarios.service';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { User } from 'src/app/model/user';
-import {Subject} from 'rxjs';
-import {debounceTime} from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home-admin',
@@ -25,22 +25,21 @@ import {debounceTime} from 'rxjs/operators';
   `]
 })
 export class HomeAdminComponent implements OnInit {
- 
+
   closeResult = '';
-  public usuarios: User [];
+  public usuarios: User[];
   private _success = new Subject<string>();
-  public successMessage:string;
+  public successMessage: string;
   staticAlertClosed = false;
-  constructor(public usuarioService:UsuariosService,private modalService: NgbModal) { 
+  constructor(public usuarioService: UsuariosService, private modalService: NgbModal) {
     console.log("admin")
     console.log(usuarioService.usuario);
     this.successMessage = '';
-     this.usuarioService.obtenerUsuarios()
-    .subscribe((data:User[])=>{
-       this.usuarios=data;
-      
-       console.log(this.usuarios)
-    });
+    this.usuarioService.obtenerUsuarios()
+      .subscribe((data: User[]) => {
+        this.usuarios = data;
+        console.log("Todos los usuarios guardados")
+      });
 
   }
 
@@ -55,13 +54,29 @@ export class HomeAdminComponent implements OnInit {
     ).subscribe(() => this.successMessage = '');
   }
 
-  confirmar()
-  {
-    confirm("¿Desea borrar el usuario X?")
+  confirmar(use: User) {
+
+    let valor = confirm("¿Desea borrar el usuario X?");
+    if (valor) {
+      this.usuarioService.borrarUsuario(use.id)
+        .subscribe((data: any) => {
+          if (data.affectedRows >= 1) {
+            this.usuarioService.obtenerUsuarios()
+            .subscribe((data: User[]) => {
+              this.usuarios = data;
+              console.log("Todos los usuarios guardados")
+            });
+            console.log("Eliminado usuario");
+          }
+          else {
+            console.log("No se ha eliminado usuario");
+          }
+        });
+    }
   }
 
   open(content) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title',windowClass: 'dark-modal'}).result.then((result) => {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', windowClass: 'dark-modal' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
@@ -78,12 +93,12 @@ export class HomeAdminComponent implements OnInit {
     }
   }
 
-  guardar(){
+  guardar() {
     this.changeSuccessMessage("Guardados");
 
   }
 
-  public changeSuccessMessage(mensaje:string) {
-    this._success.next(`Datos `+mensaje);
+  public changeSuccessMessage(mensaje: string) {
+    this._success.next(`Datos ` + mensaje);
   }
 }

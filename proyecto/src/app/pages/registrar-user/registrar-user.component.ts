@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms'
+import { UsuariosService } from 'src/app/shared/usuarios.service';
+import { User } from 'src/app/model/user';
+import {Subject} from 'rxjs';
+import {debounceTime} from 'rxjs/operators';
 
 @Component({
   selector: 'app-registrar-user',
@@ -9,10 +13,67 @@ import { FormControl, FormGroup, Validators } from '@angular/forms'
 export class RegistrarUserComponent implements OnInit {
 
   passControl = new FormControl('');
+  public opciones:string[] = [
+    'Cliente',
+    'Veterinario'
+  ];
 
-  constructor() { }
+  public nombre:string;
+  public apellido1:string;
+  public apellido2:string;
+  public fecha:string;
+  public email:string;
+  public telefono:string;
+  public direccion:string;
+  public dni:string;
+  public tipoDeUsuario:string;
+  public usuario:string;
+  public password1:string;
+  public password2:string;
+
+  private _success = new Subject<string>();
+  public successMessage:string;
+  staticAlertClosed = false;
+
+  constructor(public usuarioService:UsuariosService) {
+    this.successMessage = '';
+   }
 
   ngOnInit(): void {
+      //Mensaje de alerta
+      setTimeout(() => this.staticAlertClosed = true, 20000);
+
+      this._success.subscribe(message => this.successMessage = message);
+      this._success.pipe(
+        debounceTime(5000)
+      ).subscribe(() => this.successMessage = '');
+  }
+
+  public changeSuccessMessage(mensaje:string) {
+    this._success.next(`Datos `+mensaje);
+  }
+
+  public registrar(){
+     if(this.password1== this.password2){
+      let user:User= new User(0, this.usuario, this.password1, this.tipoDeUsuario,this.nombre, this.apellido1, this.apellido2, this.fecha, this.dni, this.email, this.telefono, this.direccion, null,"", "");
+      this.usuarioService.insertarUsuario(user)
+      .subscribe((data:any)=>{
+        if(data.affectedRows>=1){
+          this.changeSuccessMessage("Añadido nuevo usuario");
+        }
+        else{
+          this.changeSuccessMessage("No se añadido usuario"); 
+        }
+  
+      })
+     }
+     else{
+      this.changeSuccessMessage("Contraseñas no son iguales"); 
+     }
+    
+  
+
+    console.log(this.nombre+this.apellido1+ this.apellido2+ this.fecha+this.email+this.telefono+this.direccion+this.dni +this.tipoDeUsuario+this.usuario+this.password1+this.password2)
   }
 
   
