@@ -212,7 +212,7 @@ app.get('/usuario/perfil',
 app.post('/mascota', function (req, res) {
     let data = req.body;
     params = new Array(data.nombreM, data.chip, data.especie, data.raza, data.usuario_id, data.fechaNacimiento, data.alergias);
-    sql= "INSERT INTO `mascota` (`nombreM`, `chip`, `especie`, `raza`, `usuario_id`, `fechaNacimiento`, `alergias`) VALUES ( ?, ?, ?, ?, ?, ?, ?)";
+    sql= "INSERT INTO `mascota` (`nombre`, `chip`, `especie`, `raza`, `usuario_id`, `fechaNacimiento`, `alergias`) VALUES ( ?, ?, ?, ?, ?, ?, ?)";
 
     console.log(data);
     console.log("holi");
@@ -242,7 +242,7 @@ app.put('/mascota', function(req,res) {
 //GET   http://localhost:3000/historial
 app.get('/historial',
 (req, res) => {
-        sql="SELECT h.*, m.nombreM, u.nombre as nombreP, m.usuario_id as usuario_id  FROM historial as h JOIN mascota as m ON(h.mascota_id=m.id) JOIN usuario as u ON(m.usuario_id=u.id)";    
+        sql="SELECT h.*, m.nombre, u.nombre as nombreP, m.usuario_id as usuario_id  FROM historial as h JOIN mascota as m ON(h.mascota_id=m.id) JOIN usuario as u ON(m.usuario_id=u.id)";    
         ejecutar(sql,params,res);
         console.log("Lista de historial");
  
@@ -265,7 +265,7 @@ app.post('/historial/id', function (req, res) {
 
     params=id;
         //todos los usuarios
-        sql="SELECT h.*, m.nombreM, u.nombre as nombreP FROM historial as h JOIN mascota as m ON(h.mascota_id=m.id) JOIN usuario as u ON(m.usuario_id=u.id) where u.id=?";
+        sql="SELECT h.*, m.nombre, u.nombre as nombreP FROM historial as h JOIN mascota as m ON(h.mascota_id=m.id) JOIN usuario as u ON(m.usuario_id=u.id) where u.id=?";
         ejecutar(sql,params,res);
         console.log("historial  id "+ id)
 

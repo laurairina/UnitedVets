@@ -45,7 +45,7 @@ export class HistorialService {
 
       while(i<this.historialesCliente.length && !encontrado){
         console.log(this.historialesCliente[i].fecha +this.historialesCliente.length+"=="+ fecha+" "+nombreM)
-        if(this.historialesCliente[i].fecha === fecha && this.historialesCliente[i].nombreM === nombreM){
+        if(this.historialesCliente[i].fecha === fecha && this.historialesCliente[i].nombre === nombreM){
           hist=this.historialesCliente[i];
            encontrado=true;
           console.log("anamesis   "+ hist.anamnesis)

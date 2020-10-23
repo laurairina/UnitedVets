@@ -183,7 +183,7 @@
                                                 </div>
                                                 <div class="col-md-2">
                                                     <div class="row  largo" *ngFor="let mascota of mascotas;">
-                                                        <p>{{mascota.nombreM}} <button type="button" class="btn btn-link" (click)="verPerfil(mascota)">Ver perfil</button>
+                                                        <p>{{mascota.nombre}} <button type="button" class="btn btn-link" (click)="verPerfil(mascota)">Ver perfil</button>
                                                             <!--<p>Lala Araña <button type="button" class="btn btn-link" (click)="verPerfil('lala')">Ver perfil</button>-->
                                                     </div>
                                                 </div>
@@ -206,7 +206,7 @@
                                             <div class="card" style="width: 18rem;">
                                                 <img class="card-img-top" src="../../../assets/imagenes/gatoperfil.webp" alt="Card image cap">
                                                 <div class="card-body">
-                                                    <h5 class="card-title">{{perfilMascota.nombreM}}</h5>
+                                                    <h5 class="card-title">{{perfilMascota.nombre}}</h5>
                                                     <p>Fecha Nacimiento: {{perfilMascota.fechaNacimiento}}</p>
                                                     <p>Alergias: {{perfilMascota.alergias}}</p>                                                   
                                                     <p>Especie: {{perfilMascota.especie}}</p>

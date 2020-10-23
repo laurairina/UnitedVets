@@ -30,8 +30,8 @@
                 <tr *ngFor="let historial of historiales">
                     <td>{{historial.hist_id}}</td>
                     <td>{{historial.nombreP}}</td>
-                    <td>{{historial.nombreM}}</td>
-                    <td><button ngbTooltip="Ver historial" class="btn" (click)="verHistorial(historial)" type="button"><mdb-icon fas icon="id-card fa-3x " id="colorIcono" ></mdb-icon></button></td>
+                    <td>{{historial.nombre}}</td>
+                    <td><button ngbTooltip="Ver historial" class="btn" (click)="verHistorial(historial)" type="button"><mdb-icon fas icon="id-card fa-3x indigo-text"  ></mdb-icon></button></td>
                 </tr>
             </tbody>
         </table>

@@ -42,7 +42,7 @@ export class HistorialesComponent implements OnInit {
        let historial:Historial;
        historial=this.historialService.historial;
        this.nombreP = historial.nombreP;
-       this.nombreM = historial.nombreM;
+       this.nombreM = historial.nombre;
        this.ananmnesis = historial.anamnesis;
        this.tratamiento = historial.tratamiento;
        this.fecha = historial.fecha;
@@ -51,7 +51,7 @@ export class HistorialesComponent implements OnInit {
        .subscribe((data: Historial[]) => {
          this.historialService.historialesCliente = data;
          for (let index = 0; index < this.historialService.historialesCliente.length; index++) {
-           this.opciones.push(this.historialService.historialesCliente[index].nombreM);
+           this.opciones.push(this.historialService.historialesCliente[index].nombre);
          }
          console.log(data)
        });
@@ -64,7 +64,7 @@ export class HistorialesComponent implements OnInit {
       .subscribe((data: Historial[]) => {
         this.historialService.historialesCliente = data;
         for (let index = 0; index < this.historialService.historialesCliente.length; index++) {
-          this.opciones.push(this.historialService.historialesCliente[index].nombreM);
+          this.opciones.push(this.historialService.historialesCliente[index].nombre);
         }
         console.log(data)
       });
