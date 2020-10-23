@@ -8,37 +8,37 @@
 
     <div class="input-container">		
         <input type="text" required="" [(ngModel)]="nombre" id="nombre"/>
-        <label>Nombre</label>
+        <label id="nombre">Nombre</label>
       </div>
       <div class="input-container">		
         <input type="text" required="" [(ngModel)]="apellido1" id="apellido1"/>
-        <label>Primer apellido</label>
+        <label id="apellido1">Primer apellido</label>
       </div>
       <div class="input-container">		
         <input type="text" required="" [(ngModel)]="apellido2" id="apellido2"/>
-        <label>Segundo apellido</label>
+        <label id="apellido2">Segundo apellido</label>
       </div>
       <div class="input-container">
         <input type="date" id="fecha" [(ngModel)]="fecha" required="" >
-        <label>Fecha de nacimiento</label>
+        <label id="fecha">Fecha de nacimiento</label>
       </div>
       <div class="input-container">
         <input type="email" [(ngModel)]="email"  id="email" required="" >
-        <label>Email</label>
+        <label id="email">Email</label>
       </div>
       <div class="input-container">
         <input type="text" [(ngModel)]="telefono" id="telefono" required="" >
-        <label>Numero de teléfono</label>
+        <label id="telefono">Numero de teléfono</label>
       </div>
-      <div class="input-container">
+      <div class="input-container" id="input-container2">
         <input type="text" [(ngModel)]="direccion" id="direccion" required="" >
-        <label>Dirección</label>
+        <label id="direccion">Dirección</label>
       </div>
-      <div class="input-container">		
+      <div class="input-container" id="input-container2">		
         <input type="text" required="" [(ngModel)]="dni" id="dni"/>
-        <label>DNI</label>
+        <label id="dni">DNI</label>
       </div>
-      <div class="input-container">		
+      <div class="input-container" id="input-container2">		
    
         <p id="seleccionable">Tipo de usuario:</p> 
         <select id="tipoDeUsuario" name="tipoDeUsuario" [(ngModel)]="tipoDeUsuario">
@@ -49,17 +49,17 @@
         </select>
 
       </div>
-    <div class="input-container">
+    <div class="input-container" id="input-container2">
       <input type="text" required=""  id="usuario" [(ngModel)]="usuario"/>
-      <label>Nombre de usuario</label>		
+      <label id="nUsuario">Nombre de usuario</label>		
     </div>
-    <div class="input-container">		
+    <div class="input-container" id="input-container2">		
       <input type="password" required="" id="password1" [(ngModel)]="password1" value=""/>
-      <label>Contraseña</label>
+      <label id="password1">Contraseña</label>
     </div>
-    <div class="input-container">		
+    <div class="input-container" id="input-container2">		
         <input type="password" required="" id="password2" [(ngModel)]="password2" value="" />
-        <label>Confirmar contraseña</label>
+        <label id="confirmar_pass">Confirmar contraseña</label>
     </div>
     <div class="row2"> 
      

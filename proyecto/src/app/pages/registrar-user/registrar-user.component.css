@@ -8,19 +8,7 @@
 	min-height:100vh;
 	font-family: 'Noto Sans', sans-serif;
 }
-#seleccionable
-{
-    margin-left: 2%;
-    margin-top: 2%;
-    font-family: 'Noto Sans', sans-serif; font-size: smaller;
-    color: white;
-}
-#tipoDeUsuario
-{
-    position: absolute;
-    margin-left: 50%;
-    margin-top: -15%;
-}
+
 .card
 {
     position: absolute;
@@ -29,7 +17,7 @@
     top: 19%;
     border-color: rgb(41, 41, 41);
     border-radius: 3px;
-    padding: 0 100px;
+    padding: 0 200px;
     height: 80%;  
 }
 label{
@@ -67,17 +55,90 @@ b
     font-family: 'Noto Serif', serif;
     color: white;
 }
+/* #seleccionable
+{
+    margin-left: 2%;
+    margin-top: 2%;
+    font-family: 'Noto Sans', sans-serif; font-size: smaller;
+    color: white;
+}
+#tipoDeUsuario
+{
+    position: absolute;
+    margin-left: 50%;
+    margin-top: -15%;
+}
 .input-container{
 	position:relative;
     margin-bottom:8%;
     height: 3%;
     padding-bottom: 7%;
+} */
+
+#seleccionable
+{
+    margin-left: 60%;
+    margin-top: -150%;
+    width: 100%;
+    font-family: 'Noto Sans', sans-serif; font-size: smaller;
+    color: white;
 }
+#tipoDeUsuario
+{
+    position: absolute;
+    margin-left: 105%;
+    margin-top: -15%;
+    width: 55%;
+    
+}
+
+
+.input-container{
+	position:relative;
+    margin-bottom:10%;
+    height: 3%;
+    padding-bottom: 15%;
+}
+
+#input-container2{
+	position:relative;
+    margin-bottom:10%;
+    height: 3%;
+    padding-bottom: 15%;
+}
+
+#nombre, #apellido1, #apellido2, #fecha, #email, #telefono{
+    margin-left: -60%;
+    
+}
+
+#direccion, #dni, #password1, #password2, #confirmar_pass, #usuario, #password1{
+    position: absolute;
+    margin-left: 60%;
+    margin-top: -150%;
+    
+    
+}
+#nUsuario{
+    position: absolute;
+    margin-left: 60%;
+    margin-top: -150%;
+    width: 100%;
+}
+
+#confirmar_pass{
+    position: absolute;
+    margin-left: 60%;
+    margin-top: -150%;
+    width: 100%;
+}
+
+
 .input-container label{
 	position:absolute;
 	top:0px;
 	left:0px;
-	font-size:10px;
+	font-size:11px;
 	color:#fff;	
     pointer-events:none;
 	transition: all 0.5s ease-in-out;
@@ -87,8 +148,8 @@ b
   border-bottom:2px solid #555;  
   background:transparent;
   width:100%;
-  padding:8px 0 5px 0;
-  font-size:10px;
+  padding:15px 0 5px 0;
+  font-size:11px;
   color:#fff;
 }
 .input-container input:focus{ 
@@ -112,7 +173,8 @@ button
     outline: none;
     padding: 10px 50px;
     box-sizing: border-box;
-    margin-top: 9%;
+    position: absolute;
+    margin-top: -250px;
     margin-left: 5%;
 }
 button::before, button::after{

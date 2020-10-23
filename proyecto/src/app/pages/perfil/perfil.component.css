@@ -15,6 +15,75 @@ body {
 .image-section {
     padding: 0px;
 }
+#botonEditar{
+    margin-top: 40%;
+    margin-left: 80%;
+    color: black;
+}
+
+#editarPerfil{
+    margin-top: -15%;
+    margin-left: 17%;
+}
+
+
+
+
+
+#contenedorModal{
+    padding: 5%;
+   
+ }
+ 
+ .card{
+     font-family: 'Nunito', sans-serif, Black 900 italic;
+ }
+ 
+ .alinearBoton{
+     display: flex;
+     margin-left: 20px;
+ }
+ 
+ i{
+    color:white;
+    
+ }
+ 
+ ngb-alert{
+     width: 100%;
+ }
+ 
+ .form-group{
+     width: 90%;
+ }
+ 
+ .alerta{
+   width: 70%;
+   margin:0 auto;
+ }
+ 
+ .modal-body input{
+     border:0;
+   border-bottom:2px solid #555;  
+   background:transparent;
+   width:90%;
+   padding:8px 0 5px 0;
+   font-size:15px;
+   color:#fff;
+ }
+ /* input[type=date]{
+    color: white;
+ } */
+ .modal-body input:focus{ 
+     border:none;	
+     outline:none;
+     border-bottom:1px solid #e74c3c;	
+    }
+ .modal-body input:focus ~ label,
+ .modal-body input:valid ~ label{
+        top:-20px;
+        font-size:15px;
+    }
 
 .image-section img {
     width: 100%;

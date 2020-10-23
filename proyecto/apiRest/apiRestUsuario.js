@@ -178,6 +178,21 @@ app.get('/cliente',
     
  
 });
+
+
+//-------------------------------PUT Cliente----------------------------------
+
+app.put('/cliente', function(req,res) {
+    let data = req.body;
+
+    params=new Array(data.password, data.email, data.telefono, data.direccion, data.id);
+   sql= "UPDATE usuario SET password=?, email=?, telefono=?, direccion=? WHERE id=?";
+    
+   ejecutar(sql,params,res);
+
+});
+
+
 //-------------------------------- POST MASCOTA-------------------------------
 
 app.post('/mascota', function (req, res) {
@@ -216,6 +231,8 @@ app.use(
         //next();
     }
 );
+
+
 
 
 app.listen(3000, function () {
