@@ -1,56 +1,57 @@
 <h3>Citas</h3>
-<form  class="form-inline formA">
-    <div  class="form-group alinear">
-      <div class="input-group">
-          <br>
-          <div class="espacio">   
-          <input class="form-control" placeholder="Elegir fecha" 
-          name="dp" [(ngModel)]="fromDate" ngbDatepicker #d="ngbDatepicker" >
-         </div> 
-        <div class="input-group-append">
-          <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"><i class="material-icons" ngbTooltip="Calendario">
+<form class="form-inline formA">
+    <div class="form-group alinear">
+        <div class="input-group">
+            <br>
+            <div class="espacio">
+                <input class="form-control" placeholder="Elegir fecha" name="dp" [(ngModel)]="fromDate" ngbDatepicker #d="ngbDatepicker">
+            </div>
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"><i class="material-icons" ngbTooltip="Calendario">
               calendar_today
           </i></button>
-        </div>
-        <button class="btn" (click)="buscar()" type="button">
+            </div>
+            <button class="btn" (click)="buscar()" type="button">
             <i class="material-icons" ngbTooltip="Buscar">
             search
         </i></button>
-        <button class="btn" (click)="open(content,'anadir',null)" type="button"><i class="material-icons" ngbTooltip="Añadir">
+            <button class="btn" (click)="open(contentNuevaCita,'anadir',null)" type="button"><i class="material-icons" ngbTooltip="Añadir Citas">
             add_box
         </i></button>
-      </div>
+        </div>
     </div>
-  </form>
+</form>
 <br><br>
 <div class="row">
-<div class="card" style="width: 54rem;">
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th scope="col">Nombre Cliente</th>
-                <th scope="col" >Codigo Cita</th>
-                <th scope="col" >Fecha</th>
-                <th scope="col" >Hora</th>
-                <th scope="col" >Opciones </th> 
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let cita of citas">
-                <td  >{{cita.nombre}}</td>
-                <td >{{cita.codigoCita}}</td>
-                <td >{{cita.fechaCita}}</td>
-                <td >{{cita.hora}}</td>
-                <td class="botones"> 
-                    <button ngbTooltip="Modificar"  type="button" (click)="open(content,'modificar',cita)" class="btnA btn btn-sm"><mdb-icon fas icon="edit fa-2x " id="BotonModificar" ></mdb-icon></button>
-                    <button ngbTooltip="Eliminar" type="button" class="btnA btn btn-sm " (click)="confirmar()"><mdb-icon fas icon="minus fa-2x " id="btnDelete" ></mdb-icon></button>  
-                 </td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="card" style="width: 54rem;">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Nombre Cliente</th>
+                    <th scope="col">Nombre Mascota</th>
+                    <th scope="col">Codigo Cita</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Hora</th>
+                    <th scope="col">Opciones </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let cita of citas">
+                    <td>{{cita.nombreP}}</td>
+                    <td>{{cita.nombre}}</td>
+                    <td>{{cita.cita_id}}</td>
+                    <td>{{cita.fecha}}</td>
+                    <td>{{cita.hora}}</td>
+                    <td class="botones">
+                        <button ngbTooltip="Modificar" type="button" (click)="open(content,'modificar',cita)" class="btnA btn btn-sm"><mdb-icon fas icon="edit fa-2x " id="BotonModificar" ></mdb-icon></button>
+                        <button ngbTooltip="Eliminar" type="button" class="btnA btn btn-sm " (click)="confirmar()"><mdb-icon fas icon="minus fa-2x " id="btnDelete" ></mdb-icon></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
-</div>
-    <!--<table class="table table-striped">
+<!--<table class="table table-striped">
         <thead >
             <tr>
                 <th scope="col">Nombre Cliente</th>
@@ -72,71 +73,71 @@
                  </td>
             </tr>
         </tbody>
-     </table>--> 
-     <div class=" d-flex justify-content-between p-2">
-        <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="refreshCountries()">
-        </ngb-pagination>
-        <ng-template #content let-modal>
-            <div id="contenedorModal">
-                <div class="modal-header">
-                  <h4 class="modal-title" id="modal-basic-title">Modificar cita</h4>
-                  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+     </table>-->
+<div class=" d-flex justify-content-between p-2">
+    <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="refreshCountries()">
+    </ngb-pagination>
+    <ng-template #content let-modal>
+        <div id="contenedorModal">
+            <div class="modal-header">
+                <h4 class="modal-title" id="modal-basic-title">Modificar cita</h4>
+                <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
                     <span aria-hidden="true">&times;</span>
                   </button>
-                </div>
-                <div class="modal-body" >
-                  <form >
+            </div>
+            <div class="modal-body">
+                <form>
                     <div class="form-group">
-                      <div class="input-group">
-                        <!-- <div class="form-group alinearInput">
+                        <div class="input-group">
+                            <!-- <div class="form-group alinearInput">
                             <label >Nombre</label>
                             <input type="text" class="form-control" [(ngModel)]="nombreC" id="nombreC" [ngModelOptions]="{standalone: true}"  placeholder="Nombre">
                         </div> -->
-                        <div class="form-group alinearInput">
-                          <label >Nombre</label>
-                          <input type="text" placeholder="Nombre" [(ngModel)]="nombreC" id="nombreC" [ngModelOptions]="{standalone: true}" >
-                      </div>
-                        <!-- <div class="form-group alinearInput">
+                            <div class="form-group alinearInput">
+                                <label>Nombre de Usuario</label>
+                                <input type="text" placeholder="Nombre" [(ngModel)]="nombreC" id="nombreC" [ngModelOptions]="{standalone: true}" [disabled]=btnEdit>
+                            </div>
+                            <!-- <div class="form-group alinearInput">
                           <label >Apellidos</label>
                           <input type="text" class="form-control"  placeholder="Apellidos" [(ngModel)]="apellidosC" id="apellidosC" [ngModelOptions]="{standalone: true}" >
                         </div> -->
-                        <div class="form-group alinearInput">
-                          <label >Apellidos</label>
-                          <input type="text"  placeholder="Apellidos" [(ngModel)]="apellidosC" id="apellidosC" [ngModelOptions]="{standalone: true}" >
-                        </div>
-                        <!-- <div class="form-group alinearInput">
-                          <label >DNI</label>
-                          <input type="text" class="form-control"  placeholder="DNI" [(ngModel)]="dniC" id="dniC" [ngModelOptions]="{standalone: true}" >
-                        </div> -->
-                        <div class="form-group alinearInput">
-                          <label >DNI</label>
-                          <input type="text"  placeholder="DNI" [(ngModel)]="dniC" id="dniC" [ngModelOptions]="{standalone: true}" >
-                        </div>
-                        <!-- <div class="form-group alinearInput">
+                            <div class="form-group alinearInput">
+                                <label>Nombre Mascota</label>
+                                <input type="text" placeholder="Apellidos" [(ngModel)]="apellidosC" id="apellidosC" [ngModelOptions]="{standalone: true}" [disabled]=btnEdit>
+                            </div>
+                            <!-- <div class="form-group alinearInput">
+                                <label>DNI</label>
+                                <input type="text" class="form-control" placeholder="DNI" [(ngModel)]="dniC" id="dniC" [ngModelOptions]="{standalone: true}">
+                            </div> -->
+                            <!-- <div class="form-group alinearInput">
+                                <label>Fecha de Cita</label>
+                                <input type="text" placeholder="DNI" [(ngModel)]="dniC" id="dniC" [ngModelOptions]="{standalone: true}">
+                            </div> -->
+                            <!-- <div class="form-group alinearInput">
                             <label >Nombre mascota</label>
                             <input type="text" class="form-control"  placeholder="Nombre mascota" [(ngModel)]="nombreM" id="nombreM" [ngModelOptions]="{standalone: true}" >
                         </div> -->
-                        <div class="form-group alinearInput">
-                          <label >Nombre mascota</label>
-                          <input type="text"  placeholder="Nombre mascota" [(ngModel)]="nombreM" id="nombreM" [ngModelOptions]="{standalone: true}" >
-                      </div>
-                        <!-- <div class="form-group alinearInput">
+                            <!-- <div class="form-group alinearInput">
+                                <label>Hora</label>
+                                <input type="text" placeholder="Nombre mascota" [(ngModel)]="nombreM" id="nombreM" [ngModelOptions]="{standalone: true}">
+                            </div> -->
+                            <!-- <div class="form-group alinearInput">
                             <label for="fechaC">Fecha</label>
                             <input type="date" class="form-control" id="fechaC" placeholder="Fecha" [(ngModel)]="fechaC" id="fechaC" [ngModelOptions]="{standalone: true}" >
                           </div> -->
-                          <div class="form-group alinearInput">
-                            <label for="fechaC">Fecha</label>
-                            <input type="date" id="fechaC" placeholder="Fecha" [(ngModel)]="fechaC" id="fechaC" [ngModelOptions]="{standalone: true}" >
-                          </div>
-                        <div class="form-group alinearInputF selector">		
-                            <label>Escoger una opcion</label>
-                            <select class="form-control" name="opcionS" [(ngModel)]="opcionS">
-                             <option value="">Seleccionar opcion </option>
+                            <div class="form-group alinearInput">
+                                <label for="fechaC">Fecha de Cita</label>
+                                <input type="date" id="fechaC" placeholder="Fecha" [(ngModel)]="fechaC" id="fechaC" [ngModelOptions]="{standalone: true}">
+                            </div>
+                            <div class="form-group alinearInputF selector">
+                                <label>Elige una hora de Cita</label>
+                                <select class="form-control" name="opcionS" [(ngModel)]="opcionS">
+                             <option value="">Seleccionar opcion  </option>
                              <option *ngFor="let opcion of opciones" [value]="opcion" >
                                  {{opcion}}
                              </option>
                             </select>
-                           <!--<p id="seleccionable" >Seleccionar hora</p> 
+                                <!--<p id="seleccionable" >Seleccionar hora</p> 
                             <select name="users" id="tipoDeUsuario">
                                 <option value="">9:00am</option>
                                 <option value="">9:30am</option>
@@ -144,23 +145,174 @@
                                 <option value="">10:30am</option>
                                 <option value="">11:00am</option>
                             </select>-->
-                          </div>
-                      </div>
+                            </div>
+                        </div>
                     </div>
-                  </form>
+                </form>
+            </div>
+            <div class="alerta">
+                <ngb-alert class="col-md-5" *ngIf="successMessage" type="success" (close)="successMessage = ''">{{ successMessage }}</ngb-alert>
+                <br>
+            </div>
+            <div class="modal-footer">
+                <button *ngIf="editBoton; else esFalsoM" type="button" class="btn btn-outline-primary" (click)="editar()">Modificar</button>
+                <ng-template #esFalsoM>
+                </ng-template>
+                <button *ngIf="!editBoton; else esFalsoM1" type="button" class="btn btn-outline-primary" (click)="anadir()">Guardar</button>
+                <ng-template #esFalsoM1>
+                </ng-template>
+                <button type="button" class="btn btn-outline-primary" (click)="modal.close('Save click')">Cancelar</button>
+            </div>
+        </div>
+    </ng-template>
+
+    <div class=" d-flex justify-content-between p-2">
+        <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="refreshCountries()">
+        </ngb-pagination>
+        <ng-template #content let-modal>
+            <div id="contenedorModal">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="modal-basic-title">Modificar cita</h4>
+                    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <!-- <div class="form-group alinearInput">
+                            <label >Nombre</label>
+                            <input type="text" class="form-control" [(ngModel)]="nombreC" id="nombreC" [ngModelOptions]="{standalone: true}"  placeholder="Nombre">
+                        </div> -->
+                                <div class="form-group alinearInput">
+                                    <label>Nombre de Usuario</label>
+                                    <input type="text" placeholder="Nombre" [(ngModel)]="nombreC" id="nombreC" [ngModelOptions]="{standalone: true}" [disabled]=btnEdit>
+                                </div>
+                                <!-- <div class="form-group alinearInput">
+                          <label >Apellidos</label>
+                          <input type="text" class="form-control"  placeholder="Apellidos" [(ngModel)]="apellidosC" id="apellidosC" [ngModelOptions]="{standalone: true}" >
+                        </div> -->
+                                <div class="form-group alinearInput">
+                                    <label>Nombre Mascota</label>
+                                    <input type="text" placeholder="Apellidos" [(ngModel)]="apellidosC" id="apellidosC" [ngModelOptions]="{standalone: true}" [disabled]=btnEdit>
+                                </div>
+                                <!-- <div class="form-group alinearInput">
+                                <label>DNI</label>
+                                <input type="text" class="form-control" placeholder="DNI" [(ngModel)]="dniC" id="dniC" [ngModelOptions]="{standalone: true}">
+                            </div> -->
+                                <!-- <div class="form-group alinearInput">
+                                <label>Fecha de Cita</label>
+                                <input type="text" placeholder="DNI" [(ngModel)]="dniC" id="dniC" [ngModelOptions]="{standalone: true}">
+                            </div> -->
+                                <!-- <div class="form-group alinearInput">
+                            <label >Nombre mascota</label>
+                            <input type="text" class="form-control"  placeholder="Nombre mascota" [(ngModel)]="nombreM" id="nombreM" [ngModelOptions]="{standalone: true}" >
+                        </div> -->
+                                <!-- <div class="form-group alinearInput">
+                                <label>Hora</label>
+                                <input type="text" placeholder="Nombre mascota" [(ngModel)]="nombreM" id="nombreM" [ngModelOptions]="{standalone: true}">
+                            </div> -->
+                                <!-- <div class="form-group alinearInput">
+                            <label for="fechaC">Fecha</label>
+                            <input type="date" class="form-control" id="fechaC" placeholder="Fecha" [(ngModel)]="fechaC" id="fechaC" [ngModelOptions]="{standalone: true}" >
+                          </div> -->
+                                <div class="form-group alinearInput">
+                                    <label for="fechaC">Fecha de Cita</label>
+                                    <input type="date" id="fechaC" placeholder="Fecha" [(ngModel)]="fechaC" id="fechaC" [ngModelOptions]="{standalone: true}">
+                                </div>
+                                <div class="form-group alinearInputF selector">
+                                    <label>Elige una hora de Cita</label>
+                                    <select class="form-control" name="opcionS" [(ngModel)]="opcionS">
+                             <option value="">Seleccionar opcion  </option>
+                             <option *ngFor="let opcion of opciones" [value]="opcion" >
+                                 {{opcion}}
+                             </option>
+                            </select>
+                                    <!--<p id="seleccionable" >Seleccionar hora</p> 
+                            <select name="users" id="tipoDeUsuario">
+                                <option value="">9:00am</option>
+                                <option value="">9:30am</option>
+                                <option value="">10:00am</option>
+                                <option value="">10:30am</option>
+                                <option value="">11:00am</option>
+                            </select>-->
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
                 <div class="alerta">
                     <ngb-alert class="col-md-5" *ngIf="successMessage" type="success" (close)="successMessage = ''">{{ successMessage }}</ngb-alert>
                     <br>
                 </div>
                 <div class="modal-footer">
-                    <button  *ngIf="editBoton; else esFalsoM"  type="button" class="btn btn-outline-primary" (click)=" editar()">Modificar</button>
-                    <ng-template #esFalsoM>  
+                    <button *ngIf="editBoton; else esFalsoM" type="button" class="btn btn-outline-primary" (click)="editar()">Modificar</button>
+                    <ng-template #esFalsoM>
                     </ng-template>
-                    <button  *ngIf="!editBoton; else esFalsoM1"  type="button" class="btn btn-outline-primary" (click)=" anadir()">Guardar</button>
-                    <ng-template #esFalsoM1>  
+                    <button *ngIf="!editBoton; else esFalsoM1" type="button" class="btn btn-outline-primary" (click)="anadir()">Guardar</button>
+                    <ng-template #esFalsoM1>
                     </ng-template>
-                    <button type="button" class="btn btn-outline-primary" (click)="modal.close('Save click')">Cancelar</button>          
+                    <button type="button" class="btn btn-outline-primary" (click)="modal.close('Save click')">Cancelar</button>
                 </div>
             </div>
-          </ng-template>
+        </ng-template>
+
+        <!--Modal Añadir Cita-->
+
+        <div class=" d-flex justify-content-between p-2">
+            <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize" (pageChange)="refreshCountries()">
+            </ngb-pagination>
+            <ng-template #contentNuevaCita let-modal>
+                <div id="contenedorModal">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="modal-basic-title">Añadir cita</h4>
+                        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="form-group alinearInput">
+                                        <label>DNI Titular</label>
+                                        <input type="text" placeholder="DNI" [(ngModel)]="dniCN" id="dniCN" [ngModelOptions]="{standalone: true}">
+                                    </div>
+                                    <div class="form-group alinearInput">
+                                        <label>Nombre Mascota</label>
+                                        <input type="text" placeholder="Nombre Mascota" [(ngModel)]="nombreMN" id="nombreMN" [ngModelOptions]="{standalone: true}">
+                                    </div>
+                                    <div class="form-group alinearInput">
+                                        <label for="fechaC">Fecha de Cita</label>
+                                        <input type="date" id="fechaC" placeholder="Fecha" [(ngModel)]="citaNueva.fecha" id="fechaCN" [ngModelOptions]="{standalone: true}">
+                                    </div>
+                                    <div class="form-group alinearInputF selector">
+                                        <label>Elige una hora de Cita</label>
+                                        <select class="form-control" id="opcionSN" name="opcionS" [(ngModel)]="citaNueva.hora">
+                                 <option value="">Seleccionar opcion  </option>
+                                 <option *ngFor="let opcion of opciones" [value]="opcion" >
+                                     {{opcion}}
+                                 </option>
+                                </select>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="alerta">
+                        <ngb-alert class="col-md-5" *ngIf="successMessage" type="success" (close)="successMessage = ''">{{ successMessage }}</ngb-alert>
+                        <br>
+                    </div>
+                    <div class="modal-footer">
+                        <button *ngIf="editBoton; else esFalsoM" type="button" class="btn btn-outline-primary" (click)="editar()">Modificar</button>
+                        <ng-template #esFalsoM>
+                        </ng-template>
+                        <button *ngIf="!editBoton; else esFalsoM1" type="button" class="btn btn-outline-primary" (click)="anadir()">Guardar</button>
+                        <ng-template #esFalsoM1>
+                        </ng-template>
+                        <button type="button" class="btn btn-outline-primary" (click)="modal.close('Save click')">Cancelar</button>
+                    </div>
+                </div>
+            </ng-template>

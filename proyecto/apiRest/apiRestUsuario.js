@@ -235,6 +235,64 @@ app.put('/mascota', function(req,res) {
 });
 
 //-------------------------Final de endpoint Mascota-----------------------------------
+
+
+
+//-------------------------Lista de citas por medico--------------------//
+ 
+//GET   "http://localhost:3000/citas?idMedico=2"
+app.get('/citas',
+    (req, res) => {
+        let idMed = req.query.idMedico;
+        if (idMed) {
+            console.log("id medico es" + idMed);
+            params = idMed;
+            sql = "SELECT c.*,m.nombre, u.nombre as nombreP FROM citas as c JOIN mascota as m ON(c.mascota_id=m.id) JOIN usuario as u ON(m.usuario_id=u.id) JOIN usuario as u1 ON (c.vet_id=u1.id) WHERE u1.id=?";
+            ejecutar(sql, params, res);
+ 
+            console.log("con id")
+        } else {
+            //todos los usuarios
+            sql = "SELECT * FROM `citas`"; //todas las citas 
+            ejecutar(sql, params, res);
+            console.log("sin id")
+        }
+    });
+ 
+//---------------------------------PUT MODIFICAR CITAS-----------------------------------------
+//UPDATE citas SET fecha="2020-10-21", hora="18:00" WHERE id=1   
+ 
+app.put('/citas', function(req, res) {
+    let data = req.body;
+    params = new Array(data.fecha, data.hora, data.id)
+    sql = "UPDATE citas SET fecha=?, hora=? WHERE id=?";
+ 
+    ejecutar(sql, params, res);
+ 
+});
+ 
+//--------------------------------------POST INSERTAR CITA------------------------------//
+//INSERT INTO `citas`(`id`, `mascota_id`, `fecha`, `hora`, `vet_id`, `cita_id`) VALUES (0,4,"2020/10/21","12:56",2,5)
+//INSERT INTO `citas`(`id`, `mascota_id`, `fecha`, `hora`, `vet_id`, `cita_id`) VALUES (0,2,"2020/10/21","12:56",2,1)
+//INSERT INTO `citas`( `mascota_id`, `fecha`, `hora`, `vet_id`, `cita_id`) VALUES (2,"2020/10/21","12:56",2,1)
+app.post('/citas', function(req, res) {
+    let data = req.body;
+    params = new Array(data.mascota_id, data.fecha, data.hora, data.vet_id, data.cita_id);
+    sql = "INSERT INTO citas( mascota_id, fecha, hora, vet_id, cita_id) VALUES (?,?,?,?,?)";
+    ejecutar(sql, params, res);
+    console.log('Nueva cita');
+});
+ 
+app.post('/mascotaId', function(req, res) {
+    let dni = req.body.dni;
+    let mascota = req.body.mascota;
+    params = new Array(dni, mascota);
+    // sql = "SELECT mascota.id FROM mascota JOIN usuario ON (mascota.usuario_id = usuario.id) WHERE usuario.nombre_usuario='" + usuario + "' and mascota.nombre='" + mascota + "'";
+    sql = "SELECT mascota.id FROM mascota JOIN usuario ON (mascota.usuario_id = usuario.id) WHERE usuario.dni=? and mascota.nombre=?"
+    console.log(sql)
+    ejecutar(sql, params, res);
+    console.log('Nueva cita');
+});
 //---------- Metodo sin pagina y escuchar servidor   
 /*si no pasan correctamente un 
 url entraria en este metodo llamado use, usaria next
