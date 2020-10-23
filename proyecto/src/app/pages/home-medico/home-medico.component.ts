@@ -16,13 +16,13 @@ export class HomeMedicoComponent implements OnInit {
     console.log("medico")
     console.log(usuarioService)
 
-    this.citas = [
-      new Cita ("Tania", "Pancho","10/11/2020" ,"10:30"),
-      new Cita ("Maria", "Calcetines","11/11/2020" ,"11:00"),
-      new Cita ("Paul", "Perico","12/11/2020"  ,"11:30"),
-      new Cita ("Tania", "Toby","13/11/2020"  ,"12:00"),
-      new Cita ("Maria", "Leo","14/11/2020"  ,"12:30")
-    ]
+    // this.citas = [
+    //   new Cita ("Tania", "Pancho","10/11/2020" ,"10:30"),
+    //   new Cita ("Maria", "Calcetines","11/11/2020" ,"11:00"),
+    //   new Cita ("Paul", "Perico","12/11/2020"  ,"11:30"),
+    //   new Cita ("Tania", "Toby","13/11/2020"  ,"12:00"),
+    //   new Cita ("Maria", "Leo","14/11/2020"  ,"12:30")
+    // ]
  }
 
   ngOnInit(): void {

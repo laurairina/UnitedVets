@@ -1,5 +1,6 @@
 export class Cita {
-    constructor(public nombre:string, public codigoCita:string, public fechaCita:string, public hora:string){
-
+    constructor(public id:number, public mascota_id:number, public nombre:string,public fecha:string, public hora:string, public vet_id:number, public cita_id:number, public nombreP:string){
+ 
     }
+ 
 }
