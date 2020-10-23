@@ -14,16 +14,56 @@ export class ListaClientesComponent implements OnInit {
   usuarios: User [] = []
   constructor(public usuarioService:UsuariosService,private router: Router) 
   {
-  
-    
+    this.usuarioService.obtenerClientes()
+    .subscribe((data:User[])=>{
+       this.usuarios=data;
+      
+       console.log(this.usuarios)
+    });
   }
 
   ngOnInit(): void {
   }
 
-  public enviar():void{
+  public mostrarPerfil(usuario:User){
+    this.usuarioService.userActual=null;
 
-    this.router.navigateByUrl('/perfil/:rol') 
+    this.usuarioService.obtenerUsuarioID(usuario.id)
+    .subscribe((data: User) => {
+      console.log("Perfil a pasar")
+      console.log(data[0]);
+      this.usuarioService.userActual = data[0];
+      this.router.navigateByUrl('/perfil/actual');
+    });
 
+  }
+
+  public buscarCliente(nombre:string)
+  {
+    console.log(nombre)
+    if(nombre !="")
+    {
+      let clientesBuscados: User [] = []
+      console.log(clientesBuscados)
+      for(let i:number = 0; i<this.usuarios.length; i++)
+      {
+        if(this.usuarios[i].nombre == nombre)
+        {
+          clientesBuscados.push(this.usuarios[i])
+        }
+      }
+      console.log(clientesBuscados)
+      this.usuarios = clientesBuscados
+    }
+
+    else
+    {
+      this.usuarioService.obtenerClientes()
+    .subscribe((data:User[])=>{
+       this.usuarios=data;
+      
+       console.log(this.usuarios)
+    });
+    }
   }
 }

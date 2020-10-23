@@ -152,7 +152,7 @@ app.delete('/usuario', function (req, res) {
 
 
 
-//-------------------------------Endpoint Dani Mascotas-----------------------------------
+//-------------------------------Endpoint Dani -----------------------------------
 
 //------------------------------ GET MASCOTA--------------------------------
 app.get('/mascota',
@@ -193,6 +193,20 @@ app.put('/cliente', function(req,res) {
 });
 
 
+//------------------------------------GET USUARIO Dani-------------------------------
+
+app.get('/usuario/perfil',
+(req, res) => {
+    let nombre = req.query.id;
+    
+        params = nombre;
+        sql="SELECT * FROM `usuario`where id=?";    
+        ejecutar(sql,params,res);
+        console.log("con id")
+    
+ 
+});
+
 //-------------------------------- POST MASCOTA-------------------------------
 
 app.post('/mascota', function (req, res) {
@@ -212,9 +226,10 @@ app.post('/mascota', function (req, res) {
 
 app.put('/mascota', function(req,res) {
     let data = req.body;
-    params = new Array( data.nombreM, data.chip, data.especie, data.raza, data.fechaNacimiento, data.alergias,data.id);
-   sql= "UPDATE `mascota` SET `nombreM`=?, `chip`=?, `especie`=?, `raza`=?, `fechaNacimiento`=?, `alergias`=? WHERE `id`=?";
+    params = new Array( data.alergia,data.id);
+   sql= "UPDATE `mascota` SET  `alergias`=? WHERE `id`=?";
     console.log(params)
+    
    ejecutar(sql,params,res);
 
 });

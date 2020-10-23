@@ -231,3 +231,12 @@ label {
 .nuevaClase {
     position: relative;
 }
+
+#colorCerrar{
+    color:red
+}
+
+#botonCerrar{
+    border: none;
+    background: none;
+}

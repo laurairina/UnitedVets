@@ -101,4 +101,33 @@ export class HomeAdminComponent implements OnInit {
   public changeSuccessMessage(mensaje: string) {
     this._success.next(`Datos ` + mensaje);
   }
+
+  public buscarUsuario(nombre:string)
+  {
+    console.log(nombre)
+    if(nombre !="")
+    {
+      let clientesBuscados: User [] = []
+      console.log(clientesBuscados)
+      for(let i:number = 0; i<this.usuarios.length; i++)
+      { 
+        if(this.usuarios[i].nombre == nombre)
+        {console.log("bucle funciona")
+          clientesBuscados.push(this.usuarios[i])
+        }
+      }
+      console.log(clientesBuscados)
+      this.usuarios = clientesBuscados
+    }
+
+    else
+    {
+      this.usuarioService.obtenerUsuario("")
+    .subscribe((data:User[])=>{
+       this.usuarios=data;
+      
+       console.log(this.usuarios)
+    });
+    }
+  }
 }

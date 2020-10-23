@@ -208,11 +208,11 @@
                                                 <div class="card-body">
                                                     <h5 class="card-title">{{perfilMascota.nombreM}}</h5>
                                                     <p>Fecha Nacimiento: {{perfilMascota.fechaNacimiento}}</p>
-                                                    <p>Alergias: {{perfilMascota.alergias}}</p>
+                                                    <p>Alergias: {{perfilMascota.alergias}}</p>                                                   
                                                     <p>Especie: {{perfilMascota.especie}}</p>
                                                     <p>Raza: {{perfilMascota.raza}}</p>
                                                     <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
-                                                    <button (click)="cerrar()">Cerrar</button>
+                                                    <button id="botonCerrar" (click)="cerrar()"><i id="colorCerrar" class="fas fa-times fa-lg" ngbTooltip="Cerrar"></i></button>
                                                 </div>
                                             </div>
                                         </div>

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Mascota } from '../model/mascota';
 
@@ -33,5 +33,17 @@ export class MascotaService {
   obtenerMascota(id:number)
   {
     return this.http.get(this.url + "mascota/?usuario_id=" + id )
+  }
+
+  putMascota(alergia:string,id:number)
+  {
+    
+    let httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),alergia,id
+    };
+   
+   
+    console.log(httpOptions);
+    return this.http.put(this.url+"mascota",httpOptions) 
   }
 }

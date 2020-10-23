@@ -2,8 +2,8 @@
     <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 "></div>
     <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 ">
       <form class="form-inline ">
-        <input class="form-control mr-sm-2 " type="search" placeholder="Buscar usuario" aria-label="Buscar">
-        <button class="btn  btn-outline-primary my-2 my-sm-0" type="submit">Buscar</button>
+        <input class="form-control mr-sm-2 " type="search" #nombreUsuario placeholder="Buscar usuario" aria-label="Buscar">
+        <button (click)="buscarUsuario(nombreUsuario.value)" class="btn  btn-outline-primary my-2 my-sm-0" type="submit">Buscar</button>
       </form>
     </div>
     <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 "></div>
@@ -15,12 +15,13 @@
     <div>
       <ul *ngFor= "let usuario of usuarios; let i = index;">
         <li>
-          <div class="card" style="width: 15rem;">
+          <div class="card" style="width: 17rem;">
             <div class="card-body row">
               <img  src="../../../assets/imagenes/Usuario-Vacio.png" alt="Card image cap">
               <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 "></div>
               <h5 class="card-title">Nombre: {{ usuario.nombre }}</h5>
-              <p class="card-text" id="margenRol">Rol: {{usuario.rol }}</p>
+              <h6 class="card-subtitle" id="margenRol">Apellidos: {{usuario.apellido1 }} {{usuario.apellido2 }} </h6> 
+                <p class="card-text" id="margenRol">Rol: {{usuario.rol }}</p>
               <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 alinearBoton">
                 <button  type="button" class="btn btn-sm " (click)="confirmar(usuario)"><i class="material-icons " ngbTooltip="Borrar" id="btnDelete">delete</i></button>  
                 <button  type="button" (click)="open(content)" class="btn btn-sm btnModificar"><i class="material-icons" ngbTooltip="Modificar" id="BotonModificar">edit</i></button>
