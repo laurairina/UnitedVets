@@ -333,6 +333,22 @@ app.post('/mascotaId', function(req, res) {
     ejecutar(sql, params, res);
     console.log('Nueva cita');
 });
+    
+
+//---------------------------------------DELETE Elimiar Cita---------------------------------------------
+//DELETE FROM `citas` WHERE cita_id=1
+//{​​​​​​​​ "id": 25}​​​​​​​​posman
+app.delete('/citas', function(req, res) {
+    let idCita = req.body.id;
+    let params = [idCita];
+    sql = "DELETE FROM citas WHERE id=?";
+    ejecutar(sql, params, res);
+ 
+});
+
+
+
+
 //---------- Metodo sin pagina y escuchar servidor   
 /*si no pasan correctamente un 
 url entraria en este metodo llamado use, usaria next

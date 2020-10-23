@@ -22,8 +22,8 @@ export class PreHistorialComponent implements OnInit {
     console.log("PreHistoriales")
     this.historialService.obtenerHistoriales()
     .subscribe((data: Historial[]) => {
-      this.historiales = data;
-
+      this.historialService.historiales = data;
+     this.historiales =this.historialService.historiales;
       console.log(data)
     });
   
@@ -39,23 +39,29 @@ export class PreHistorialComponent implements OnInit {
     this.router.navigateByUrl('/historiales/')
   }
 
-  buscarCliente(usuario_id:number)
+  buscarCliente(nombre:string)
   {
     let clientesFiltrados: Historial [] = []
     
     for(let i: number = 0; i< this.historiales.length; i++)
     {
-      if(this.historiales[i].usuario_id === usuario_id)
+      if(this.historiales[i].nombreP === nombre)
       {
         clientesFiltrados.push(this.historiales[i])
       }
     }
 
-    this.historiales = clientesFiltrados
 
-    if (this.historiales.length === 0)
+    console.log("******  "+nombre)
+    console.log(clientesFiltrados)
+    if (clientesFiltrados.length!=0)
       {
+        this.historiales = clientesFiltrados
+        console.log("******  si")
+      }
+      else{
         this.historiales = this.historialService.historiales
+        console.log("******  no")
       }  
   }
 }

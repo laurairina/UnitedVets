@@ -62,7 +62,7 @@ export class PerfilComponent implements OnInit {
     if(this.usuarioService.userActual!=null){
       console.log("Perfil de usuario Pasado  ");
        this.perfil=this.usuarioService.userActual;
-       this.mascotaService.obtenerMascota(this.perfil.id).subscribe((data:Mascota[])=>{
+       this.mascotaService.obtenerMascotas(this.perfil.id).subscribe((data:Mascota[])=>{
         this.mascotas=data;
         console.log(this.mascotas)
       });
@@ -88,7 +88,7 @@ export class PerfilComponent implements OnInit {
       .subscribe((data: User) => {
         console.log("Perfil")
         this.perfil = data[0];
-        this.mascotaService.obtenerMascota(this.perfil.id).subscribe((data:Mascota[])=>{
+        this.mascotaService.obtenerMascotas(this.perfil.id).subscribe((data:Mascota[])=>{
           this.mascotas=data;
           console.log(this.mascotas)
         });
