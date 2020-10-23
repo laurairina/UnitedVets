@@ -2,7 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { UsuariosService } from 'src/app/shared/usuarios.service';
 import { ClienteService } from 'src/app/shared/cliente.service';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { ValidatorFn, AbstractControl} from '@angular/forms';
+import { ValidatorFn, AbstractControl, Validator, Validators, FormGroup, FormBuilder, FormControl} from '@angular/forms';
 
 import { Mascota } from 'src/app/model/mascota';
 import { MascotaService } from 'src/app/shared/mascota.service';
@@ -32,6 +32,8 @@ import { Persona } from 'src/app/model/persona';
 })
 export class PerfilComponent implements OnInit {
 
+  registerForm: FormGroup
+
   closeResult = '';
   private _success = new Subject<string>();
   public btnCerrar: boolean;
@@ -56,7 +58,7 @@ export class PerfilComponent implements OnInit {
   public foto:Blob;
   public rol:string;
 
-  constructor(public usuarioService: UsuariosService, public clienteService: ClienteService, public mascotaService: MascotaService, private rutaActiva: ActivatedRoute, private modalService: NgbModal ) {
+  constructor(private fb: FormBuilder, public usuarioService: UsuariosService, public clienteService: ClienteService, public mascotaService: MascotaService, private rutaActiva: ActivatedRoute, private modalService: NgbModal ) {
     if(this.usuarioService.userActual!=null){
       console.log("Perfil de usuario Pasado  ");
        this.perfil=this.usuarioService.userActual;
@@ -73,14 +75,28 @@ export class PerfilComponent implements OnInit {
       this.mostrarUsuario(this.usuarioService.usuario.nombre_usuario);
 
     }
+
+    let formControls = {
+      password: new FormControl('',[
+        Validators.required,
+        Validators.minLength(6)
+      ]),
+      repassword: new FormControl('',[
+        Validators.required,
+      ])
+    }
+    this.registerForm = this.fb.group(formControls)
   }
+
+  get password() { return this.registerForm.get('password') }
+  get repassword() { return this.registerForm.get('repassword') }
+
+
   ngOnInit(): void {
 
   }
 
-  
-
-
+   
   public mostrarUsuario(nombre: string) {
     this.usuarioService.obtenerUsuario(nombre)
       .subscribe((data: User) => {
@@ -161,8 +177,5 @@ export class PerfilComponent implements OnInit {
     this._success.next(`Datos ` + mensaje);
   }
 
-
-
-  
 
 }
