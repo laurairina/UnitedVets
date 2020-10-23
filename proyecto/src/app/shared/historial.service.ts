@@ -2,22 +2,23 @@ import { Injectable } from '@angular/core';
 import { Historial } from '../model/historial';
 import { ClienteService } from './cliente.service';
 import { MascotaService } from './mascota.service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HistorialService {
 
-  public historial: Historial
-  public historiales: Historial [] = [
-    new Historial ("Histo01","El perro tiene fiebre", "Medicación cada 8 horas", this.mascotaService.listaMacota[0], "2020-03-20"),
-    new Historial ("Histo04","El perro tiene la pata rota", "Vendaje y reposo", this.mascotaService.listaMacota[0], "2020-03-21"),
-    new Historial ("Histo02","El perro tiene pulgas", "Champú anti pulgas", this.mascotaService.listaMacota[1], "2020-04-22"),
-    new Historial ("Histo03","El perro tiene rabia", "Eutanasia", this.mascotaService.listaMacota[2], "2020-07-15")
-  ]
-  constructor(private clienteService: ClienteService,private mascotaService: MascotaService) 
+  public historial: Historial;
+  public historiales: Historial [];
+  public historialesCliente: Historial [];
+
+  private url= "http://localhost:3000/";
+  constructor(private clienteService: ClienteService,private mascotaService: MascotaService,private http: HttpClient) 
   {
-    this.historial = null
+    this.historial = null;
+    this.historiales=[];
+    this.historialesCliente=[];
   }
 
   public buscar(codigo:string):Historial{
@@ -27,7 +28,7 @@ export class HistorialService {
     let encontrado:boolean;
 
       while(i<this.historiales.length && !encontrado){
-        if(this.historiales[i].codigo.toLocaleLowerCase()== codigo.toLocaleLowerCase()){
+        if(this.historiales[i].hist_id.toLocaleLowerCase()== codigo.toLocaleLowerCase()){
            hist=this.historiales[i];
            encontrado=true;
         }
@@ -36,21 +37,41 @@ export class HistorialService {
       return hist; 
   }
 
-  public buscarFecha (fecha:string,nombreM: string, usuario_id:number): Historial
+  public buscarFecha (fecha:string, nombreM:string): Historial
   {
     let hist:Historial;
     let i:number=0;
-    let encontrado:boolean;
+    let encontrado:boolean=false;
 
-      while(i<this.historiales.length && !encontrado){
-        if(this.historiales[i].fecha == fecha && this.historiales[i].mascota.nombreM == nombreM && this.historiales[i].mascota.usuario_id == usuario_id ){
-           hist=this.historiales[i];
+      while(i<this.historialesCliente.length && !encontrado){
+        console.log(this.historialesCliente[i].fecha +this.historialesCliente.length+"=="+ fecha+" "+nombreM)
+        if(this.historialesCliente[i].fecha === fecha && this.historialesCliente[i].nombreM === nombreM){
+          hist=this.historialesCliente[i];
            encontrado=true;
+          console.log("anamesis   "+ hist.anamnesis)
         }
         i++;
       }
       return hist; 
   }
   
+
+
+  obtenerHistoriales(){
+    return this.http.get(this.url+"historial");
+  }
+
+  modificarHistorial(historial:Historial){
+    return this.http.put(this.url+"historial", historial);
+  }
+
+  historialesIdUsuario(id:number){ 
+
+    let httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),id
+    };
+   
+   return this.http.post(this.url+"historial/id",httpOptions)  
+  }
 
 }

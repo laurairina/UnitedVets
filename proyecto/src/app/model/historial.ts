@@ -4,7 +4,7 @@ import { Persona } from './persona';
 
 export class Historial {
 
-    constructor(public codigo:string, public ananmnesis:string, public tratamiento:string, public mascota: Mascota, public fecha:string)
+    constructor(public id:number, public hist_id:string, public anamnesis:string, public tratamiento:string, public nombreM:string, public mascota_id:number, public nombreP:string, public usuario_id:number, public fecha:string)
     {
 
     }

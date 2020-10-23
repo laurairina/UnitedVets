@@ -31,6 +31,16 @@ export class HomeAdminComponent implements OnInit {
   private _success = new Subject<string>();
   public successMessage: string;
   staticAlertClosed = false;
+  public nombre:string;
+  public apellido1:string;
+  public apellido2:string;
+  public fecha:string;
+  public email:string;
+  public telefono:string;
+  public direccion:string;
+  public dni:string;
+  public user:User;
+
   constructor(public usuarioService: UsuariosService, private modalService: NgbModal) {
     console.log("admin")
     console.log(usuarioService.usuario);
@@ -75,7 +85,17 @@ export class HomeAdminComponent implements OnInit {
     }
   }
 
-  open(content) {
+  open(content, user:User) {
+     this.user= user;    
+     this.nombre= this.user.nombre;
+     this.apellido1= this.user.apellido1;
+     this.apellido2= this.user.apellido2;
+     this.dni= this.user.dni;
+     this.fecha= this.user.fechaNacimiento;
+     this.email =this.user.email;
+     this.telefono =this.user.telefono;
+     this.direccion= this.user.direccion;
+
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', windowClass: 'dark-modal' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
@@ -94,7 +114,26 @@ export class HomeAdminComponent implements OnInit {
   }
 
   guardar() {
-    this.changeSuccessMessage("Guardados");
+     this.user.nombre=this.nombre;
+     this.user.apellido1=this.apellido1;
+     this.user.apellido2=this.apellido2;
+     this.user.dni=this.dni;
+     this.user.fechaNacimiento=this.fecha;
+     this.user.email=this.email;
+     this.user.telefono=this.telefono;
+     this.user.direccion=this.direccion;
+   
+    this.usuarioService.actualizarUsuario(this.user)
+    .subscribe((data: any) => {
+      if (data.affectedRows >= 1) {
+        console.log("Usuario modificado");
+        this.changeSuccessMessage("Modificado Datos");
+      }
+      else {
+        console.log("No se ha modificado usuario");
+        this.changeSuccessMessage("No se ha Modificado");
+      }
+    });
 
   }
 
