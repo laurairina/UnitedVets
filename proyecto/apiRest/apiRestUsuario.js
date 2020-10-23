@@ -126,8 +126,8 @@ app.post('/usuario', function (req, res) {
 app.put('/usuario', function(req,res) {
     let data = req.body;
 
-    params=new Array(data.nombre, data.apellido1, data.apellido2, data.password, data.rol, data.fechaNacimiento, data.dni, data.foto, data.email, data.telefono, data.direccion, data.nColegiado, data.especialidad, data.nombre_usuario, data.id);
-   sql= "UPDATE usuario SET nombre=?, apellido1=?, apellido2=?, password=?, rol=?, fechaNacimiento=?, dni=?, foto=?, email=?, telefono=?, direccion=?, nColegiado=?, especialidad=?, nombre_usuario=? WHERE id=?";
+    params=new Array(data.nombre, data.apellido1, data.apellido2, data.fechaNacimiento, data.email, data.telefono, data.direccion, data.dni, data.id);
+   sql= "UPDATE usuario SET nombre=?, apellido1=?, apellido2=?, fechaNacimiento=?, email=?, telefono=?, direccion=?, dni=? WHERE id=?";
     
    ejecutar(sql,params,res);
 
@@ -203,6 +203,46 @@ app.put('/mascota', function(req,res) {
    ejecutar(sql,params,res);
 
 });
+
+
+//------------------ Historial --------------------------
+//UPDATE `historial` SET `hist_id` = 'Hist01' WHERE `historial`.`id` = 1;
+//SELECT h.*, m.nombreM, u.nombre as nombreP FROM historial as h JOIN mascota as m ON(h.mascota_id=m.id) JOIN usuario as u ON(m.usuario_id=u.id)
+
+//GET   http://localhost:3000/historial
+app.get('/historial',
+(req, res) => {
+        sql="SELECT h.*, m.nombreM, u.nombre as nombreP, m.usuario_id as usuario_id  FROM historial as h JOIN mascota as m ON(h.mascota_id=m.id) JOIN usuario as u ON(m.usuario_id=u.id)";    
+        ejecutar(sql,params,res);
+        console.log("Lista de historial");
+ 
+});
+
+
+
+//put http://localhost:3000/historial
+app.put('/historial', function(req,res) {
+    let data = req.body;
+    params = new Array( data.tratamiento, data.anamnesis,data.id);
+   sql= "UPDATE historial SET tratamiento=?, anamnesis=? WHERE id = ?";
+    console.log("Modificar Historial")
+   ejecutar(sql,params,res);
+
+});
+
+app.post('/historial/id', function (req, res) {
+    let id =req.body.id;
+
+    params=id;
+        //todos los usuarios
+        sql="SELECT h.*, m.nombreM, u.nombre as nombreP FROM historial as h JOIN mascota as m ON(h.mascota_id=m.id) JOIN usuario as u ON(m.usuario_id=u.id) where u.id=?";
+        ejecutar(sql,params,res);
+        console.log("historial  id "+ id)
+
+});
+
+//------------------- Fin Historial -------------------
+
 
 //-------------------------Final de endpoint Mascota-----------------------------------
 //---------- Metodo sin pagina y escuchar servidor   

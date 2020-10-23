@@ -18,19 +18,25 @@ export class PreHistorialComponent implements OnInit {
   public historiales: Historial [] = []
   
   constructor(public usuarioService:UsuariosService,private router: Router, private clienteService: ClienteService, private mascotaService: MascotaService, private historialService: HistorialService) { 
+    this.historialService.historial=null;
+    console.log("PreHistoriales")
+    this.historialService.obtenerHistoriales()
+    .subscribe((data: Historial[]) => {
+      this.historiales = data;
 
-    console.log("medico")
-    console.log(usuarioService)
-     
-    this.historiales = this.historialService.historiales
+      console.log(data)
+    });
+  
   }
 
   ngOnInit(): void {
   }
 
-  verHistorial(codigo:string)
+  verHistorial(historial:Historial)
   {
-    this.router.navigateByUrl('/historiales/' + codigo)
+    this.historialService.historial=historial;
+    console.log(historial);
+    this.router.navigateByUrl('/historiales/')
   }
 
   buscarCliente(usuario_id:number)
@@ -39,7 +45,7 @@ export class PreHistorialComponent implements OnInit {
     
     for(let i: number = 0; i< this.historiales.length; i++)
     {
-      if(this.historiales[i].mascota.usuario_id === usuario_id)
+      if(this.historiales[i].usuario_id === usuario_id)
       {
         clientesFiltrados.push(this.historiales[i])
       }

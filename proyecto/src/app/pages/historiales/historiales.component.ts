@@ -4,6 +4,7 @@ import {Subject} from 'rxjs';
 import {debounceTime} from 'rxjs/operators';
 import { Historial } from 'src/app/model/historial';
 import { HistorialService } from 'src/app/shared/historial.service';
+import { UsuariosService } from 'src/app/shared/usuarios.service';
 
 
 
@@ -17,51 +18,66 @@ export class HistorialesComponent implements OnInit {
   
   public fromDate:string;
   public fecha:string;
-  public usuario_id:number;
+  public nombreP:string;
   public nombreM:string;
   public nombreCB:string;
   public nombreMB:string;
-  public tratamiento:String;
+  public tratamiento:string;
   public ananmnesis:string;
   public editBoton:boolean;
+
+  public opciones:string[] = [];
+
 
   
   private _success = new Subject<string>();
   public successMessage:string;
   staticAlertClosed = false;
 
-  constructor(private rutaActiva: ActivatedRoute, private historialService: HistorialService) { 
+  constructor(public usuarioService:UsuariosService,private rutaActiva: ActivatedRoute, private historialService: HistorialService) { 
     this.successMessage = '';
+    if(this.usuarioService.usuario.rol!="Cliente"){
+      console.log("historial pasado")
+      console.log(this.historialService.historial);
+       let historial:Historial;
+       historial=this.historialService.historial;
+       this.nombreP = historial.nombreP;
+       this.nombreM = historial.nombreM;
+       this.ananmnesis = historial.anamnesis;
+       this.tratamiento = historial.tratamiento;
+       this.fecha = historial.fecha;
+
+       this.historialService.historialesIdUsuario(historial.usuario_id) 
+       .subscribe((data: Historial[]) => {
+         this.historialService.historialesCliente = data;
+         for (let index = 0; index < this.historialService.historialesCliente.length; index++) {
+           this.opciones.push(this.historialService.historialesCliente[index].nombreM);
+         }
+         console.log(data)
+       });
+    }
+    else{
+      console.log("historial de rol cliente")
+      let usuariCliente=this.usuarioService.usuario;
+      this.nombreP = usuariCliente.nombre;
+      this.historialService.historialesIdUsuario(usuariCliente.id) 
+      .subscribe((data: Historial[]) => {
+        this.historialService.historialesCliente = data;
+        for (let index = 0; index < this.historialService.historialesCliente.length; index++) {
+          this.opciones.push(this.historialService.historialesCliente[index].nombreM);
+        }
+        console.log(data)
+      });
+    }
+
+  
   }
 
   ngOnInit(): void {
 
     this.rutaActiva.params.subscribe(routeParams => {
-      // if(routeParams.valor =="buscar"){
-      //     this.editBoton=true;
-      //  }
-      //  else{
-      //   this.editBoton=false;
-      //   this.fromDate="";
-      //   this.fecha="";
-      //   this.nombreC="";
-      //   this.nombreM="";
-      //   this.nombreCB="";
-      //   this.nombreMB="";
-      //   this.tratamiento="";
-      //   this.diagnostico="";
-      //  }
    
-       console.log(routeParams.valor)
-        let historial:Historial;
-        historial=this.historialService.buscar(routeParams.valor)
-        this.usuario_id = historial.mascota.usuario_id;
-        this.nombreM = historial.mascota.nombreM;
-        this.ananmnesis = historial.ananmnesis;
-        this.tratamiento = historial.tratamiento;
-        this.fecha = historial.fecha;
-        
-     });
+    });
 
     setTimeout(() => this.staticAlertClosed = true, 20000);
 
@@ -87,9 +103,10 @@ export class HistorialesComponent implements OnInit {
     // this.nombreM=this.nombreMB;
     console.log(this.fecha)
     let historial:Historial;  
-    historial=  this.historialService.buscarFecha(this.fecha, this.nombreM, this.usuario_id)
-    this.ananmnesis = historial.ananmnesis;
-    this.tratamiento = historial.tratamiento;
+    this.historialService.historial=  this.historialService.buscarFecha(this.fecha, this.nombreM);
+
+    this.ananmnesis = this.historialService.historial.anamnesis;
+    this.tratamiento = this.historialService.historial.tratamiento;
    }
 
   anadir(){
@@ -98,9 +115,25 @@ export class HistorialesComponent implements OnInit {
   }
 
   modificar(){
-    this.changeSuccessMessage("Modificados");
+    this.historialService.historial.anamnesis= this.ananmnesis;
+    this.historialService.historial.tratamiento= this.tratamiento;
+
+    this.historialService.modificarHistorial(this.historialService.historial)
+    .subscribe((data: any) => {
+      if (data.affectedRows >= 1) {
+        console.log("Usuario modificado");
+        this.changeSuccessMessage("Modificado Datos");
+      }
+      else {
+        console.log("No se ha modificado usuario");
+        this.changeSuccessMessage("No se ha Modificado");
+      }
+    });
     
+
   }
+
+
   public changeSuccessMessage(mensaje:string) {
     this._success.next(`Datos `+mensaje);
   }
