@@ -46,10 +46,17 @@ buscaIdMascota(dni:string, mascota:string)
  
  return this.http.post(this.url+"mascotaId",httpOptions)  
 }
-// buscaIdMascota(buscar:string[]){
+
   setUsuario(cita:Cita){
     this.cita=cita;
   }
+
+  borrarCita(id:number){
+    const httpOptions = {headers: new HttpHeaders({'Content-Type': 'application/json'}), body: {id:id}};
+    return this.http.delete(this.url + "citas", httpOptions);
+
+  }
+
  
   buscar(usuario:string):User{
     let user:User;

@@ -5,6 +5,8 @@ import {debounceTime} from 'rxjs/operators';
 import { Historial } from 'src/app/model/historial';
 import { HistorialService } from 'src/app/shared/historial.service';
 import { UsuariosService } from 'src/app/shared/usuarios.service';
+import { MascotaService } from 'src/app/shared/mascota.service';
+import { Mascota } from 'src/app/model/mascota';
 
 
 
@@ -34,7 +36,7 @@ export class HistorialesComponent implements OnInit {
   public successMessage:string;
   staticAlertClosed = false;
 
-  constructor(public usuarioService:UsuariosService,private rutaActiva: ActivatedRoute, private historialService: HistorialService) { 
+  constructor(public usuarioService:UsuariosService,private rutaActiva: ActivatedRoute, private historialService: HistorialService, private mascotaService: MascotaService) { 
     this.successMessage = '';
     if(this.usuarioService.usuario.rol!="Cliente"){
       console.log("historial pasado")
@@ -48,12 +50,16 @@ export class HistorialesComponent implements OnInit {
        this.fecha = historial.fecha;
 
        this.historialService.historialesIdUsuario(historial.usuario_id) 
-       .subscribe((data: Historial[]) => {
-         this.historialService.historialesCliente = data;
-         for (let index = 0; index < this.historialService.historialesCliente.length; index++) {
-           this.opciones.push(this.historialService.historialesCliente[index].nombre);
-         }
-         console.log(data)
+       .subscribe((dataH: Historial[]) => {
+
+         this.mascotaService.obtenerMascotas(historial.usuario_id)
+         .subscribe((data: Mascota[]) => {
+          this.historialService.historialesCliente = dataH;
+          for (let index = 0; index < data.length; index++) {
+            this.opciones.push(data[index].nombre);
+          }
+        });
+         console.log(dataH)
        });
     }
     else{
@@ -61,12 +67,15 @@ export class HistorialesComponent implements OnInit {
       let usuariCliente=this.usuarioService.usuario;
       this.nombreP = usuariCliente.nombre;
       this.historialService.historialesIdUsuario(usuariCliente.id) 
-      .subscribe((data: Historial[]) => {
-        this.historialService.historialesCliente = data;
-        for (let index = 0; index < this.historialService.historialesCliente.length; index++) {
-          this.opciones.push(this.historialService.historialesCliente[index].nombre);
-        }
-        console.log(data)
+      .subscribe((dataH: Historial[]) => {
+        this.mascotaService.obtenerMascotas(usuariCliente.id)
+         .subscribe((data: Mascota[]) => {
+          this.historialService.historialesCliente = dataH;
+          for (let index = 0; index < data.length; index++) {
+            this.opciones.push(data[index].nombre);
+          }
+        });
+        console.log(dataH)
       });
     }
 
