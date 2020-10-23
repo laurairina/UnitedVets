@@ -83,7 +83,10 @@ export class UsuariosService {
 
   //--------------------------Dani------------------------------
 
-  
+  obtenerUsuarioID(id:number)
+  {
+    return this.http.get(this.url + "usuario/perfil?id=" + id)
+  }
 
   obtenerClientes()
   {

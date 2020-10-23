@@ -7,6 +7,8 @@ import { MascotaService } from 'src/app/shared/mascota.service';
 import { User } from 'src/app/model/user';
 
 import { ActivatedRoute } from '@angular/router';
+import { HttpHeaders } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-perfil',
@@ -70,4 +72,14 @@ export class PerfilComponent implements OnInit {
 
   }
 
+  public modificarMascota (alergia:string)
+  {
+    this.mascotaService.putMascota(alergia,this.perfilMascota.id).subscribe((data:any)=>{
+     
+      console.log(data)
+    });
+
+    
+  };
+  
 }

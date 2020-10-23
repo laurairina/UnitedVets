@@ -28,20 +28,7 @@ export class HomeMedicoComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public mostrarPerfil(cita:Cita){
-    this.usuarioService.userActual=null;
-
-    this.usuarioService.obtenerUsuario("Tania")
-    .subscribe((data: User) => {
-      console.log("Perfil a pasar")
-      console.log(data[0]);
-      this.usuarioService.userActual = data[0];
-      this.router.navigateByUrl('/perfil/actual');
-    });
-
-
   
-  }
 
 
 }
