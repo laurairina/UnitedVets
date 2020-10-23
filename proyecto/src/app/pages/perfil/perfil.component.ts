@@ -10,12 +10,9 @@ import { User } from 'src/app/model/user';
 import { Subject } from 'rxjs';
 
 import { ActivatedRoute } from '@angular/router';
-<<<<<<< HEAD
 import { Persona } from 'src/app/model/persona';
-=======
 import { HttpHeaders } from '@angular/common/http';
 
->>>>>>> daniel4
 
 @Component({
   selector: 'app-perfil',
@@ -110,7 +107,6 @@ export class PerfilComponent implements OnInit {
 
   }
 
-<<<<<<< HEAD
   open(content,perfil:User) {
 
     this.email=perfil.email
@@ -171,7 +167,6 @@ export class PerfilComponent implements OnInit {
 
   
 
-=======
   public modificarMascota (alergia:string)
   {
     this.mascotaService.putMascota(alergia,this.perfilMascota.id).subscribe((data:any)=>{
@@ -182,5 +177,4 @@ export class PerfilComponent implements OnInit {
     
   };
   
->>>>>>> daniel4
 }
