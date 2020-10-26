@@ -66,12 +66,22 @@ export class HistorialService {
   }
 
   historialesIdUsuario(id:number){ 
-
+    console.log("Service historialesIdUsuario "+id)
     let httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),id
     };
    
-   return this.http.post(this.url+"historial/id",httpOptions)  
+   return this.http.post(this.url+"historial/usuarioId",httpOptions)  
+  }
+
+
+  historialUltimoId(id:number){ 
+     console.log("Service historialUltimoId "+id)
+    let httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),id
+    };
+   
+   return this.http.post(this.url+"historial/ultimoId",httpOptions)  
   }
 
 }

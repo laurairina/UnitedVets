@@ -48,7 +48,7 @@ export class HistorialesComponent implements OnInit {
        this.ananmnesis = historial.anamnesis;
        this.tratamiento = historial.tratamiento;
        this.fecha = historial.fecha;
-
+       console.log(historial.usuario_id);
        this.historialService.historialesIdUsuario(historial.usuario_id) 
        .subscribe((dataH: Historial[]) => {
 

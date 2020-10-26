@@ -9,10 +9,13 @@ import { Cita } from '../model/cita';
 export class CitasService {
  
   public cita:Cita;
+  public citasHoy:Cita[]
   private url= "http://localhost:3000/";
   constructor(private http: HttpClient) { 
  
     this.cita=null;
+    this.citasHoy=[];
+   
   }
  
   //mostrar todas las citas 
@@ -34,8 +37,9 @@ export class CitasService {
    
    
    insertarCita(nuevaCita:Cita){
+   
      return this.http.post(this.url + "citas",nuevaCita); 
-    //return this.http.post(this.url+"mascotaId",httpOptions)  
+
     }
  
 buscaIdMascota(dni:string, mascota:string)
@@ -57,22 +61,30 @@ buscaIdMascota(dni:string, mascota:string)
 
   }
 
+
+  obtenerListaPaciente(nombre:string){
+    return this.http.get(this.url +"citas/listaPacientes/?name="+ nombre);
+  }
  
-  buscar(usuario:string):User{
+  obtenerCitasHoy(id:number,fecha:string){
+ 
+    let httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),id,fecha
+    };
+   
+   return this.http.post(this.url+"citas/listaHoy",httpOptions)  
+  }
+
+ /* 
+   buscar(usuario:string):User{
     let user:User;
     let i:number=0;
     let encontrado:boolean;
  
       return user; 
   }
-
-
  
-  obtenerListaPaciente(nombre:string){
-    return this.http.get(this.url +"citas/listaPacientes/?name="+ nombre);
-  }
- 
-  obtenerUsuarios(){
+ obtenerUsuarios(){
     return this.http.get(this.url);
   }
  
@@ -86,5 +98,5 @@ buscaIdMascota(dni:string, mascota:string)
  
   borrarUsuario(id:User){
     return this.http.delete(this.url +"citas?id="+id);
-  }
+  } */
 }

@@ -72,7 +72,7 @@ export class CitasComponent implements OnInit {
 
   onDateSelect(event){
     let year = event.year;
-    let month = event.month <= 9 ? '0' + event.month : event.month;;
+    let month = event.month <= 9 ? '0' + event.month : event.month;
     let day = event.day <= 9 ? '0' + event.day : event.day;;
     this.fecha = year + "-" + month + "-" + day;
      
@@ -86,10 +86,10 @@ export class CitasComponent implements OnInit {
   }
 
 
-  confirmar(id: Cita) {
-    console.log(id.id)
-    if (confirm("¿Desea borrar la cita de: " + id.nombreP)) {
-      this.citaServicio.borrarCita(id.id)
+  confirmar(cita: Cita) {
+    console.log(cita.id)
+    if (confirm("¿Desea borrar la cita de: " + cita.nombreP)) {
+      this.citaServicio.borrarCita(cita.id)
         .subscribe((data) => {
           console.log("cita eliminada");
           console.log(data);

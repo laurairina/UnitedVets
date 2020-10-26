@@ -3,8 +3,8 @@
     <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 "></div>
     <div class=" row col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 ">
       <form class="form-inline ">
-        <input class="form-control mr-sm-2 " type="search" placeholder="Buscar usuario" aria-label="Buscar">
-        <button class="btn  btn-outline-primary my-2 my-sm-0" type="submit">Buscar</button>
+        <input class="form-control mr-sm-2 " type="search" placeholder="Buscar Cliente" #nombre aria-label="Buscar">
+        <button class="btn  btn-outline-primary my-2 my-sm-0" type="submit" (click)="buscarCliente(nombre.value)">Buscar</button>
       </form>
     </div>
     
@@ -35,14 +35,19 @@
               </tr>
           </thead>
           <tbody>
-              <tr *ngFor="let cita of citas">
+              <tr *ngFor="let cita of citas | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+                  <td>{{cita.nombreP}}</td>
                   <td>{{cita.nombre}}</td>
-                  <td>{{cita.codigoCita}}</td>
-                  <td>{{cita.fechaCita}}</td>
-                  <td><button ngbTooltip="Ver historial" class="btn"  type="button" ><mdb-icon fas icon="id-card fa-3x " id="colorIcono" ></mdb-icon></button></td>
+                  <td>{{cita.hora}}</td>
+                  <td><button ngbTooltip="Ver historial" class="btn"  type="button" (click)="verHistorial(cita)" ><mdb-icon fas icon="id-card fa-3x indigo-text" id="colorIcono" ></mdb-icon></button></td>
               </tr>
           </tbody>
       </table>
   </div>
 
+</div>
+<div class=" d-flex justify-content-between p-2">
+  <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
+      (pageChange)="refreshPaginas()">
+  </ngb-pagination>
 </div>
