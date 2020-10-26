@@ -146,12 +146,6 @@ app.delete('/usuario', function (req, res) {
 
 
 
-
-
-
-
-
-
 //-------------------------------Endpoint Dani -----------------------------------
 
 //------------------------------ GET MASCOTA--------------------------------
@@ -234,6 +228,8 @@ app.put('/mascota', function(req,res) {
 
 });
 
+//-------------------------Final de endpoint Mascota-----------------------------------
+
 
 //------------------ Historial --------------------------
 //UPDATE `historial` SET `hist_id` = 'Hist01' WHERE `historial`.`id` = 1;
@@ -260,21 +256,34 @@ app.put('/historial', function(req,res) {
 
 });
 
-app.post('/historial/id', function (req, res) {
+app.post('/historial/usuarioId', function (req, res) {
     let id =req.body.id;
 
     params=id;
         //todos los usuarios
-        sql="SELECT h.*, m.nombre, u.nombre as nombreP FROM historial as h JOIN mascota as m ON(h.mascota_id=m.id) JOIN usuario as u ON(m.usuario_id=u.id) where u.id=?";
+        sql="SELECT h.*, m.nombre, u.nombre as nombreP, m.usuario_id as usuario_id  FROM historial as h JOIN mascota as m ON(h.mascota_id=m.id) JOIN usuario as u ON(m.usuario_id=u.id) where u.id=?";
         ejecutar(sql,params,res);
         console.log("historial  id "+ id)
+
+});
+
+//SELECT h.*, m.nombre, u.nombre as nombreP FROM historial as h JOIN mascota as m ON(h.mascota_id=m.id) JOIN usuario as u ON(m.usuario_id=u.id) where m.id=4 and h.fecha=(SELECT MAX(h.fecha) FROM historial as h JOIN mascota as m ON(h.mascota_id=m.id) JOIN usuario as u ON(m.usuario_id=u.id) where m.id=4)
+app.post('/historial/ultimoId', function (req, res) {
+    let id =req.body.id;
+
+    params=id
+        //todos los usuarios
+        sql="SELECT h.*, m.nombre, u.nombre as nombreP, m.usuario_id as usuario_id  FROM historial as h JOIN mascota as m ON(h.mascota_id=m.id) JOIN usuario as u ON(m.usuario_id=u.id) where m.id=? and h.fecha=(SELECT MAX(h.fecha) FROM historial as h JOIN mascota as m1 ON(h.mascota_id=m1.id) JOIN usuario as u ON(m1.usuario_id=u.id) where m1.id=m.id)"
+        //sql="SELECT h.*, m.nombre, u.nombre as nombreP FROM historial as h JOIN mascota as m ON(h.mascota_id=m.id) JOIN usuario as u ON(m.usuario_id=u.id) where m.id=? and h.fecha=(SELECT MAX(h.fecha) FROM historial as h JOIN mascota as m ON(h.mascota_id=m.id) JOIN usuario as u ON(m.usuario_id=u.id) where m.id=?)"
+        ejecutar(sql,params,res);
+        console.log("historial ultimo id "+ id)
 
 });
 
 //------------------- Fin Historial -------------------
 
 
-//-------------------------Final de endpoint Mascota-----------------------------------
+
 
 
 
@@ -298,7 +307,19 @@ app.get('/citas',
             console.log("sin id")
         }
     });
- 
+
+  //POST   "http://localhost:3000/citas/hoy    //fecha='2020-09-26'" 
+    app.post('/citas/listaHoy', function (req, res) {
+        let id =req.body.id;
+        let fecha=req.body.fecha;
+        params= new Array(id,fecha);
+         
+            sql="SELECT c.*,m.nombre, u.nombre as nombreP FROM citas as c JOIN mascota as m ON(c.mascota_id=m.id) JOIN usuario as u ON(m.usuario_id=u.id) JOIN usuario as u1 ON (c.vet_id=u1.id) WHERE u1.id=? and c.fecha=?";
+            ejecutar(sql,params,res);
+            console.log("fecha y id "+fecha +" "+id)
+    
+    });
+
 //---------------------------------PUT MODIFICAR CITAS-----------------------------------------
 //UPDATE citas SET fecha="2020-10-21", hora="18:00" WHERE id=1   
  
@@ -317,6 +338,7 @@ app.put('/citas', function(req, res) {
 //INSERT INTO `citas`( `mascota_id`, `fecha`, `hora`, `vet_id`, `cita_id`) VALUES (2,"2020/10/21","12:56",2,1)
 app.post('/citas', function(req, res) {
     let data = req.body;
+
     params = new Array(data.mascota_id, data.fecha, data.hora, data.vet_id, data.cita_id);
     sql = "INSERT INTO citas( mascota_id, fecha, hora, vet_id, cita_id) VALUES (?,?,?,?,?)";
     ejecutar(sql, params, res);

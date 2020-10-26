@@ -178,11 +178,7 @@ export class PerfilComponent implements OnInit {
   public changeSuccessMessage(mensaje: string) {
     this._success.next(`Datos ` + mensaje);
   }
-
-
-<<<<<<< HEAD
-
-  
+ 
 
   public modificarMascota (alergia:string)
   {
@@ -194,6 +190,4 @@ export class PerfilComponent implements OnInit {
     
   };
   
-=======
->>>>>>> paul7
 }

@@ -48,10 +48,10 @@
                     <td class="botones">
                         <button ngbTooltip="Modificar" type="button" (click)="open(content,'modificar',cita)"
                             class="btnA btn btn-sm">
-                            <mdb-icon fas icon="edit fa-2x " id="BotonModificar"></mdb-icon>
+                            <mdb-icon fas icon="edit fa-2x green-text " id="BotonModificar"></mdb-icon>
                         </button>
-                        <button ngbTooltip="Eliminar" type="button" class="btnA btn btn-sm " (click)="confirmar()">
-                            <mdb-icon fas icon="minus fa-2x " id="btnDelete"></mdb-icon>
+                        <button ngbTooltip="Eliminar" type="button" class="btnA btn btn-sm " (click)="confirmar(cita)">
+                            <mdb-icon fas icon="minus fa-2x red-text" id="btnDelete"></mdb-icon>
                         </button>
                     </td>
                 </tr>
