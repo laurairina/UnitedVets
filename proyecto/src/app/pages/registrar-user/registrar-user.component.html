@@ -49,6 +49,9 @@
         </select>
 
       </div>
+
+      
+
     <div class="input-container" id="input-container2">
       <input type="text" required=""  id="usuario" [(ngModel)]="usuario"/>
       <label id="nUsuario">Nombre de usuario</label>		
@@ -61,6 +64,13 @@
         <input type="password" required="" id="password2" [(ngModel)]="password2" value="" />
         <label id="confirmar_pass">Confirmar contraseña</label>
     </div>
+
+    <!-- <div *ngIf="opciones.values === 'Veterinario'">
+      <div class="input-container" id="input-container2">         
+          <input type="text" [(ngModel)]="nColegiado" required id="nColegiado">
+          <label >Numero de colegiado</label>
+        </div>
+    </div> -->
     <div class="row2"> 
      
       <div  class="fila3 col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 "> <button type="button" class="boton" id="boton" value="boton" (click)="registrar()"><b>Registrar</b> </button></div> 

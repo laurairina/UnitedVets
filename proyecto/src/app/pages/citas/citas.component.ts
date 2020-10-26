@@ -162,6 +162,13 @@ export class CitasComponent implements OnInit {
           this.changeSuccessMessage("Modificado " + this.nombreC);
         }
       });
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Cita modificada con éxito',
+        showConfirmButton: false,
+        timer: 2000
+      })
 
   }
 
@@ -189,6 +196,13 @@ export class CitasComponent implements OnInit {
           });
 
       });
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Cita añadida con éxito',
+        showConfirmButton: false,
+        timer: 2000
+      })
 
   }
 

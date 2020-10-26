@@ -5,6 +5,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { User } from 'src/app/model/user';
 import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
+import  Swal  from 'sweetalert2';
 
 @Component({
   selector: 'app-home-admin',
@@ -134,6 +135,13 @@ export class HomeAdminComponent implements OnInit {
         this.changeSuccessMessage("No se ha Modificado");
       }
     });
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Datos guardados con éxito',
+      showConfirmButton: false,
+      timer: 2000
+    })
 
   }
 

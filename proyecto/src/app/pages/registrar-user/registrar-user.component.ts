@@ -30,6 +30,8 @@ export class RegistrarUserComponent implements OnInit {
   public usuario:string;
   public password1:string;
   public password2:string;
+  public nColegiado: string;
+  public especialidad: string;
 
   private _success = new Subject<string>();
   public successMessage:string;
@@ -55,7 +57,7 @@ export class RegistrarUserComponent implements OnInit {
 
   public registrar(){
      if(this.password1== this.password2){
-      let user:User= new User(0, this.usuario, this.password1, this.tipoDeUsuario,this.nombre, this.apellido1, this.apellido2, this.fecha, this.dni, this.email, this.telefono, this.direccion, null,"", "");
+      let user:User= new User(0, this.usuario, this.password1, this.tipoDeUsuario,this.nombre, this.apellido1, this.apellido2, this.fecha, this.dni, this.email, this.telefono, this.direccion, this.nColegiado, this.especialidad, null);
       this.usuarioService.insertarUsuario(user)
       .subscribe((data:any)=>{
         if(data.affectedRows>=1){
