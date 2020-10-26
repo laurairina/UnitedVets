@@ -159,6 +159,16 @@ app.get('/mascota',
  
 });
 
+app.post('/mascota/id',
+(req, res) => {
+    let data = req.body
+        params = new Array(data.mascota_nombre, data.usuario_nombre)
+        sql="SELECT mascota.id AS id_mascota, usuario.id AS id_usuario FROM `mascota` JOIN usuario ON (mascota.usuario_id = usuario.id) WHERE mascota.nombre = ? AND usuario.nombre = ?";    
+        ejecutar(sql,params,res);
+        console.log(params)
+ 
+});
+
 //---------------------------GET CLIENTES Dani-----------------------------------------
 
 app.get('/cliente',
@@ -280,6 +290,29 @@ app.post('/historial/ultimoId', function (req, res) {
 
 });
 
+//-----------------------------------POST HISTORIAL DANI -----------------------------------------
+
+app.post('/historial', function (req, res) {
+    let data = req.body;
+    params = new Array(data.mascota_id, data.anamnesis, data.tratamiento, data.fecha, data.hist_id);
+    sql= "INSERT INTO `historial` ( `mascota_id`, `anamnesis`, `tratamiento`, `fecha`, `hist_id`) VALUES (?, ?, ?, ?, ?)";
+
+    console.log(data);
+    console.log("holi");
+    ejecutar(sql,params,res);
+
+
+    console.log('Historial añadido');
+});  
+
+//------------------------Historial con el id más alto---------------------------------
+app.get('/historial/max',
+(req, res) => {
+        sql="SELECT MAX(id) as max from historial";    
+        ejecutar(sql,params,res);
+        console.log("Lista de historial");
+ 
+});
 //------------------- Fin Historial -------------------
 
 

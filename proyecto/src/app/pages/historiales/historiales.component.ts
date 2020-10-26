@@ -38,6 +38,9 @@ export class HistorialesComponent implements OnInit {
 
   constructor(public usuarioService:UsuariosService,private rutaActiva: ActivatedRoute, private historialService: HistorialService, private mascotaService: MascotaService) { 
     this.successMessage = '';
+    this.fromDate = this.historialService.fechaActual
+    this.editBoton = this.historialService.editarBoton
+
     if(this.usuarioService.usuario.rol!="Cliente"){
       console.log("historial pasado")
       console.log(this.historialService.historial);
@@ -78,7 +81,7 @@ export class HistorialesComponent implements OnInit {
         console.log(dataH)
       });
     }
-
+    
   
   }
 
@@ -121,6 +124,19 @@ export class HistorialesComponent implements OnInit {
   anadir(){
     this.changeSuccessMessage("Guardados");
      console.log(this.ananmnesis +"   "+this.tratamiento)
+    
+     this.historialService.getUsuarioMascota(this.nombreM,this.nombreP)
+     .subscribe((dataUM:any) =>{
+       console.log(dataUM)
+
+        this.historialService.getHistorialMax().subscribe((dataM)=>{
+          console.log(dataM)
+            this.historialService.crearHistorial(new Historial(0,"HIST0" + (dataM[0].max + 1),this.ananmnesis,this.tratamiento,this.nombreM,dataUM[0].id_mascota,this.nombreP,dataUM[0].id_usuario,this.fromDate))
+            .subscribe((data:Historial[])  =>{
+              console.log(data)
+            })
+        })
+     })
   }
 
   modificar(){
