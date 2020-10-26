@@ -3,6 +3,8 @@ import { UsuariosService } from 'src/app/shared/usuarios.service';
 import { ClienteService } from 'src/app/shared/cliente.service';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { ValidatorFn, AbstractControl, Validator, Validators, FormGroup, FormBuilder, FormControl} from '@angular/forms';
+import  Swal  from 'sweetalert2';
+
 
 import { Mascota } from 'src/app/model/mascota';
 import { MascotaService } from 'src/app/shared/mascota.service';
@@ -12,6 +14,7 @@ import { Subject } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { Persona } from 'src/app/model/persona';
 import { HttpHeaders } from '@angular/common/http';
+import { switchAll } from 'rxjs/operators';
 
 
 @Component({
@@ -59,6 +62,8 @@ export class PerfilComponent implements OnInit {
   public password2:string;
   public foto:Blob;
   public rol:string;
+  public nColegiado: string;
+  public especialidad: string;
 
   constructor(private fb: FormBuilder, public usuarioService: UsuariosService, public clienteService: ClienteService, public mascotaService: MascotaService, private rutaActiva: ActivatedRoute, private modalService: NgbModal ) {
     if(this.usuarioService.userActual!=null){
@@ -129,6 +134,8 @@ export class PerfilComponent implements OnInit {
     this.telefono=perfil.telefono
     this.direccion=perfil.direccion
     this.password1=perfil.password
+    this.nColegiado=perfil.nColegiado
+    this.especialidad=perfil.especialidad
 
 
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title', windowClass: 'dark-modal' }).result.then((result) => {
@@ -154,6 +161,8 @@ export class PerfilComponent implements OnInit {
     this.perfil.email=this.email
     this.perfil.telefono=this.telefono
     this.perfil.direccion=this.direccion
+    this.perfil.nColegiado=this.nColegiado
+    this.perfil.especialidad=this.especialidad
 
     this.clienteService.putCliente(this.perfil).subscribe((data:any)=>
     {
@@ -164,6 +173,13 @@ export class PerfilComponent implements OnInit {
 
       console.log("Modificando perfil")
       console.log(data)
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Datos guardados con éxito',
+        showConfirmButton: false,
+        timer: 2000
+      })
     
     })
     
@@ -180,7 +196,6 @@ export class PerfilComponent implements OnInit {
   }
 
 
-<<<<<<< HEAD
 
   
 
@@ -194,6 +209,4 @@ export class PerfilComponent implements OnInit {
     
   };
   
-=======
->>>>>>> paul7
 }

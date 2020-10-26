@@ -54,6 +54,20 @@
                                     <label >Dirección</label>
                                     <input type="text" [(ngModel)]="direccion" required [ngModelOptions]="{standalone: true}" placeholder="Dirección" id="direccion">
                                   </div>
+
+                                  <div *ngIf="perfil.rol == 'Veterinario'">
+                                    <div class="form-group">
+                                        <label >Numero de colegiado</label>
+                                        <input type="text" [(ngModel)]="nColegiado" required [ngModelOptions]="{standalone: true}" placeholder="Numero de colegiado" id="nColegiado">
+                                      </div>
+                                  </div>
+
+                                  <div *ngIf="perfil.rol == 'Veterinario'">
+                                    <div class="form-group">
+                                        <label >Especialidad</label>
+                                        <input type="text" [(ngModel)]="especialidad" required [ngModelOptions]="{standalone: true}" placeholder="Especialidad" id="especialidad">
+                                      </div>
+                                  </div>
                               
                                 <div class="form-group">
                                   <label for="exampleInputPassword1">Contraseña</label>
@@ -66,7 +80,7 @@
                                   </div>
                                  
                                   <div *ngIf="repassword.value != password.value" class="text-danger">
-                                    The passwords entered do not match
+                                    Las contraseñas deben coincidir!
                                 </div>
                                   
                               </div>
@@ -80,12 +94,11 @@
                         <div class="modal-footer">
                             <!-- <div *ngIf="password2 == password1" *ngDisabled="false"></div> -->
                 
-                          <button type="submit" class="btn btn-outline-primary" [disabled]="repassword.value != password.value" id="guardar" (click)="actualizarUsuario()">Guardar</button>
+                          <button type="submit" class="btn btn-outline-primary" [disabled]="repassword.value != password.value" id="guardar" (click)="actualizarUsuario()" (click)="modal.dismiss('Cross click')">Guardar</button>
                           <button type="button" class="btn btn-outline-primary" id="cancelar" (click)="modal.close('Save click')">Cancelar</button>
                         </div>
                     </div>
                   </ng-template>
-
 
 
                 <div class="col-md-9 col-sm-9 col-xs-12 pull-right profile-right-section">
@@ -176,6 +189,34 @@
                                             <div class="col-md-2">
                                                 <div class="row  largo">
                                                     <p>{{perfil.direccion}}</p>
+                                                </div>
+                                            </div>
+
+                                            <div *ngIf="perfil.rol == 'Veterinario'">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        <label>Numero de Colegiado:</label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-2">
+                                                    <div class="row  largo">
+                                                        <p>{{perfil.nColegiado}}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div *ngIf="perfil.rol == 'Veterinario'">
+                                                <div class="row">
+                                                    <div class="col-md-2">
+                                                        <label>Especialidad:</label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-2">
+                                                    <div class="row  largo">
+                                                        <p>{{perfil.especialidad}}</p>
+                                                    </div>
                                                 </div>
                                             </div>
 

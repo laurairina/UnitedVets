@@ -5,6 +5,7 @@ import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 import { CitasService } from 'src/app/shared/citas.service';
 import { UsuariosService } from 'src/app/shared/usuarios.service';
+import  Swal  from 'sweetalert2';
 // import { threadId } from 'worker_threads';
 
 @Component({

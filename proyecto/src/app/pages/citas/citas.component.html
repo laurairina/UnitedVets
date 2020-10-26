@@ -116,7 +116,7 @@
             </div>
             <div class="modal-footer">
                 <button *ngIf="editBoton; else esFalsoM" type="button" class="btn btn-outline-primary"
-                    (click)="editar()">Modificar</button>
+                    (click)="editar()" (click)="modal.dismiss('Cross click')">Modificar</button>
                 <ng-template #esFalsoM>
                 </ng-template>
                 <button *ngIf="!editBoton; else esFalsoM1" type="button" class="btn btn-outline-primary"
@@ -184,7 +184,7 @@
                 <ng-template #esFalsoM>
                 </ng-template>
                 <button *ngIf="!editBoton; else esFalsoM1" type="button" class="btn btn-outline-primary"
-                    (click)="anadir()">Guardar</button>
+                    (click)="anadir()" (click)="modal.dismiss('Cross click')">Guardar</button>
                 <ng-template #esFalsoM1>
                 </ng-template>
                 <button type="button" class="btn btn-outline-primary"
