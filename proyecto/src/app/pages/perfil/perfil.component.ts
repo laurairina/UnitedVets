@@ -180,7 +180,6 @@ export class PerfilComponent implements OnInit {
   }
 
 
-<<<<<<< HEAD
 
   
 
@@ -194,6 +193,4 @@ export class PerfilComponent implements OnInit {
     
   };
   
-=======
->>>>>>> paul7
 }

@@ -12,6 +12,8 @@ export class HistorialService {
   public historial: Historial;
   public historiales: Historial [];
   public historialesCliente: Historial [];
+  public fechaActual:string;
+  public editarBoton: boolean;
 
   private url= "http://localhost:3000/";
   constructor(private clienteService: ClienteService,private mascotaService: MascotaService,private http: HttpClient) 
@@ -19,6 +21,7 @@ export class HistorialService {
     this.historial = null;
     this.historiales=[];
     this.historialesCliente=[];
+    this.editarBoton = false
   }
 
   public buscar(codigo:string):Historial{
@@ -72,6 +75,26 @@ export class HistorialService {
     };
    
    return this.http.post(this.url+"historial/id",httpOptions)  
+  }
+
+  crearHistorial(historial:Historial)
+  {
+    return this.http.post(this.url + "historial", historial)
+  }
+
+  getUsuarioMascota(mascota_nombre:string,usuario_nombre:string)
+  {console.log(mascota_nombre, usuario_nombre);
+  
+    let httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),mascota_nombre,usuario_nombre
+    }
+
+    return this.http.post(this.url + "mascota/id", httpOptions)
+  }
+
+  getHistorialMax()
+  {
+    return this.http.get(this.url + "historial/max")
   }
 
 }

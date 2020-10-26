@@ -1,40 +1,7 @@
 
 
     <h3>Historial</h3>
-    <div *ngIf="editBoton; else esFalsoM"> 
-        <form  class="form-inline formA">
-            <div  class="form-group alinear">
-              <div class="input-group">
-                <div class="espacio"><b class="title">Nombre:   </b><input [(ngModel)]="nombreCB" class="texto"type="text" id="nombreCB" [ngModelOptions]="{standalone: true}"/> </div> 
-                <div class="espacio">
-                  <b>Nombre de Mascota   </b>
-                  <select class="form-control" name="nombreM" [(ngModel)]="nombreM">
-                   <option value="">Seleccionar mascota</option>
-                   <option *ngFor="let opcion of opciones" [value]="opcion" >
-                       {{opcion}}
-                   </option>
-                  </select>
-                  <!--<b class="title" >Nombre de Mascota:   </b>
-                  <input [(ngModel)]="nombreMB" class="texto" type="text" id="nombreMB" [ngModelOptions]="{standalone: true}">--> 
-                </div> 
-                 <div class="espacio">   
-                  <input class="form-control" placeholder="Elegir fecha" 
-                  name="dp" [(ngModel)]="fromDate" ngbDatepicker #d="ngbDatepicker" >
-                 </div> 
-          
-                <div class="input-group-append">
-                  <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"><i class="material-icons">
-                      calendar_today
-                  </i></button>
-                </div>
-                <button class="btn" (click)="buscar()" type="button"><i class="material-icons">
-                    search
-                </i></button>
-              </div>
-            </div>
-          </form>
-
-    </div>
+    
     <ng-template #esFalsoM>  
     </ng-template>
  
@@ -48,7 +15,8 @@
                 <div ><b >Nombre Cliente:   </b><input [(ngModel)]="nombreP" class="texto "type="text" id="nombreP" [ngModelOptions]="{standalone: true}"  /> </div> 
                 <div >
                   <b>Nombre de Mascota   </b>
-                  <select  name="nombreM" [(ngModel)]="nombreM">
+                  <input *ngIf="opciones.length ==0" [(ngModel)]="nombreM" class="texto "type="text" id="nombreM" [ngModelOptions]="{standalone: true}"  />
+                  <select *ngIf="opciones.length !=0" name="nombreM" [(ngModel)]="nombreM">
                    <option value="">Seleccionar mascota</option>
                    <option *ngFor="let opcion of opciones" [value]="opcion" >
                        {{opcion}}
