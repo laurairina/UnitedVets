@@ -14,14 +14,15 @@ import { UsuariosService } from 'src/app/shared/usuarios.service';
 export class RegistrarPetComponent implements OnInit {
   
   keyword = 'nombre_usuario';
-  public usuarios: User []
-  public usuario_id:number
+  public usuarios: User [];
+  public usuario_id:number;
+  public initialValue:string
   constructor(public usuarioService:UsuariosService,public mascotaService:MascotaService) { 
     
     this.usuarioService.obtenerClientes()
     .subscribe((data:User[])=>{
        this.usuarios=data;
-      
+       this.initialValue=this.usuarios[0].nombre
        console.log(this.usuarios)
     });
   }
@@ -31,13 +32,13 @@ export class RegistrarPetComponent implements OnInit {
   
   selectEvent(item) {
     this.usuario_id = item.id
-    console.log(this.usuario_id)
+    console.log("selectEvent "+this.usuario_id)
   }
 
   onChangeSearch(val: string) {
     // fetch remote data from here
     // And reassign the 'data' which is binded to 'data' property.
-    console.log(val)
+    console.log("onChangeSearch "+ val)
   }
 
   crearMascota(nombre:HTMLInputElement,chip:HTMLInputElement,especie:HTMLInputElement,raza:HTMLInputElement,fechaNacimiento:HTMLInputElement,alergias:HTMLInputElement)

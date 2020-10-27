@@ -4,6 +4,7 @@ import { UsuariosService } from 'src/app/shared/usuarios.service';
 import { User } from 'src/app/model/user';
 import {Subject} from 'rxjs';
 import {debounceTime} from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registrar-user',
@@ -34,8 +35,9 @@ export class RegistrarUserComponent implements OnInit {
   private _success = new Subject<string>();
   public successMessage:string;
   staticAlertClosed = false;
+  public mensajeError=false;
 
-  constructor(public usuarioService:UsuariosService) {
+  constructor(public usuarioService:UsuariosService, private router: Router) {
     this.successMessage = '';
    }
 
@@ -59,16 +61,19 @@ export class RegistrarUserComponent implements OnInit {
       this.usuarioService.insertarUsuario(user)
       .subscribe((data:any)=>{
         if(data.affectedRows>=1){
+          this.mensajeError=false;
           this.changeSuccessMessage("Añadido nuevo usuario");
+          this.router.navigateByUrl('/registrarPet');
         }
         else{
+          this.mensajeError=true;
           this.changeSuccessMessage("No se añadido usuario"); 
         }
-  
+        
       })
      }
      else{
-      this.changeSuccessMessage("Contraseñas no son iguales"); 
+      this.changeSuccessMessage("de Contraseñas no son iguales"); 
      }
     
   

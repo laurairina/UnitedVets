@@ -35,16 +35,14 @@ ul{
 
 .alinearBoton{
     display: flex;
-    margin-left: 20px;
+    margin-left: 12px;
 }
 
-i{
-   color:white;
-   
-}
+
 
 ngb-alert{
     width: 100%;
+    height: auto;
 }
 
 .form-group{
