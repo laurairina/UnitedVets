@@ -6,6 +6,7 @@ import { User } from 'src/app/model/user';
 import { Subject } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 import  Swal  from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-admin',
@@ -42,7 +43,7 @@ export class HomeAdminComponent implements OnInit {
   public dni:string;
   public user:User;
 
-  constructor(public usuarioService: UsuariosService, private modalService: NgbModal) {
+  constructor(public usuarioService: UsuariosService, private modalService: NgbModal,  private router: Router) {
     console.log("admin")
     console.log(usuarioService.usuario);
     this.successMessage = '';
@@ -177,4 +178,9 @@ export class HomeAdminComponent implements OnInit {
     });
     }
   }
+
+ public  enviarMascota(){
+  this.router.navigateByUrl('/registrarPet')
+ }
+
 }

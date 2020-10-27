@@ -196,12 +196,6 @@ export class PerfilComponent implements OnInit {
   }
 
 
-<<<<<<< HEAD
-=======
-
-  
-
->>>>>>> dnaiel8
   public modificarMascota (alergia:string)
   {
     this.mascotaService.putMascota(alergia,this.perfilMascota.id).subscribe((data:any)=>{
