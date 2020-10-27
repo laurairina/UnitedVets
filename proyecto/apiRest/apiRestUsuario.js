@@ -215,7 +215,7 @@ app.get('/usuario/perfil',
 
 app.post('/mascota', function (req, res) {
     let data = req.body;
-    params = new Array(data.nombreM, data.chip, data.especie, data.raza, data.usuario_id, data.fechaNacimiento, data.alergias);
+    params = new Array(data.nombre, data.chip, data.especie, data.raza, data.usuario_id, data.fechaNacimiento, data.alergias);
     sql= "INSERT INTO `mascota` (`nombre`, `chip`, `especie`, `raza`, `usuario_id`, `fechaNacimiento`, `alergias`) VALUES ( ?, ?, ?, ?, ?, ?, ?)";
 
     console.log(data);

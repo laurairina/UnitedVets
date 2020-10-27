@@ -6,7 +6,8 @@
     background-repeat: no-repeat;
     background-size: cover;
 	min-height:100vh;
-	font-family: 'Noto Sans', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
+    padding-top: 3px;
 }
 
 .card
@@ -78,7 +79,7 @@ b
 #seleccionable
 {
     margin-left: 60%;
-    margin-top: -150%;
+    margin-top: -140%;
     width: 100%;
     font-family: 'Noto Sans', sans-serif; font-size: smaller;
     color: white;
@@ -95,41 +96,43 @@ b
 
 .input-container{
 	position:relative;
-    margin-bottom:10%;
-    height: 3%;
+    margin-bottom:5%;
+    height: 4%;
     padding-bottom: 15%;
+
 }
 
 #input-container2{
 	position:relative;
-    margin-bottom:10%;
-    height: 3%;
+    margin-bottom:5%;
+    height: 4%;
     padding-bottom: 15%;
+
 }
 
-#nombre, #apellido1, #apellido2, #fecha, #email, #telefono{
+#nombre, #apellido1, #apellido2, #fecha, #email, #telefono, #nColegiado{
     margin-left: -60%;
     
 }
 
-#direccion, #dni, #password1, #password2, #confirmar_pass, #usuario, #password1{
+#direccion, #dni, #password1, #password2, #confirmar_pass, #usuario, #password1, #especialidad{
     position: absolute;
     margin-left: 60%;
-    margin-top: -150%;
+    margin-top: -140%;
     
     
 }
 #nUsuario{
     position: absolute;
     margin-left: 60%;
-    margin-top: -150%;
+    margin-top: -140%;
     width: 100%;
 }
 
 #confirmar_pass{
     position: absolute;
     margin-left: 60%;
-    margin-top: -150%;
+    margin-top: -140%;
     width: 100%;
 }
 
@@ -165,7 +168,7 @@ b
 button
 {
     border: 0;
-    background: none;
+    background: none !important;
     text-transform: uppercase;
     color: #14151b;
     font-weight: bold;
@@ -174,7 +177,7 @@ button
     padding: 10px 50px;
     box-sizing: border-box;
     position: absolute;
-    margin-top: -250px;
+    margin-top: -270px;
     margin-left: 5%;
 }
 button::before, button::after{

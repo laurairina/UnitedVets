@@ -1,5 +1,6 @@
 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 <div class="my-container">
+  <ngb-alert *ngIf="successMessage" type="success" (close)="successMessage = ''">{{ successMessage }}</ngb-alert>
 
 <div class="card">
 
@@ -30,6 +31,14 @@
         <input type="text" [(ngModel)]="telefono" id="telefono" required="" >
         <label id="telefono">Numero de teléfono</label>
       </div>
+      <div *ngIf="tipoDeUsuario=='Veterinario'" class="input-container">         
+        <input type="text" [(ngModel)]="nColegiado" required id="nColegiado">
+        <label id="nColegiado" >Numero de colegiado</label>
+      </div>
+      <div *ngIf="tipoDeUsuario!='Veterinario' " class="input-container">         
+
+      </div>
+
       <div class="input-container" id="input-container2">
         <input type="text" [(ngModel)]="direccion" id="direccion" required="" >
         <label id="direccion">Dirección</label>
@@ -65,14 +74,15 @@
         <label id="confirmar_pass">Confirmar contraseña</label>
     </div>
 
-    <!-- <div *ngIf="opciones.values === 'Veterinario'">
-      <div class="input-container" id="input-container2">         
-          <input type="text" [(ngModel)]="nColegiado" required id="nColegiado">
-          <label >Numero de colegiado</label>
-        </div>
-    </div> -->
+  
+      <div *ngIf="tipoDeUsuario=='Veterinario'"  class="input-container" id="input-container2">         
+          <input type="text" [(ngModel)]="especialidad" required id="especialidad">
+          <label id="especialidad">Especialidad</label>
+      </div>
+      <div *ngIf="tipoDeUsuario=='Cliente'"  class="input-container" id="input-container2">         
+    </div>
+
     <div class="row2"> 
-      <ngb-alert *ngIf="successMessage" type="success" (close)="successMessage = ''">{{ successMessage }}</ngb-alert>
 
       <div  class="fila3 col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 "> <button type="button" class="boton" id="boton" value="boton" (click)="registrar()"><b>Registrar</b> </button></div> 
    </div>

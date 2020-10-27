@@ -39,6 +39,7 @@
     border-color: rgb(41, 41, 41);
     border-radius: 3px;
     padding: 0 100px;
+    padding-bottom: 5px;
     height: 80%;  
     width: 45%;
 }
@@ -115,7 +116,7 @@ b
 button
 {
     border: 0;
-    background: none;
+    background: none !important;
     text-transform: uppercase;
     color: #14151b;
     font-weight: bold;
