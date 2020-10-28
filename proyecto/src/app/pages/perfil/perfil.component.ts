@@ -15,7 +15,10 @@ import { ActivatedRoute } from '@angular/router';
 import { Persona } from 'src/app/model/persona';
 import { HttpHeaders } from '@angular/common/http';
 import { switchAll } from 'rxjs/operators';
-
+//import { read } from 'fs';
+class ImageSnippet {
+  constructor(public src: string, public file: File) {}
+}
 
 @Component({
   selector: 'app-perfil',
@@ -64,7 +67,9 @@ export class PerfilComponent implements OnInit {
   public rol:string;
   public nColegiado: string;
   public especialidad: string;
+  public perfilLog:boolean;
 
+  selectedFile: ImageSnippet;
   constructor(private fb: FormBuilder, public usuarioService: UsuariosService, public clienteService: ClienteService, public mascotaService: MascotaService, private rutaActiva: ActivatedRoute, private modalService: NgbModal ) {
     if(this.usuarioService.userActual!=null){
       console.log("Perfil de usuario Pasado  ");
@@ -74,13 +79,13 @@ export class PerfilComponent implements OnInit {
         console.log(this.mascotas)
       });
 
-
+      this.perfilLog=false;
     }
     else{
       console.log("Perfil de usuario logueado")
       this.usuarioService.userActual=null;
       this.mostrarUsuario(this.usuarioService.usuario.nombre_usuario);
-
+      this.perfilLog=true;
     }
 
     let formControls = {
@@ -109,10 +114,13 @@ export class PerfilComponent implements OnInit {
       .subscribe((data: User) => {
         console.log("Perfil")
         this.perfil = data[0];
-        this.mascotaService.obtenerMascotas(this.perfil.id).subscribe((data:Mascota[])=>{
-          this.mascotas=data;
-          console.log(this.mascotas)
-        });
+        if(this.perfil.rol=="Cliente"){
+          this.mascotaService.obtenerMascotas(this.perfil.id).subscribe((data:Mascota[])=>{
+            this.mascotas=data;
+            console.log(this.mascotas)
+          });
+        }
+     
 
         console.log(this.perfil)
       });
@@ -204,6 +212,55 @@ export class PerfilComponent implements OnInit {
     });
 
     
-  };
+  }
   
+  processFile( imageInput: any) {
+    const file: File = imageInput.files[0];
+    const reader = new FileReader();
+    console.log(file);
+    console.log(event);
+    reader.addEventListener('load', (event: any) => {
+
+      this.selectedFile = new ImageSnippet(event.target.result, file);
+
+         console.log(this.selectedFile)
+      this.usuarioService.usuario.foto=this.selectedFile.src;
+      this.usuarioService.uploadImage(this.usuarioService.usuario).subscribe(
+        (res) => {
+          this.perfil.foto=this.usuarioService.usuario.foto;
+           console.log("guardado")
+        },
+        (err) => {
+          console.log("error")
+        })
+   });
+
+    reader.readAsDataURL(file);
+    //console.log(reader.result)
+  }
+
+  processFileM( imageInputM: any) {
+    const file: File = imageInputM.files[0];
+    const reader = new FileReader();
+    console.log(file);
+    console.log(event);
+    reader.addEventListener('load', (event: any) => {
+
+      this.selectedFile = new ImageSnippet(event.target.result, file);
+
+         console.log(this.selectedFile)
+     this.perfilMascota.foto=this.selectedFile.src;
+     this.mascotaService.uploadImageMascota(this.perfilMascota).subscribe(
+        (res) => {
+           console.log("guardado")
+        },
+        (err) => {
+          console.log("error")
+        })
+   });
+
+    reader.readAsDataURL(file);
+    //console.log(reader.result)
+  }
+
 }

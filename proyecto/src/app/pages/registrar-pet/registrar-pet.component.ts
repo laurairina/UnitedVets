@@ -43,7 +43,7 @@ export class RegistrarPetComponent implements OnInit {
 
   crearMascota(nombre:HTMLInputElement,chip:HTMLInputElement,especie:HTMLInputElement,raza:HTMLInputElement,fechaNacimiento:HTMLInputElement,alergias:HTMLInputElement)
   {
-    this.mascotaService.postMascota(new Mascota(0,nombre.value,chip.value,especie.value,raza.value,this.usuario_id,fechaNacimiento.value,alergias.value)).subscribe((data)=>
+    this.mascotaService.postMascota(new Mascota(0,nombre.value,chip.value,especie.value,raza.value,this.usuario_id,fechaNacimiento.value,alergias.value,"")).subscribe((data)=>
     {
       
       console.log(data)

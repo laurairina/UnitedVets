@@ -24,7 +24,8 @@
           <li>
             <div class="card" style="width: 15rem;">
               <div class="card-body row">
-                <img  src="../../../assets/imagenes/Usuario-Vacio.png" alt="Card image cap">
+                <img *ngIf="usuario.foto==''" src="../../../assets/imagenes/Usuario-Vacio.png" alt="Card image cap">
+                <img *ngIf="usuario.foto!=''" src={{usuario.foto}} alt="Card image cap">
                 <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 "></div>
                 <button  type="button" class="btn btn-sm " (click)="mostrarPerfil(usuario)"><mdb-icon fas icon="id-card fa-3x indigo-text"  ngbTooltip="Ver Perfil"></mdb-icon></button>
               </div>

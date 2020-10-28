@@ -43,6 +43,7 @@ export class LoginComponent implements OnInit {
     this.usuarioService.loguearse(this.usuario,this.password)
     .subscribe((data:User)=>{
        this.usuarioService.setUsuario(data[0]);
+      
        console.log("Enviar")
        this.user =this.usuarioService.getUsuario();
        console.log(this.user)
