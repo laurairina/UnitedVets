@@ -5,6 +5,7 @@ import { User } from 'src/app/model/user';
 import {Subject} from 'rxjs';
 import {debounceTime} from 'rxjs/operators';
 import { Router } from '@angular/router';
+import  Swal  from 'sweetalert2';
 
 @Component({
   selector: 'app-registrar-user',
@@ -79,7 +80,14 @@ export class RegistrarUserComponent implements OnInit {
       .subscribe((data:any)=>{
         if(data.affectedRows>=1){
           this.mensajeError=false;
-          this.changeSuccessMessage("Añadido nuevo usuario");
+          // this.changeSuccessMessage("Añadido nuevo usuario");
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Usuario registrado con éxito',
+            showConfirmButton: false,
+            timer: 2000
+          })
           this.router.navigateByUrl('/registrarPet');
         }
         else{
@@ -90,7 +98,13 @@ export class RegistrarUserComponent implements OnInit {
       })
      }
      else{
-      this.changeSuccessMessage("de Contraseñas no son iguales"); 
+      // this.changeSuccessMessage("de Contraseñas no son iguales"); 
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Las contraseñas deben coincidir!',
+        
+      })
      }
     
   
