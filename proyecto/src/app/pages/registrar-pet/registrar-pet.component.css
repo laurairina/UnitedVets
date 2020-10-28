@@ -130,13 +130,13 @@ b
 }
 .input-container input:focus ~ #date,
 .input-container input:valid ~ #date{
-	top:-22px;
+	top:-14px;
 	font-size:15px;
 }
 
 .input-container input:focus ~ label,
 .input-container input:valid ~ label{
-	top:-20px;
+	top:-10px;
 	font-size:15px;
 }
 button
@@ -147,6 +147,7 @@ button
     color: #14151b;
     font-weight: bold;
     position: relative;
+    /* position: absolute; */
     outline: none;
     padding: 10px 50px;
     box-sizing: border-box;
