@@ -88,25 +88,88 @@ export class CitasComponent implements OnInit {
 
   confirmar(cita: Cita) {
     console.log(cita.id)
-    if (confirm("¿Desea borrar la cita de: " + cita.nombreP)) {
-      this.citaServicio.borrarCita(cita.id)
-        .subscribe((data) => {
-          console.log("cita eliminada");
-          console.log(data);
+    // if (confirm("¿Desea borrar la cita de: " + cita.nombreP)) {
+      // this.citaServicio.borrarCita(cita.id)
+      //   .subscribe((data) => {
+      //     console.log("cita eliminada");
+      //     console.log(data);
 
-          this.citaServicio.getCitas(this.usuarioService.getUsuario().id)
-            .subscribe((data: Cita[]) => {
-              this.citas = data;
-              this.collectionSize = this.citas.length;
-              this.refreshPaginas();
-              this.successMessage = '';
-            });
+      //     this.citaServicio.getCitas(this.usuarioService.getUsuario().id)
+      //       .subscribe((data: Cita[]) => {
+      //         this.citas = data;
+      //         this.collectionSize = this.citas.length;
+      //         this.refreshPaginas();
+      //         this.successMessage = '';
+      //       });
 
+      //   });
+      Swal.fire({
+        title: 'Seguro que desea borrar esta cita?',
+        text: "Si acepta no se podrá revertir esta acción!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, borrar!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.citaServicio.borrarCita(cita.id)
+          .subscribe((data) => {
+            console.log("cita eliminada");
+            console.log(data);
+  
+            this.citaServicio.getCitas(this.usuarioService.getUsuario().id)
+              .subscribe((data: Cita[]) => {
+                this.citas = data;
+                this.collectionSize = this.citas.length;
+                this.refreshPaginas();
+                this.successMessage = '';
+              });
+  
+        
         });
+          Swal.fire(
+            'Borrada!',
+            'La cita ha sido borrada.',
+            'success'
+          )
+        }
+      })
     }
+    // Swal.fire({
+    //   title: 'Seguro que desea borrar este usuario?',
+    //   text: "Si acepta no se podrá revertir esta acción!",
+    //   icon: 'warning',
+    //   showCancelButton: true,
+    //   confirmButtonColor: '#3085d6',
+    //   cancelButtonColor: '#d33',
+    //   confirmButtonText: 'Si, borrar!'
+    // }).then((result) => {
+    //   if (result.isConfirmed) {
+    //     this.citaServicio.borrarCita(cita.id)
+    //     .subscribe((data) => {
+    //       console.log("cita eliminada");
+    //       console.log(data);
 
+    //       this.citaServicio.getCitas(this.usuarioService.getUsuario().id)
+    //         .subscribe((data: Cita[]) => {
+    //           this.citas = data;
+    //           this.collectionSize = this.citas.length;
+    //           this.refreshPaginas();
+    //           this.successMessage = '';
+    //         });
 
-  }
+      
+    //   });
+    //     Swal.fire(
+    //       'Borrado!',
+    //       'El usuario ha sido borrado.',
+    //       'success'
+    //     )
+    //   }
+    // })
+
+  
 
   open(content, valor: string, cita: Cita) {
     console.log(cita);
@@ -160,15 +223,16 @@ export class CitasComponent implements OnInit {
       .subscribe((data: any) => {
         if (data.affectedRows >= 1) {
           this.changeSuccessMessage("Modificado " + this.nombreC);
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Cita modificada con éxito',
+            showConfirmButton: false,
+            timer: 2000
+          })
         }
       });
-      Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: 'Cita modificada con éxito',
-        showConfirmButton: false,
-        timer: 2000
-      })
+      
 
   }
 
@@ -191,18 +255,19 @@ export class CitasComponent implements OnInit {
                   this.successMessage = '';
                 });
               this.changeSuccessMessage("Cita añadida con Exito " + this.nombreC);
+              Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Cita añadida con éxito',
+                showConfirmButton: false,
+                timer: 2000
+              })
             }
 
           });
 
       });
-      Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title: 'Cita añadida con éxito',
-        showConfirmButton: false,
-        timer: 2000
-      })
+      
 
   }
 

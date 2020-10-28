@@ -68,9 +68,20 @@ export class HomeAdminComponent implements OnInit {
 
   confirmar(use: User) {
 
-    let valor = confirm("¿Desea borrar el usuario X?");
-    if (valor) {
-      this.usuarioService.borrarUsuario(use.id)
+    // let valor = confirm("¿Desea borrar el usuario X?");
+    // if (valor) {
+
+      Swal.fire({
+        title: 'Seguro que desea borrar este usuario?',
+        text: "Si acepta no se podrá revertir esta acción!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, borrar!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.usuarioService.borrarUsuario(use.id)
         .subscribe((data: any) => {
           if (data.affectedRows >= 1) {
             this.usuarioService.obtenerUsuarios()
@@ -84,8 +95,31 @@ export class HomeAdminComponent implements OnInit {
             console.log("No se ha eliminado usuario");
           }
         });
-    }
+          Swal.fire(
+            'Borrado!',
+            'El usuario ha sido borrado.',
+            'success'
+          )
+        }
+      })
+      // this.usuarioService.borrarUsuario(use.id)
+      //   .subscribe((data: any) => {
+      //     if (data.affectedRows >= 1) {
+      //       this.usuarioService.obtenerUsuarios()
+      //       .subscribe((data: User[]) => {
+      //         this.usuarios = data;
+      //         console.log("Todos los usuarios guardados")
+      //       });
+      //       console.log("Eliminado usuario");
+      //     }
+      //     else {
+      //       console.log("No se ha eliminado usuario");
+      //     }
+      //   });
+    
   }
+
+  
 
   open(content, user:User) {
      this.user= user;    

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms'
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { UsuariosService } from 'src/app/shared/usuarios.service';
 import { User } from 'src/app/model/user';
 import {Subject} from 'rxjs';
@@ -18,6 +18,9 @@ export class RegistrarUserComponent implements OnInit {
     'Cliente',
     'Veterinario'
   ];
+
+  registerForm: FormGroup
+
 
   public nombre:string;
   public apellido1:string;
@@ -39,9 +42,21 @@ export class RegistrarUserComponent implements OnInit {
   staticAlertClosed = false;
   public mensajeError=false;
 
-  constructor(public usuarioService:UsuariosService, private router: Router) {
+  constructor(public usuarioService:UsuariosService, private fb: FormBuilder, private router: Router) {
     this.successMessage = '';
+    let formControls = {
+      password: new FormControl('',[
+        Validators.required,
+        Validators.minLength(6)
+      ]),
+      repassword: new FormControl('',[
+        Validators.required,
+      ])
+    }
+    this.registerForm = this.fb.group(formControls)
    }
+   get password() { return this.registerForm.get('password') }
+  get repassword() { return this.registerForm.get('repassword') }
 
   ngOnInit(): void {
       //Mensaje de alerta

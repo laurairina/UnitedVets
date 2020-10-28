@@ -7,6 +7,7 @@ import { HistorialService } from 'src/app/shared/historial.service';
 import { UsuariosService } from 'src/app/shared/usuarios.service';
 import { MascotaService } from 'src/app/shared/mascota.service';
 import { Mascota } from 'src/app/model/mascota';
+import  Swal  from 'sweetalert2';
 
 
 
@@ -122,8 +123,15 @@ export class HistorialesComponent implements OnInit {
    }
 
   anadir(){
-    this.changeSuccessMessage("Guardados");
+    // this.changeSuccessMessage("Guardados");
      console.log(this.ananmnesis +"   "+this.tratamiento)
+     Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Datos guardados con éxito',
+      showConfirmButton: false,
+      timer: 2000
+    })
     
      this.historialService.getUsuarioMascota(this.nombreM,this.nombreP)
      .subscribe((dataUM:any) =>{
@@ -147,11 +155,19 @@ export class HistorialesComponent implements OnInit {
     .subscribe((data: any) => {
       if (data.affectedRows >= 1) {
         console.log("Usuario modificado");
-        this.changeSuccessMessage("Modificado Datos");
+        // this.changeSuccessMessage("Modificado Datos");
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Datos Modificados con éxito',
+          showConfirmButton: false,
+          timer: 2000
+        })
       }
       else {
         console.log("No se ha modificado usuario");
         this.changeSuccessMessage("No se ha Modificado");
+        
       }
     });
     

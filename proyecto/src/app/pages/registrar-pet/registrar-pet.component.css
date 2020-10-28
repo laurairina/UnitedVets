@@ -76,11 +76,32 @@ b
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent; */
 }
+
+#date{
+    position:absolute;
+	top:0px;
+    left:0px;
+    width: 100%;
+	font-size:13px;
+	color:#fff;	
+    pointer-events:none;
+	transition: all 0.5s ease-in-out;
+}
 .input-container{
 	position:relative;
     margin-bottom:5%;
     width: 100%;
     height: 80%;
+}
+.input-container #date{
+	position:absolute;
+	top:-17px;
+    left:0px;
+    width: 100%;
+	font-size:15px;
+	color:#fff;	
+    pointer-events:none;
+	transition: all 0.5s ease-in-out;
 }
 .input-container label{
 	position:absolute;
@@ -106,6 +127,11 @@ b
  border:none;	
  outline:none;
  border-bottom:1px solid #e74c3c;	
+}
+.input-container input:focus ~ #date,
+.input-container input:valid ~ #date{
+	top:-22px;
+	font-size:15px;
 }
 
 .input-container input:focus ~ label,
