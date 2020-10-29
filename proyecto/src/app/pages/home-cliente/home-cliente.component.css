@@ -37,10 +37,7 @@ p {
     left: 90%;
 }
 
-#whatsapplink:hover .move-up {
-    transform: translate(0,-350px);
-    -webkit-transform: translate(0,-350px);
-    -o-transform: translate(0,-350px); 
-    -moz-transform: translate(0,-350px);
+.fuente{
+    color:honeydew;
 }
 

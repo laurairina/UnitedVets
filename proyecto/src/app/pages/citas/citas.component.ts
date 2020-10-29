@@ -32,7 +32,14 @@ export class CitasComponent implements OnInit {
     '10:00',
     '10:30',
     '11:00',
-    '11:30'
+    '11:30',
+    '12:00',
+    '12:30',
+    '15:00',
+    '15:30',
+    '16:00',
+    '16:30',
+    '17:00'
   ];
   public opcionS: string;
   public nombreC: string;
@@ -46,6 +53,7 @@ export class CitasComponent implements OnInit {
   public citaNueva: Cita;
   public dniCN: string;
   public nombreMN: string;
+  public citaAux: Cita;
   constructor(private modalService: NgbModal, public citaServicio: CitasService, public usuarioService: UsuariosService) {
 
 
@@ -184,11 +192,12 @@ export class CitasComponent implements OnInit {
       this.btnEdit = false;
       this.citasEdit = null;
       let idVet = this.usuarioService.getUsuario().id;
-      this.citaNueva = new Cita(0, null, null, null, null, idVet, 0, null,null);
+      this.citaNueva = new Cita(0, null, null, null, null, idVet, "", null,null);
       this.dniCN = "";
       this.nombreMN = "";
     }
     else {
+      this.citaAux=cita;
       this.nombreC = cita.nombreP;
       this.apellidosC = cita.nombre;
       this.fechaC = cita.fecha;
@@ -222,7 +231,17 @@ export class CitasComponent implements OnInit {
     this.citaServicio.actualizarCita(citaA)
       .subscribe((data: any) => {
         if (data.affectedRows >= 1) {
-          this.changeSuccessMessage("Modificado " + this.nombreC);
+           let encontrado:boolean=false;
+           let i:number=0;
+            while(i<this.citas.length && !encontrado){
+                if(this.citas[i]==this.citaAux){
+                   this.citas[i].fecha=this.fechaC;
+                   this.citas[i].hora=this.opcionS;
+                   encontrado=true;
+                }
+              i++;
+            }
+
           Swal.fire({
             position: 'center',
             icon: 'success',
@@ -242,7 +261,11 @@ export class CitasComponent implements OnInit {
     this.citaServicio.buscaIdMascota(this.dniCN, this.nombreMN)
       .subscribe((data: number) => {
         this.citaNueva.mascota_id = data[0].id;
-
+       
+        this.citaServicio.getCitasMax().subscribe((dataC)=>{
+          console.log(dataC) 
+          this.citaNueva.cita_id="CITA0" + (dataC[0].max + 1);
+     
         this.citaServicio.insertarCita(this.citaNueva)
           .subscribe((data: any) => {
             if (data.affectedRows >= 1) {
@@ -265,6 +288,8 @@ export class CitasComponent implements OnInit {
             }
 
           });
+
+        });
 
       });
       

@@ -83,5 +83,10 @@ buscaIdMascota(dni:string, mascota:string)
    
    return this.http.post(this.url+"citas/listaCliente",httpOptions)  
   }
+
+  getCitasMax()
+  {
+    return this.http.get(this.url +"citas/max")
+  }
  
 }

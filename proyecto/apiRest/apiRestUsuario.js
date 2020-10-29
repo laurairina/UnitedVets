@@ -367,6 +367,14 @@ app.get('/citas',
     
     });
 
+    app.get('/citas/max',
+(req, res) => {
+        sql="SELECT MAX(id) as max from citas";    
+        ejecutar(sql,params,res);
+        console.log("MAX de citas");
+ 
+});
+
     
 //---------------------------------PUT MODIFICAR CITAS-----------------------------------------
 //UPDATE citas SET fecha="2020-10-21", hora="18:00" WHERE id=1   
