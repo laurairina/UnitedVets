@@ -92,7 +92,7 @@
 
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Contraseña</label>
-                                            <input type="text" [(ngModel)]="password1" required
+                                            <input type="password" [(ngModel)]="password1" required
                                                 [ngModelOptions]="{standalone: true}" id="password1"
                                                 placeholder="Contraseña" formControlName="password">
                                         </div>
@@ -100,7 +100,7 @@
                                         <div class="form-group">
                                             <label for="confirmPassword">Confirmar contraseña</label>
                                             <input name="confirmPassword" [(ngModel)]="password2" required
-                                                [ngModelOptions]="{standalone: true}" type="text" id="password2"
+                                                [ngModelOptions]="{standalone: true}" type="password" id="password2"
                                                 placeholder="Contraseña2" formControlName="repassword">
                                         </div>
 
