@@ -5,11 +5,16 @@
     <p>Bienvenido {{usuarioService.usuario.nombre_usuario}} </p>
 </div>
 
+    <!-- chat -->
+    <a target="_blank"  href="https://api.whatsapp.com/send?phone=+34659654276&amp;text=Buenas, Necesito informacion" id="whatsapplink" class=" hidemobile box">
+        <mdb-icon fab icon="whatsapp fa-3x"  ngbTooltip="WhatsApp"  class="green-text pr-3 move-up"></mdb-icon>
+    </a>
+
 <div class="row">
     <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
     </div>
     <div class="card" style="width: 58rem;">
-        <ngb-carousel *ngIf="images">
+        <ngb-carousel *ngIf="images"  >
             <ng-template ngbSlide>
                 <div class="picsum-img-wrapper">
                     <img src="../../../assets/imagenes/lading9.jpg" alt="Random first slide" class="imgCarrusel">
@@ -69,29 +74,21 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>15/10/2020</td>
-                    <td>13:45</td>
-                    <td>Pepita </td>
-                    <td>Serpiente </td>
+                <tr  *ngFor="let cita of citas | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+                    <td>{{cita.fecha}}</td>
+                    <td>{{cita.hora}}</td>
+                    <td>{{cita.nombre}}</td>
+                    <td>{{cita.especie}}</td>
                 </tr>
-                <tr>
-                    <td>18/10/2020</td>
-                    <td>14:00</td>
-                    <td>Tadeo </td>
-                    <td>Tarantula</td>
-                </tr>
+            
             </tbody>
         </table>
     </div>
 
 </div>
+<div class=" d-flex justify-content-between p-2">
+    <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
+        (pageChange)="refreshPaginas()">
+    </ngb-pagination>
+  </div>
 
-<!-- chat -->
-<!-- <div class="row">
-    <div class="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
-    </div>
-    <a target="_blank" title="Contact Us On WhatsApp" href="https://api.whatsapp.com/send?phone=+34659654276&amp;text=Buenas, Necesito informacion" class="whatsapplink hidemobile box">
-        <i class="material-icons fa fa-fw fa-whatsapp icono" title="chat">chat </i> Chat
-    </a>
-</div> -->

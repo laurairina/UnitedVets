@@ -287,7 +287,6 @@ app.post('/historial/ultimoId', function (req, res) {
     params=id
         //todos los usuarios
         sql="SELECT h.*, m.nombre, u.nombre as nombreP, m.usuario_id as usuario_id  FROM historial as h JOIN mascota as m ON(h.mascota_id=m.id) JOIN usuario as u ON(m.usuario_id=u.id) where m.id=? and h.fecha=(SELECT MAX(h.fecha) FROM historial as h JOIN mascota as m1 ON(h.mascota_id=m1.id) JOIN usuario as u ON(m1.usuario_id=u.id) where m1.id=m.id)"
-        //sql="SELECT h.*, m.nombre, u.nombre as nombreP FROM historial as h JOIN mascota as m ON(h.mascota_id=m.id) JOIN usuario as u ON(m.usuario_id=u.id) where m.id=? and h.fecha=(SELECT MAX(h.fecha) FROM historial as h JOIN mascota as m ON(h.mascota_id=m.id) JOIN usuario as u ON(m.usuario_id=u.id) where m.id=?)"
         ejecutar(sql,params,res);
         console.log("historial ultimo id "+ id)
 
@@ -332,7 +331,7 @@ app.get('/citas',
         if (idMed) {
             console.log("id medico es" + idMed);
             params = idMed;
-            sql = "SELECT c.*,m.nombre, u.nombre as nombreP FROM citas as c JOIN mascota as m ON(c.mascota_id=m.id) JOIN usuario as u ON(m.usuario_id=u.id) JOIN usuario as u1 ON (c.vet_id=u1.id) WHERE u1.id=?";
+            sql = "SELECT c.*,m.nombre, u.nombre as nombreP, m.especie FROM citas as c JOIN mascota as m ON(c.mascota_id=m.id) JOIN usuario as u ON(m.usuario_id=u.id) JOIN usuario as u1 ON (c.vet_id=u1.id) WHERE u1.id=?";
             ejecutar(sql, params, res);
  
             console.log("con id")
@@ -350,12 +349,25 @@ app.get('/citas',
         let fecha=req.body.fecha;
         params= new Array(id,fecha);
          
-            sql="SELECT c.*,m.nombre, u.nombre as nombreP FROM citas as c JOIN mascota as m ON(c.mascota_id=m.id) JOIN usuario as u ON(m.usuario_id=u.id) JOIN usuario as u1 ON (c.vet_id=u1.id) WHERE u1.id=? and c.fecha=?";
+            sql="SELECT c.*,m.nombre, u.nombre as nombreP, m.especie FROM citas as c JOIN mascota as m ON(c.mascota_id=m.id) JOIN usuario as u ON(m.usuario_id=u.id) JOIN usuario as u1 ON (c.vet_id=u1.id) WHERE u1.id=? and c.fecha=?";
             ejecutar(sql,params,res);
             console.log("fecha y id "+fecha +" "+id)
     
     });
 
+ //POST   "http://localhost:3000/citas/listaCliente    // u.id=4  fecha="2020-10-27" 
+
+     app.post('/citas/listaCliente', function (req, res) {
+        let id =req.body.id;
+        let fecha=req.body.fecha;
+        params= new Array(id,fecha);
+            sql="SELECT c.*,m.nombre, u.nombre as nombreP, m.especie FROM citas as c JOIN mascota as m ON(c.mascota_id=m.id) JOIN usuario as u ON(m.usuario_id=u.id) where u.id=? and  DATE(c.fecha)>= DATE(?)"
+            ejecutar(sql,params,res);
+            console.log("fecha hoy y id cliente "+fecha +" "+id)
+    
+    });
+
+    
 //---------------------------------PUT MODIFICAR CITAS-----------------------------------------
 //UPDATE citas SET fecha="2020-10-21", hora="18:00" WHERE id=1   
  
