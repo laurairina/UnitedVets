@@ -20,7 +20,7 @@
     <div class="row " id="top">
       <div class="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1 "></div>
       <div>
-        <ul *ngFor= "let usuario of usuarios; let i = index;">
+        <ul *ngFor= "let usuario of usuarios | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize;">
           <li>
             <div class="card" style="width: 15rem;">
               <div class="card-body row">
@@ -38,6 +38,13 @@
         
         </ul>
       </div>
+      
+    </div>
+
+    <div class="row">
+      <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize"
+        (pageChange)="refreshPaginas()">
+      </ngb-pagination>
     </div>
 </div>
 

@@ -226,5 +226,5 @@ export class HomeAdminComponent implements OnInit {
     .map((f, i) => ({ id: i + 1, ...f }))
     .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
   
-}
+  }
 }

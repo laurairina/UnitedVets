@@ -10,6 +10,9 @@ import { UsuariosService } from 'src/app/shared/usuarios.service';
 })
 export class ListaClientesComponent implements OnInit {
 
+  page = 1;
+  pageSize = 12;
+  collectionSize: number;
   public usuario:string;
   usuarios: User [] = []
   constructor(public usuarioService:UsuariosService,private router: Router) 
@@ -17,13 +20,20 @@ export class ListaClientesComponent implements OnInit {
     this.usuarioService.obtenerClientes()
     .subscribe((data:User[])=>{
        this.usuarios=data;
-      
+       this.collectionSize = this.usuarios.length;
        console.log(this.usuarios)
     });
   }
 
   ngOnInit(): void {
   }
+
+  refreshPaginas() {
+    this.usuarios
+      .map((f, i) => ({ id: i + 1, ...f }))
+      .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
+    
+    }
 
   public mostrarPerfil(usuario:User){
     this.usuarioService.userActual=null;
