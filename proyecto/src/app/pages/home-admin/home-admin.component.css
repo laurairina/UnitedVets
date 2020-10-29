@@ -5,9 +5,15 @@ img{
 
 #margenRol{
     margin-top: 5%;
+    margin-left: 20px;
 }
 
-button{
+#margenApellidos{
+    margin-top: 5%;
+    margin-left: 30px;
+}
+
+.botonBuscar{
     margin-left:30%;
     margin-top: 5%;
 }
@@ -35,7 +41,8 @@ ul{
 
 .alinearBoton{
     display: flex;
-    margin-left: 12px;
+    
+   margin-top: 20px;
 }
 
 

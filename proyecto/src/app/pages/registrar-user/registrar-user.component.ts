@@ -76,49 +76,77 @@ export class RegistrarUserComponent implements OnInit {
 
   public registrar(){
 
-    // let passEncriptada = this.encriptar.set('123456$#@$^@1ERF',this.password1)
-    // let passDesencriptada = this.encriptar.get('123456$#@$^@1ERF',passEncriptada)
-
-    // console.log(passEncriptada);
-    // console.log(passDesencriptada);
-    
-    
-     if(this.password1== this.password2){
-      let user:User= new User(0, this.usuario, this.encriptar.set('123456$#@$^@1ERF',this.password1), this.tipoDeUsuario,this.nombre, this.apellido1, this.apellido2, this.fecha, this.dni, this.email, this.telefono, this.direccion, this.nColegiado, this.especialidad, null);
-      this.usuarioService.insertarUsuario(user)
-      .subscribe((data:any)=>{
-        if(data.affectedRows>=1){
-          this.mensajeError=false;
-          // this.changeSuccessMessage("Añadido nuevo usuario");
-          Swal.fire({
-            position: 'center',
-            icon: 'success',
-            title: 'Usuario registrado con éxito',
-            showConfirmButton: false,
-            timer: 2000
-          })
-          this.router.navigateByUrl('/registrarPet');
-        }
-        else{
-          this.mensajeError=true;
-          this.changeSuccessMessage("No se añadido usuario"); 
-        }
+      this.usuarioService.obtenerUsuario("").subscribe((datos:User[])=>
+      {
+        let usuarioEncotnrado:boolean = false
+        let i:number = 0
         
-      })
-     }
-     else{
-      // this.changeSuccessMessage("de Contraseñas no son iguales"); 
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Las contraseñas deben coincidir!',
-        
-      })
-     }
-    
-  
+        while(i<datos.length && usuarioEncotnrado == false)
+        {
+          if(datos[i].nombre_usuario == this.usuario)
+          {
+            console.log(datos[i].nombre_usuario);
+            
+            usuarioEncotnrado = true
+            i=datos.length
+          }
 
-    console.log(this.nombre+this.apellido1+ this.apellido2+ this.fecha+this.email+this.telefono+this.direccion+this.dni +this.tipoDeUsuario+this.usuario+this.password1+this.password2)
+          else
+          {
+            i++
+          }
+        }
+            
+        
+          
+        
+            if(this.password1== this.password2 && usuarioEncotnrado == false){
+             let user:User= new User(0, this.usuario, this.encriptar.set('123456$#@$^@1ERF',this.password1), this.tipoDeUsuario,this.nombre, this.apellido1, this.apellido2, this.fecha, this.dni, this.email, this.telefono, this.direccion, this.nColegiado, this.especialidad, null);
+             this.usuarioService.insertarUsuario(user)
+             .subscribe((data:any)=>{
+               if(data.affectedRows>=1){
+                 this.mensajeError=false;
+                 // this.changeSuccessMessage("Añadido nuevo usuario");
+                 Swal.fire({
+                   position: 'center',
+                   icon: 'success',
+                   title: 'Usuario registrado con éxito',
+                   showConfirmButton: false,
+                   timer: 2000
+                 })
+                 this.router.navigateByUrl('/registrarPet');
+               }
+               else{
+                 this.mensajeError=true;
+                 this.changeSuccessMessage("No se añadido usuario"); 
+               }
+             
+             })
+            }
+            else if (this.password1!= this.password2){
+             // this.changeSuccessMessage("de Contraseñas no son iguales"); 
+             Swal.fire({
+               icon: 'error',
+               title: 'Oops...',
+               text: 'Las contraseñas deben coincidir!',
+            
+             })
+            }
+
+            else if (usuarioEncotnrado == true)
+            {
+              Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'El nombre de usuario ya existe!',
+             
+              })
+            }
+          
+          
+          
+            console.log(this.nombre+this.apellido1+ this.apellido2+ this.fecha+this.email+this.telefono+this.direccion+this.dni +this.tipoDeUsuario+this.usuario+this.password1+this.password2)
+        })
   }
 
   

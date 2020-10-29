@@ -28,6 +28,9 @@ import { Router } from '@angular/router';
 })
 export class HomeAdminComponent implements OnInit {
 
+  page = 1;
+  pageSize = 12;
+  collectionSize: number;
   closeResult = '';
   public usuarios: User[];
   private _success = new Subject<string>();
@@ -50,6 +53,7 @@ export class HomeAdminComponent implements OnInit {
     this.usuarioService.obtenerUsuarios()
       .subscribe((data: User[]) => {
         this.usuarios = data;
+        this.collectionSize = this.usuarios.length;
         console.log("Todos los usuarios guardados")
       });
 
@@ -217,4 +221,10 @@ export class HomeAdminComponent implements OnInit {
   this.router.navigateByUrl('/registrarPet')
  }
 
+ refreshPaginas() {
+  this.usuarios
+    .map((f, i) => ({ id: i + 1, ...f }))
+    .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
+  
+}
 }
