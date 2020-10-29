@@ -14,7 +14,7 @@
               <div class="input-group">
                 <div ><b >Nombre Cliente:   </b><input [(ngModel)]="nombreP" class="texto "type="text" id="nombreP" [ngModelOptions]="{standalone: true}"  /> </div> 
                 <div >
-                  <b>Nombre de Mascota   </b>
+                  <b id="nMascota">Nombre de Mascota   </b>
                   <input *ngIf="opciones.length ==0" [(ngModel)]="nombreM" class="texto "type="text" id="nombreM" [ngModelOptions]="{standalone: true}"  />
                   <select *ngIf="opciones.length !=0" name="nombreM" [(ngModel)]="nombreM">
                    <option value="">Seleccionar mascota</option>
@@ -25,7 +25,7 @@
                   <!--<b  >Nombre de Mascota:   </b>
                   <input [(ngModel)]="nombreM" class="texto" type="text" id="nombreM" [ngModelOptions]="{standalone: true}">--> 
                 </div> 
-                <div ><b >Fecha de elaboración:   </b><input [(ngModel)]="fecha"  class="texto" type="date" id="fecha" [ngModelOptions]="{standalone: true}"/> </div> 
+                <div ><b id="fElaboracion">Fecha de elaboración:   </b><input [(ngModel)]="fecha"  class="texto" type="date" id="fecha" [ngModelOptions]="{standalone: true}"/> </div> 
                 <button class="btn" (click)="buscar()" id="botonLupa" type="button" ><i class="material-icons">
                   search
               </i></button>            
