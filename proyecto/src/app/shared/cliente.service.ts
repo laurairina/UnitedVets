@@ -10,7 +10,6 @@ export class ClienteService {
  
   public cliente:Persona;
   private url= "http://localhost:3000/";
-  public listaPersona:Persona[]=[new Persona("Tania","Morales","Negrete","1991/10/01", "509230671","tania@gmail.com","12345678","Av. America 51"),new Persona("Paul","Musenan", "","1991/10/01", "439230671","paul@gmail.com","22345678","Av. America 42"),new Persona("Daniel","Vera","Montelongo","1991/10/01", "119230671","dani@gmail.com","66345678","Av. America 57"),new Persona("Laura", "Morales","Morales","1991/10/01","719230671","laura@gmail.com","71345678","Av. America 71")]
   constructor(private http: HttpClient) {
     this.cliente=null;
   }

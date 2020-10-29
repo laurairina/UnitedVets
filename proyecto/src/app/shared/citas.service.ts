@@ -75,28 +75,13 @@ buscaIdMascota(dni:string, mascota:string)
    return this.http.post(this.url+"citas/listaHoy",httpOptions)  
   }
 
- /* 
-   buscar(usuario:string):User{
-    let user:User;
-    let i:number=0;
-    let encontrado:boolean;
+  obtenerCitasCliente(id:number,fecha:string){
  
-      return user; 
+    let httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),id,fecha
+    };
+   
+   return this.http.post(this.url+"citas/listaCliente",httpOptions)  
   }
  
- obtenerUsuarios(){
-    return this.http.get(this.url);
-  }
- 
-  insertarUsuario(use:User){
-     return this.http.post(this.url,use);
-  }
- 
-  actualizarUsuario(use:User){
-   return this.http.put(this.url, use);
-  }
- 
-  borrarUsuario(id:User){
-    return this.http.delete(this.url +"citas?id="+id);
-  } */
 }

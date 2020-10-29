@@ -184,7 +184,7 @@ export class CitasComponent implements OnInit {
       this.btnEdit = false;
       this.citasEdit = null;
       let idVet = this.usuarioService.getUsuario().id;
-      this.citaNueva = new Cita(0, null, null, null, null, idVet, 0, null);
+      this.citaNueva = new Cita(0, null, null, null, null, idVet, 0, null,null);
       this.dniCN = "";
       this.nombreMN = "";
     }
@@ -217,7 +217,7 @@ export class CitasComponent implements OnInit {
   }
 
   editar() {
-    let citaA = new Cita(this.citasEdit.id, this.citasEdit.mascota_id, this.citasEdit.nombre, this.fechaC, this.opcionS, this.citasEdit.vet_id, this.citasEdit.cita_id, this.citasEdit.nombreP)
+    let citaA = new Cita(this.citasEdit.id, this.citasEdit.mascota_id, this.citasEdit.nombre, this.fechaC, this.opcionS, this.citasEdit.vet_id, this.citasEdit.cita_id, this.citasEdit.nombreP,this.citasEdit.especie)
     console.log(this.nombreC + this.apellidosC + this.fechaC + this.opcionS);
     this.citaServicio.actualizarCita(citaA)
       .subscribe((data: any) => {
