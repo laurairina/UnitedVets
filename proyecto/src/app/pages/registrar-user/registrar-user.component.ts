@@ -5,6 +5,7 @@ import { User } from 'src/app/model/user';
 import {Subject} from 'rxjs';
 import {debounceTime} from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { EncrDecrServiceService } from 'src/app/shared/encr-decr-service.service';
 
 @Component({
   selector: 'app-registrar-user',
@@ -39,7 +40,7 @@ export class RegistrarUserComponent implements OnInit {
   staticAlertClosed = false;
   public mensajeError=false;
 
-  constructor(public usuarioService:UsuariosService, private router: Router) {
+  constructor(public usuarioService:UsuariosService, private router: Router, private encriptar: EncrDecrServiceService) {
     this.successMessage = '';
    }
 
@@ -58,8 +59,16 @@ export class RegistrarUserComponent implements OnInit {
   }
 
   public registrar(){
+
+    // let passEncriptada = this.encriptar.set('123456$#@$^@1ERF',this.password1)
+    // let passDesencriptada = this.encriptar.get('123456$#@$^@1ERF',passEncriptada)
+
+    // console.log(passEncriptada);
+    // console.log(passDesencriptada);
+    
+    
      if(this.password1== this.password2){
-      let user:User= new User(0, this.usuario, this.password1, this.tipoDeUsuario,this.nombre, this.apellido1, this.apellido2, this.fecha, this.dni, this.email, this.telefono, this.direccion, this.nColegiado, this.especialidad, null);
+      let user:User= new User(0, this.usuario, this.encriptar.set('123456$#@$^@1ERF',this.password1), this.tipoDeUsuario,this.nombre, this.apellido1, this.apellido2, this.fecha, this.dni, this.email, this.telefono, this.direccion, this.nColegiado, this.especialidad, null);
       this.usuarioService.insertarUsuario(user)
       .subscribe((data:any)=>{
         if(data.affectedRows>=1){

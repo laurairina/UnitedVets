@@ -15,6 +15,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Persona } from 'src/app/model/persona';
 import { HttpHeaders } from '@angular/common/http';
 import { switchAll } from 'rxjs/operators';
+import { EncrDecrServiceService } from 'src/app/shared/encr-decr-service.service';
 
 
 @Component({
@@ -65,7 +66,7 @@ export class PerfilComponent implements OnInit {
   public nColegiado: string;
   public especialidad: string;
 
-  constructor(private fb: FormBuilder, public usuarioService: UsuariosService, public clienteService: ClienteService, public mascotaService: MascotaService, private rutaActiva: ActivatedRoute, private modalService: NgbModal ) {
+  constructor(private fb: FormBuilder, public usuarioService: UsuariosService, public clienteService: ClienteService, public mascotaService: MascotaService, private rutaActiva: ActivatedRoute, private modalService: NgbModal,private encriptar: EncrDecrServiceService ) {
     if(this.usuarioService.userActual!=null){
       console.log("Perfil de usuario Pasado  ");
        this.perfil=this.usuarioService.userActual;
@@ -133,7 +134,7 @@ export class PerfilComponent implements OnInit {
     this.email=perfil.email
     this.telefono=perfil.telefono
     this.direccion=perfil.direccion
-    this.password1=perfil.password
+    this.password1= this.encriptar.get('123456$#@$^@1ERF',perfil.password)
     this.nColegiado=perfil.nColegiado
     this.especialidad=perfil.especialidad
 
@@ -157,7 +158,7 @@ export class PerfilComponent implements OnInit {
 
   actualizarUsuario()
   {
-    this.perfil.password=this.password1
+    this.perfil.password= this.encriptar.set('123456$#@$^@1ERF',this.password1)
     this.perfil.email=this.email
     this.perfil.telefono=this.telefono
     this.perfil.direccion=this.direccion
