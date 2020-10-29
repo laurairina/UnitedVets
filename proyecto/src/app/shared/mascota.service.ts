@@ -45,4 +45,10 @@ export class MascotaService {
     console.log(httpOptions);
     return this.http.put(this.url+"mascota",httpOptions) 
   }
+
+  public uploadImageMascota( mascota:Mascota) {
+   
+    return this.http.put(this.url+"fotoMascota",mascota);
+  }
+
 }

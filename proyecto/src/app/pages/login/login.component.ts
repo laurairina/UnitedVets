@@ -39,16 +39,10 @@ export class LoginComponent implements OnInit {
     this._success.next(`Datos `+mensaje);
   }
   public enviar():void{
-
-    this.usuarioService.obtenerUsuario(this.usuario).subscribe((datos:User)=>{
-      console.log(datos[0].password);
+  
       let passEncrypt: string
       passEncrypt = this.encriptar.set('123456$#@$^@1ERF',this.password)
       console.log(passEncrypt);
-    //   let passDecrypt:string;
-    //   passDecrypt = this.encriptar.get('123456$#@$^@1ERF',passEncrypt)
-
-    // console.log(passDecrypt);
     
       this.usuarioService.loguearse(this.usuario,passEncrypt)
       .subscribe((data:User)=>{
@@ -85,12 +79,12 @@ export class LoginComponent implements OnInit {
          }
          
       });
-    })
+   
      //console.log(this.encriptar.set('123456$#@$^@1ERF',this.password));
     
-
-
   }
+
+  
 
 
 

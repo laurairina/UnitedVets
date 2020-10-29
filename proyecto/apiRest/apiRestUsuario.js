@@ -3,7 +3,10 @@ const express = require("express");
 const { get, request } = require("http");
 const app = express();
 app.use(bodyParser.urlencoded({extended: false}));
-app.use(bodyParser.json());
+//app.use(bodyParser.json());
+
+app.use(bodyParser.json({limit: "50mb"}));
+
 let mysql = require ("mysql")
 let cors = require('cors')
 app.use(cors())
@@ -114,8 +117,8 @@ app.post('/usuario/mascota', function (req, res) {
 //INSERT INTO `usuario` (`id`, `nombre`, `apellido1`, `apellido2`, `password`, `rol`, `fechaNacimiento`, `dni`, `foto`, `email`, `telefono`, `direccion`, `nColegiado`, `especialidad`, `nombre_usuario`) VALUES (NULL, 'Maria', 'Mendoza', 'Morales', '123', 'Cliente', '1991-04-12', '12312123', NULL, 'maria@gmail.com', '66662222', 'C/ Topacio 50,28360, Galapagar, Madrid', '', '', 'Maria')
 app.post('/usuario', function (req, res) {
     let data = req.body;
-    params = new Array( data.nombre, data.apellido1, data.apellido2, data.password, data.rol, data.fechaNacimiento, data.dni, data.email, data.telefono, data.direccion, data.nColegiado, data.especialidad, data.nombre_usuario);
-    sql= "INSERT INTO `usuario` ( `nombre`, `apellido1`, `apellido2`, `password`, `rol`, `fechaNacimiento`, `dni`, `email`, `telefono`, `direccion`, `nColegiado`, `especialidad`, `nombre_usuario`) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    params = new Array( data.nombre, data.apellido1, data.apellido2, data.password, data.rol, data.fechaNacimiento, data.dni, data.email, data.telefono, data.direccion, data.nColegiado, data.especialidad, data.nombre_usuario, "../../../assets/imagenes/Usuario-Vacio.png");
+    sql= "INSERT INTO `usuario` ( `nombre`, `apellido1`, `apellido2`, `password`, `rol`, `fechaNacimiento`, `dni`, `email`, `telefono`, `direccion`, `nColegiado`, `especialidad`, `nombre_usuario`, `foto`) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
 
     ejecutar(sql,params,res);
 
@@ -215,8 +218,8 @@ app.get('/usuario/perfil',
 
 app.post('/mascota', function (req, res) {
     let data = req.body;
-    params = new Array(data.nombre, data.chip, data.especie, data.raza, data.usuario_id, data.fechaNacimiento, data.alergias);
-    sql= "INSERT INTO `mascota` (`nombre`, `chip`, `especie`, `raza`, `usuario_id`, `fechaNacimiento`, `alergias`) VALUES ( ?, ?, ?, ?, ?, ?, ?)";
+    params = new Array(data.nombre, data.chip, data.especie, data.raza, data.usuario_id, data.fechaNacimiento, data.alergias,"../../../assets/imagenes/gatoperfil.webp");
+    sql= "INSERT INTO `mascota` (`nombre`, `chip`, `especie`, `raza`, `usuario_id`, `fechaNacimiento`, `alergias`, `foto`) VALUES ( ?, ?, ?, ?, ?, ?, ?,?)";
 
     console.log(data);
     console.log("holi");
@@ -402,6 +405,29 @@ app.delete('/citas', function(req, res) {
 });
 
 
+ 
+app.put('/foto', function(req, res) {
+    let data = req.body;
+   // console.log(data);
+
+    params = new Array(data.foto,data.id)
+    sql = "UPDATE usuario SET foto=? where id=?";
+ 
+    ejecutar(sql, params, res);
+ 
+});
+
+app.put('/fotoMascota', function(req, res) {
+    let data = req.body;
+
+    params = new Array(data.foto,data.id)
+    sql = "UPDATE mascota SET foto=? where id=?";
+ 
+    ejecutar(sql, params, res);
+ 
+});
+
+
 
 
 //---------- Metodo sin pagina y escuchar servidor   
@@ -415,6 +441,8 @@ app.use(
         //next();
     }
 );
+
+
 
 
 

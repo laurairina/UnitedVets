@@ -94,5 +94,12 @@ export class UsuariosService {
     return this.http.get(this.url + "cliente" )
   }
   
+  public uploadImage( use:User) {
+   
+    return this.http.put(this.url+"foto",use);
+  }
+
+
+
  
 }
