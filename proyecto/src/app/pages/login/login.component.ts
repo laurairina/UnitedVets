@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { UsuariosService } from 'src/app/shared/usuarios.service';
 import {Subject} from 'rxjs';
 import {debounceTime} from 'rxjs/operators';
+import { EncrDecrServiceService } from 'src/app/shared/encr-decr-service.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -20,7 +21,7 @@ export class LoginComponent implements OnInit {
   public successMessage:string;
   staticAlertClosed = false;
 
-  constructor(public usuarioService:UsuariosService,private router: Router) {
+  constructor(public usuarioService:UsuariosService,private router: Router,private encriptar: EncrDecrServiceService) {
     this.successMessage = '';
    }
 
@@ -39,42 +40,56 @@ export class LoginComponent implements OnInit {
   }
   public enviar():void{
 
-     
-    this.usuarioService.loguearse(this.usuario,this.password)
-    .subscribe((data:User)=>{
-       this.usuarioService.setUsuario(data[0]);
-       console.log("Enviar")
-       this.user =this.usuarioService.getUsuario();
-       console.log(this.user)
+    this.usuarioService.obtenerUsuario(this.usuario).subscribe((datos:User)=>{
+      console.log(datos[0].password);
+      let passEncrypt: string
+      passEncrypt = this.encriptar.set('123456$#@$^@1ERF',this.password)
+      console.log(passEncrypt);
+    //   let passDecrypt:string;
+    //   passDecrypt = this.encriptar.get('123456$#@$^@1ERF',passEncrypt)
 
-       if(this.user){
-        switch(this.user.rol){
-       
-          case"Admin":
-          console.log("admin")
-          this.router.navigateByUrl('/homeAdmin');
-      
-          break;
-   
-          case"Cliente":
-     
-          this.router.navigateByUrl('/homeCliente');
-           break;
-   
-          case"Veterinario":
+    // console.log(passDecrypt);
     
-          this.router.navigateByUrl('/homeMedico');
-          break; 
-          
-          default:
-          break;
-       }
-       }
-       else{
-        this.changeSuccessMessage(" de usuario incorrecto");
-       }
+      this.usuarioService.loguearse(this.usuario,passEncrypt)
+      .subscribe((data:User)=>{
+         this.usuarioService.setUsuario(data[0]);
+         console.log("Enviar")
+         this.user =this.usuarioService.getUsuario();
+         console.log(this.user)
+  
+         if(this.user){
+          switch(this.user.rol){
+         
+            case"Admin":
+            console.log("admin")
+            this.router.navigateByUrl('/homeAdmin');
+        
+            break;
+     
+            case"Cliente":
        
-    });
+            this.router.navigateByUrl('/homeCliente');
+             break;
+     
+            case"Veterinario":
+      
+            this.router.navigateByUrl('/homeMedico');
+            break; 
+            
+            default:
+            break;
+         }
+         }
+         else{
+          this.changeSuccessMessage(" de usuario incorrecto");
+         }
+         
+      });
+    })
+     //console.log(this.encriptar.set('123456$#@$^@1ERF',this.password));
+    
+
+
   }
 
 

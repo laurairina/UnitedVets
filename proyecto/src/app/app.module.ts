@@ -29,6 +29,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {MAT_FORM_FIELD_DEFAULT_OPTIONS} from '@angular/material/form-field';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { PreHistorialComponent } from './pages/pre-historial/pre-historial.component';
+import {EncrDecrServiceService} from '../app/shared/encr-decr-service.service';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,7 @@ import { PreHistorialComponent } from './pages/pre-historial/pre-historial.compo
     MDBBootstrapModule.forRoot(),
     AutocompleteLibModule
   ],
-  providers: [],
+  providers: [EncrDecrServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

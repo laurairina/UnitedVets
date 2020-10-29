@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User } from '../model/user';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { EncrDecrServiceService } from './encr-decr-service.service';
 
 
 @Injectable({
@@ -11,7 +12,7 @@ export class UsuariosService {
   public userActual:User;
   private url= "http://localhost:3000/";
   //public lista:User[]=[new User(1,"dani","dani01", "Admin" ),new User(2,"tania","tania01", "Cliente" ),new User(3,"paul","paul01", "Cliente"), new User(4,"laura","laura01", "Medico" )];
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient,private encriptar: EncrDecrServiceService) { 
 
     this.usuario=null;
 
