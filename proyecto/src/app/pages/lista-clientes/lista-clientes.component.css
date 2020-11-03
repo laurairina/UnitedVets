@@ -3,6 +3,10 @@ img{
     width: 60px;
 }
 
+#titulo{
+    margin-top: 25px
+}
+
 #margenRol{
     margin-top: 5%;
 }
@@ -51,7 +55,11 @@ ul{
 }
 
 
-
+p {
+    color: black;
+    font-size: 35px;
+    font-weight: 350;
+}
 /* .main-secction {
     box-shadow: 10px 10px 10px;
 } */

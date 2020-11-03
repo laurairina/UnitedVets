@@ -1,9 +1,19 @@
+#titulo{
+    margin-top: 25px
+}
+
+p {
+    color: black;
+    font-size: 35px;
+    font-weight: 350;
+}
 
 .formA{
     padding-top: 10px;
     width: 40%;
     margin: 0 auto;
     padding-bottom: 7px;
+    margin-top: 5%;
 }
 .texto{
     width: 130px;

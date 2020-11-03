@@ -259,7 +259,19 @@ export class CitasComponent implements OnInit {
 
   anadir() {
     this.citaServicio.buscaIdMascota(this.dniCN, this.nombreMN)
-      .subscribe((data: number) => {
+      .subscribe((data: any) => {
+
+        if(data.error == true)
+        {
+          this.changeSuccessMessage("Datos incorrectos" );
+          Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'Datos incorrectos',
+            showConfirmButton: false,
+            timer: 2000
+          })
+        }
         this.citaNueva.mascota_id = data[0].id;
        
         this.citaServicio.getCitasMax().subscribe((dataC)=>{

@@ -361,7 +361,7 @@ app.get('/citas',
         let id =req.body.id;
         let fecha=req.body.fecha;
         params= new Array(id,fecha);
-            sql="SELECT c.*,m.nombre, u.nombre as nombreP, m.especie FROM citas as c JOIN mascota as m ON(c.mascota_id=m.id) JOIN usuario as u ON(m.usuario_id=u.id) where u.id=? and  DATE(c.fecha)>= DATE(?)"
+            sql="SELECT c.*,m.nombre, u.nombre as nombreP, m.especie FROM citas as c JOIN mascota as m ON(c.mascota_id=m.id) JOIN usuario as u ON(m.usuario_id=u.id) where u.id=? and  DATE(c.fecha)>= DATE(?) ORDER BY fecha"
             ejecutar(sql,params,res);
             console.log("fecha hoy y id cliente "+fecha +" "+id)
     

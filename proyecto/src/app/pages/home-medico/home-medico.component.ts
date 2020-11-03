@@ -6,6 +6,9 @@ import { Router } from '@angular/router';
 import { CitasService } from 'src/app/shared/citas.service';
 import { HistorialService } from 'src/app/shared/historial.service';
 import { Historial } from 'src/app/model/historial';
+import  Swal  from 'sweetalert2';
+import { Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home-medico',
@@ -16,7 +19,9 @@ export class HomeMedicoComponent implements OnInit {
 
  public citas: Cita [] = [];
  public fecha:string;
-
+ private _success = new Subject<string>();
+ public successMessage: string;
+ staticAlertClosed = false;
  page = 1;
  pageSize = 4;
  collectionSize: number;
@@ -51,10 +56,27 @@ export class HomeMedicoComponent implements OnInit {
     console.log(cita)
      this.historialService.historialUltimoId(cita.mascota_id)
      .subscribe((data:Historial) => {
-      this.historialService.historial=data[0];
-      console.log("Ultimo historial de cita ")
-      console.log(data);
-      this.router.navigateByUrl('/historiales/')
+       
+       if (data[0] == undefined)
+       {
+        this.changeSuccessMessage("No existen historiales" );
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'No esxisten historiales',
+          showConfirmButton: false,
+          timer: 2000
+        })
+       }
+
+       else
+       {
+        this.historialService.historial=data[0];
+        console.log("Ultimo historial de cita ")
+        console.log(data);
+        this.router.navigateByUrl('/historiales/')
+       }
+
     });
 
    
@@ -93,5 +115,8 @@ export class HomeMedicoComponent implements OnInit {
     console.log(this.citas)
   }
 
+  public changeSuccessMessage(mensaje: string) {
+    this._success.next(`Datos ` + mensaje);
+  }
 
 }
