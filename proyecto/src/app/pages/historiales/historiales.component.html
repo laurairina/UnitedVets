@@ -16,7 +16,7 @@
                 <div >
                   <b id="nMascota">Nombre de Mascota   </b>
                   <input *ngIf="opciones.length ==0" [(ngModel)]="nombreM" class="texto "type="text" id="nombreM" [ngModelOptions]="{standalone: true}"  />
-                  <select *ngIf="opciones.length !=0" name="nombreM" [(ngModel)]="nombreM">
+                  <select *ngIf="opciones.length !=0" name="nombreM" [(ngModel)]="nombreM" (change)='eleccionMascota(nombreM)'>
                    <option value="">Seleccionar mascota</option>
                    <option *ngFor="let opcion of opciones" [value]="opcion" >
                        {{opcion}}
@@ -25,8 +25,17 @@
                   <!--<b  >Nombre de Mascota:   </b>
                   <input [(ngModel)]="nombreM" class="texto" type="text" id="nombreM" [ngModelOptions]="{standalone: true}">--> 
                 </div> 
-                <div ><b id="fElaboracion">Fecha de elaboración:   </b><input [(ngModel)]="fecha"  class="texto" type="date" id="fecha" [ngModelOptions]="{standalone: true}"/> </div> 
-                <button class="btn" (click)="buscar()" ngbTooltip="Buscar" id="botonLupa" type="button" ><i class="material-icons">
+                <div *ngIf="editBoton==true"><b id="fElaboracion">Fecha de elaboración:   </b><input [(ngModel)]="fecha"  class="texto" type="date" id="fecha" [ngModelOptions]="{standalone: true}"/> </div> 
+                <div *ngIf="editBoton!=true" >
+                <b id="fElaboracion">Fecha </b>  
+                <select *ngIf="opciones.length !=0" name="fecha" [(ngModel)]="fecha" >
+                  <option value="">Seleccionar Fecha</option>
+                  <option *ngFor="let opcionF of opcionesF" [value]="opcionF" >
+                      {{opcionF}}
+                  </option>
+                 </select>
+                </div>  
+                <button *ngIf="editBoton!=true" class="btn" (click)="buscar()" ngbTooltip="Buscar" id="botonLupa" type="button" ><i class="material-icons">
                   search
               </i></button>            
               </div>
@@ -53,7 +62,7 @@
 
 
          <div class="row alinear botones">
-            <button *ngIf="!editBoton && usuarioService.usuario.rol!='Cliente'; else esFalsoM" (click)= "modificar()" class="btn  btn-outline-primary my-2 my-sm-0" type="submit" [disabled]="editBoton">Modificar historia</button>
+            <button *ngIf="!editBoton && usuarioService.usuario.rol!='Cliente'; else esFalsoM" (click)= "modificar()" class="btn  btn-outline-primary my-2 my-sm-0" type="submit" [disabled]="editBotonF">Modificar historia</button>
             <button *ngIf="editBoton; else esFalsoM" (click)="anadir()" class="btn  btn-outline-primary my-2 my-sm-0" type="submit" [disabled]="!editBoton">Crear nueva historia</button>
             <ng-template #esFalsoM>  
             </ng-template>

@@ -27,9 +27,11 @@ export class PreHistorialComponent implements OnInit {
   public anyoActual: string;
   public fechaActual: string;
   public nuevoHistorial: Historial = null;
+  public nombre:string;
   
   constructor(public usuarioService:UsuariosService,private router: Router, private clienteService: ClienteService, private mascotaService: MascotaService, private historialService: HistorialService) { 
     this.historialService.historial=null;
+    this.nombre=null;
     console.log("PreHistoriales")
     this.historialService.obtenerHistoriales()
     .subscribe((data: Historial[]) => {
@@ -83,20 +85,20 @@ export class PreHistorialComponent implements OnInit {
   }
 
 
-  buscarCliente(nombre:string)
+  buscarCliente()
   {
     let clientesFiltrados: Historial [] = []
     
     for(let i: number = 0; i< this.historiales.length; i++)
     {
-      if(this.historiales[i].nombreP === nombre)
+      if(this.historiales[i].nombreP === this.nombre)
       {
         clientesFiltrados.push(this.historiales[i])
       }
     }
 
 
-    console.log("******  "+nombre)
+    console.log("******  "+this.nombre)
     console.log(clientesFiltrados)
     if (clientesFiltrados.length!=0)
       {

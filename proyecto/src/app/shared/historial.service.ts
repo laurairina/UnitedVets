@@ -10,100 +10,111 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class HistorialService {
 
   public historial: Historial;
-  public historiales: Historial [];
-  public historialesCliente: Historial [];
-  public fechaActual:string;
+  public historiales: Historial[];
+  public historialesCliente: Historial[];
+  public fechaActual: string;
   public editarBoton: boolean;
 
-  private url= "http://localhost:3000/";
-  constructor(private clienteService: ClienteService,private mascotaService: MascotaService,private http: HttpClient) 
-  {
+  private url = "http://localhost:3000/";
+  constructor(private clienteService: ClienteService, private mascotaService: MascotaService, private http: HttpClient) {
     this.historial = null;
-    this.historiales=[];
-    this.historialesCliente=[];
+    this.historiales = [];
+    this.historialesCliente = [];
     this.editarBoton = false
   }
 
-  public buscar(codigo:string):Historial{
+  public buscar(codigo: string): Historial {
 
-    let hist:Historial;
-    let i:number=0;
-    let encontrado:boolean;
+    let hist: Historial;
+    let i: number = 0;
+    let encontrado: boolean;
 
-      while(i<this.historiales.length && !encontrado){
-        if(this.historiales[i].hist_id.toLocaleLowerCase()== codigo.toLocaleLowerCase()){
-           hist=this.historiales[i];
-           encontrado=true;
-        }
-        i++;
+    while (i < this.historiales.length && !encontrado) {
+      if (this.historiales[i].hist_id.toLocaleLowerCase() == codigo.toLocaleLowerCase()) {
+        hist = this.historiales[i];
+        encontrado = true;
       }
-      return hist; 
+      i++;
+    }
+    return hist;
   }
 
-  public buscarFecha (fecha:string, nombreM:string): Historial
-  {
-    let hist:Historial;
-    let i:number=0;
-    let encontrado:boolean=false;
+  public buscarFecha(fecha: string, nombreM: string): Historial {
+    let hist: Historial;
+    let i: number = 0;
+    let encontrado: boolean = false;
 
-      while(i<this.historialesCliente.length && !encontrado){
-        console.log(this.historialesCliente[i].fecha +this.historialesCliente.length+"=="+ fecha+" "+nombreM)
-        if(this.historialesCliente[i].fecha === fecha && this.historialesCliente[i].nombre === nombreM){
-          hist=this.historialesCliente[i];
-           encontrado=true;
-          console.log("anamesis   "+ hist.anamnesis)
-        }
-        i++;
+    while (i < this.historialesCliente.length && !encontrado) {
+      console.log(this.historialesCliente[i].fecha + this.historialesCliente.length + "==" + fecha + " " + nombreM)
+      if (this.historialesCliente[i].fecha === fecha && this.historialesCliente[i].nombre === nombreM) {
+        hist = this.historialesCliente[i];
+        encontrado = true;
+        console.log("anamesis   " + hist.anamnesis)
       }
-      return hist; 
-  }
-  
-
-
-  obtenerHistoriales(){
-    return this.http.get(this.url+"historial");
+      i++;
+    }
+    return hist;
   }
 
-  modificarHistorial(historial:Historial){
-    return this.http.put(this.url+"historial", historial);
+  public fechaMascota(nombreM: string): string[] {
+    let fechas: string[] = [];
+
+    for (let i = 0; i < this.historialesCliente.length; i++) {
+
+      if (this.historialesCliente[i].nombre === nombreM) {
+        fechas.push(this.historialesCliente[i].fecha);
+
+      }
+
+    }
+    return fechas;
   }
 
-  historialesIdUsuario(id:number){ 
-    console.log("Service historialesIdUsuario "+id)
+
+
+
+  obtenerHistoriales() {
+    return this.http.get(this.url + "historial");
+  }
+
+  modificarHistorial(historial: Historial) {
+    return this.http.put(this.url + "historial", historial);
+  }
+
+  historialesIdUsuario(id: number) {
+    console.log("Service historialesIdUsuario " + id)
     let httpOptions = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),id
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }), id
     };
-   
-   return this.http.post(this.url+"historial/usuarioId",httpOptions)  
+
+    return this.http.post(this.url + "historial/usuarioId", httpOptions)
   }
 
 
-  historialUltimoId(id:number){ 
-     console.log("Service historialUltimoId "+id)
+  historialUltimoId(id: number) {
+    console.log("Service historialUltimoId " + id)
     let httpOptions = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),id
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }), id
     };
-   
-   return this.http.post(this.url+"historial/ultimoId",httpOptions)  
+
+    return this.http.post(this.url + "historial/ultimoId", httpOptions)
   }
 
-  crearHistorial(historial:Historial)
-  {
+  crearHistorial(historial: Historial) {
     return this.http.post(this.url + "historial", historial)
   }
 
-  getUsuarioMascota(mascota_nombre:string,usuario_nombre:string)
-  {console.log(mascota_nombre, usuario_nombre);
-  
+  getUsuarioMascota(mascota_nombre: string, usuario_nombre: string) {
+    console.log(mascota_nombre, usuario_nombre);
+
     let httpOptions = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),mascota_nombre,usuario_nombre
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }), mascota_nombre, usuario_nombre
     }
 
     return this.http.post(this.url + "mascota/id", httpOptions)
   }
 
-  getHistorialMax()
-  {
+  getHistorialMax() {
     return this.http.get(this.url + "historial/max")
   }
 

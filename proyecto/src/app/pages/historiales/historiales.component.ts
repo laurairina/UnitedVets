@@ -28,9 +28,11 @@ export class HistorialesComponent implements OnInit {
   public tratamiento:string;
   public ananmnesis:string;
   public editBoton:boolean;
+  public editBotonF:boolean;
+  public fechaH:string;
 
   public opciones:string[] = [];
-
+  public opcionesF:string[] = [];
 
   
   private _success = new Subject<string>();
@@ -43,7 +45,8 @@ export class HistorialesComponent implements OnInit {
     this.editBoton = this.historialService.editarBoton
 
     if(this.usuarioService.usuario.rol!="Cliente"){
-      console.log("historial pasado")
+     
+  
       console.log(this.historialService.historial);
        let historial:Historial;
        historial=this.historialService.historial;
@@ -52,19 +55,28 @@ export class HistorialesComponent implements OnInit {
        this.ananmnesis = historial.anamnesis;
        this.tratamiento = historial.tratamiento;
        this.fecha = historial.fecha;
-       console.log(historial.usuario_id);
-       this.historialService.historialesIdUsuario(historial.usuario_id) 
-       .subscribe((dataH: Historial[]) => {
-
-         this.mascotaService.obtenerMascotas(historial.usuario_id)
-         .subscribe((data: Mascota[]) => {
-          this.historialService.historialesCliente = dataH;
-          for (let index = 0; index < data.length; index++) {
-            this.opciones.push(data[index].nombre);
-          }
+       if(this.editBoton){
+        console.log("historial nuevo");
+        this.opciones=[];
+      }
+      else{
+        console.log("historial pasado");
+        console.log(historial.usuario_id);
+        this.historialService.historialesIdUsuario(historial.usuario_id) 
+        .subscribe((dataH: Historial[]) => {
+ 
+          this.mascotaService.obtenerMascotas(historial.usuario_id)
+          .subscribe((data: Mascota[]) => {
+           this.historialService.historialesCliente = dataH;
+           for (let index = 0; index < data.length; index++) {
+             this.opciones.push(data[index].nombre);
+           }
+           this.opcionesF=this.historialService.fechaMascota(historial.nombre);
+         });
+          console.log(dataH)
         });
-         console.log(dataH)
-       });
+      }
+ 
     }
     else{
       console.log("historial de rol cliente")
@@ -78,6 +90,7 @@ export class HistorialesComponent implements OnInit {
           for (let index = 0; index < data.length; index++) {
             this.opciones.push(data[index].nombre);
           }
+          this.opcionesF=[]; 
         });
         console.log(dataH)
       });
@@ -111,19 +124,22 @@ export class HistorialesComponent implements OnInit {
    }
 
   buscar(){
-    // this.onDateSelect(this.fromDate);
-    // this.nombreC=this.nombreCB;
-    // this.nombreM=this.nombreMB;
-    console.log(this.fecha)
-    let historial:Historial;  
-    this.historialService.historial=  this.historialService.buscarFecha(this.fecha, this.nombreM);
 
-    this.ananmnesis = this.historialService.historial.anamnesis;
-    this.tratamiento = this.historialService.historial.tratamiento;
+    this.historialService.historial=  this.historialService.buscarFecha(this.fecha, this.nombreM);
+    console.log(this.historialService.historial)
+    if(this.historialService.historial){
+      this.ananmnesis = this.historialService.historial.anamnesis;
+      this.tratamiento = this.historialService.historial.tratamiento;
+    }
+    else{
+      this.ananmnesis = null;
+      this.tratamiento = null;
+    }
+ 
    }
 
   anadir(){
-    // this.changeSuccessMessage("Guardados");
+  
      console.log(this.ananmnesis +"   "+this.tratamiento)
      Swal.fire({
       position: 'center',
@@ -155,7 +171,7 @@ export class HistorialesComponent implements OnInit {
     .subscribe((data: any) => {
       if (data.affectedRows >= 1) {
         console.log("Usuario modificado");
-        // this.changeSuccessMessage("Modificado Datos");
+
         Swal.fire({
           position: 'center',
           icon: 'success',
@@ -179,5 +195,15 @@ export class HistorialesComponent implements OnInit {
     this._success.next(`Datos `+mensaje);
   }
 
+  public eleccionMascota(mascota:string){
+    this.opcionesF=this.historialService.fechaMascota(mascota);
+    console.log(this.opcionesF)
+    if(this.opcionesF.length==0){
+      this.editBotonF=true;
+    }
+    else{
+      this.editBotonF=false;
+    }
+  }
 
 }

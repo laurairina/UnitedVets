@@ -5,10 +5,10 @@
     <div class="col-7 col-sm-7 col-md-7 col-lg-7 col-xl-7 ">
       
       <form class="form-inline ">
-        <input class="form-control mr-sm-2 " type="search" placeholder="Buscar cliente" #nombre aria-label="Buscar">
-        <button  class="btn  btn-outline-primary my-2 my-sm-0" (click)="buscarCliente(nombre.value)" type="submit">Buscar</button>
+        <input class="form-control mr-sm-2 " type="search" placeholder="Buscar cliente" [(ngModel)]="nombre" aria-label="Buscar"  [ngModelOptions]="{standalone: true}">
+        <button  class="btn  btn-outline-primary my-2 my-sm-0" (click)="buscarCliente()" type="submit">Buscar</button>
         
-        <form *ngIf="clienteBuscado == true" class="form-inline " id="filtrarCLiente" >
+        <form *ngIf="clienteBuscado == true && nombre" class="form-inline " id="filtrarCLiente" >
           <select class="form-control"  name="miselect" [(ngModel)]="seleccionado">
             <option [value]="historial.fecha" *ngFor="let historial of historiales">{{historial.fecha}} </option>
           </select>
