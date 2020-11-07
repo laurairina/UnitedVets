@@ -14,7 +14,6 @@
 .card {
     position: absolute;
     background-color: rgba(14, 13, 13, 0.89);
-    /* background-image: radial-gradient(circle at 38.83% 63.31%, #0f262c 0, #102124 12.5%, #111b1d 25%, #101516 37.5%, #0e0d0d 50%, #0c0102 62.5%, #0a0000 75%, #060000 87.5%, #030000 100%); */
     left: 15%;
     top: 20%;
     border-color: rgb(41, 41, 41);
@@ -23,8 +22,7 @@
 }
 
 label {
-    /* font-family: 'Chela One', cursive; font-size: medium;
-    color: rgb(165, 190, 216); */
+
     font-family: 'Noto Serif', serif;
 }
 
@@ -34,15 +32,13 @@ img {
 }
 
 #login {
-    /* color: rgb(165, 190, 216); */
+
     margin-left: 20%;
     margin-top: -2%;
     margin-bottom: 15%;
-    /* font-family: 'Chela One', cursive; font-size: 250%; */
     font-family: 'Noto Serif', serif;
     background: white;
     width: 100%;
-    /* background: radial-gradient(circle at 12.5% 12.5%, #EAFFFF 0, #94ADE1 50%, #414142 100%); */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -55,32 +51,12 @@ img {
 }
 
 b {
-    /* font-family: 'Chela One', cursive; font-size: medium;
-    background: radial-gradient(circle at 12.5% 12.5%, #EAFFFF 0, #94ADE1 50%, #414142 100%); */
-    font-family: 'Noto Serif', serif;
+       font-family: 'Noto Serif', serif;
     background: white;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-
-/* input
-{
-    border:0;
-    border-bottom:1px solid #555;  
-    background:transparent;
-    width:100%;
-    padding:8px 0 5px 0;
-    font-size:16px;
-    color:#fff;
-    border-radius: 3px;
-}
-input:focus
-{
-    border:none;	
-    outline:none;
-    border-bottom:1px solid #e74c3c;
-} */
 
 .input-container {
     position: relative;
@@ -120,20 +96,6 @@ input:focus
 }
 
 
-/* .row1
-{
-    width: 100%;
-    margin-left: 13%;
-    margin-top: 10%;
-}
-.fila2{
-    margin-top: 10%;
-}
-.row2
-{
-    margin-left: 33%;
-    margin-top: 10%;
-} */
 
 button {
     border: 0;

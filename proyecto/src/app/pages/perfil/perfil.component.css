@@ -18,15 +18,13 @@ body {
     padding: 0px;
 }
 #botonEditar{
-    /*margin-top: 40%;
-    margin-left: 60%;*/
+
     margin-right: 10%;
     color: black;
 }
 
 #editarPerfil{
-   /* margin-top: -15%;
-    margin-left: 25%;*/
+
     padding-top: 5px;
 }
 
@@ -85,9 +83,7 @@ body {
    font-size:15px;
    color:#fff;
  }
- /* input[type=date]{
-    color: white;
- } */
+
  .modal-body input:focus{ 
      border:none;	
      outline:none;

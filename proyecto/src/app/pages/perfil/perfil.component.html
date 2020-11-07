@@ -112,12 +112,8 @@
                                 </div>
                             </form>
                         </div>
-                        <!-- <div class="alerta">
-                          <ngb-alert class="col-md-5" *ngIf="successMessage" type="success" (close)="successMessage = ''">{{ successMessage }}</ngb-alert>
-                
-                        </div> -->
+                       
                         <div class="modal-footer">
-                            <!-- <div *ngIf="password2 == password1" *ngDisabled="false"></div> -->
 
                             <button type="submit" class="btn btn-outline-primary"
                                 [disabled]="repassword.value != password.value" id="guardar"
@@ -274,7 +270,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- <a href=""  ngIf =""> -->
+                                 
                                         <div class="col-md-12 image-right">
                                             <div class="card" style="width: 18rem;">
                                                 <img class="card-img-top" src={{perfilMascota.foto}}
@@ -293,7 +289,6 @@
                                                     <p>Alergias: {{perfilMascota.alergias}}</p>
                                                     <p>Especie: {{perfilMascota.especie}}</p>
                                                     <p>Raza: {{perfilMascota.raza}}</p>
-                                                    <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
                                                     <button id="botonCerrar" (click)="cerrar()"><i id="colorCerrar"
                                                             class="fas fa-times fa-lg" ngbTooltip="Cerrar"></i></button>
                                                 </div>

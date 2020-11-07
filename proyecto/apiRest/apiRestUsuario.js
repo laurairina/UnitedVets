@@ -3,7 +3,7 @@ const express = require("express");
 const { get, request } = require("http");
 const app = express();
 app.use(bodyParser.urlencoded({extended: false}));
-//app.use(bodyParser.json());
+
 
 app.use(bodyParser.json({limit: "50mb"}));
 
@@ -245,8 +245,6 @@ app.put('/mascota', function(req,res) {
 
 
 //------------------ Historial --------------------------
-//UPDATE `historial` SET `hist_id` = 'Hist01' WHERE `historial`.`id` = 1;
-//SELECT h.*, m.nombreM, u.nombre as nombreP FROM historial as h JOIN mascota as m ON(h.mascota_id=m.id) JOIN usuario as u ON(m.usuario_id=u.id)
 
 //GET   http://localhost:3000/historial
 app.get('/historial',
@@ -280,7 +278,6 @@ app.post('/historial/usuarioId', function (req, res) {
 
 });
 
-//SELECT h.*, m.nombre, u.nombre as nombreP FROM historial as h JOIN mascota as m ON(h.mascota_id=m.id) JOIN usuario as u ON(m.usuario_id=u.id) where m.id=4 and h.fecha=(SELECT MAX(h.fecha) FROM historial as h JOIN mascota as m ON(h.mascota_id=m.id) JOIN usuario as u ON(m.usuario_id=u.id) where m.id=4)
 app.post('/historial/ultimoId', function (req, res) {
     let id =req.body.id;
 
@@ -415,7 +412,7 @@ app.post('/mascotaId', function(req, res) {
 
 //---------------------------------------DELETE Elimiar Cita---------------------------------------------
 //DELETE FROM `citas` WHERE cita_id=1
-//{​​​​​​​​ "id": 25}​​​​​​​​posman
+//{​​​​​​​​ "id": 25}​​​​​​​​ posmant
 app.delete('/citas', function(req, res) {
     let idCita = req.body.id;
     let params = [idCita];
@@ -428,7 +425,6 @@ app.delete('/citas', function(req, res) {
  
 app.put('/foto', function(req, res) {
     let data = req.body;
-   // console.log(data);
 
     params = new Array(data.foto,data.id)
     sql = "UPDATE usuario SET foto=? where id=?";
@@ -461,9 +457,6 @@ app.use(
         //next();
     }
 );
-
-
-
 
 
 

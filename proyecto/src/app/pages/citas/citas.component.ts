@@ -6,7 +6,7 @@ import { debounceTime } from 'rxjs/operators';
 import { CitasService } from 'src/app/shared/citas.service';
 import { UsuariosService } from 'src/app/shared/usuarios.service';
 import  Swal  from 'sweetalert2';
-// import { threadId } from 'worker_threads';
+
 
 @Component({
   selector: 'app-citas',
@@ -96,21 +96,7 @@ export class CitasComponent implements OnInit {
 
   confirmar(cita: Cita) {
     console.log(cita.id)
-    // if (confirm("¿Desea borrar la cita de: " + cita.nombreP)) {
-      // this.citaServicio.borrarCita(cita.id)
-      //   .subscribe((data) => {
-      //     console.log("cita eliminada");
-      //     console.log(data);
 
-      //     this.citaServicio.getCitas(this.usuarioService.getUsuario().id)
-      //       .subscribe((data: Cita[]) => {
-      //         this.citas = data;
-      //         this.collectionSize = this.citas.length;
-      //         this.refreshPaginas();
-      //         this.successMessage = '';
-      //       });
-
-      //   });
       Swal.fire({
         title: 'Seguro que desea borrar esta cita?',
         text: "Si acepta no se podrá revertir esta acción!",
@@ -144,39 +130,6 @@ export class CitasComponent implements OnInit {
         }
       })
     }
-    // Swal.fire({
-    //   title: 'Seguro que desea borrar este usuario?',
-    //   text: "Si acepta no se podrá revertir esta acción!",
-    //   icon: 'warning',
-    //   showCancelButton: true,
-    //   confirmButtonColor: '#3085d6',
-    //   cancelButtonColor: '#d33',
-    //   confirmButtonText: 'Si, borrar!'
-    // }).then((result) => {
-    //   if (result.isConfirmed) {
-    //     this.citaServicio.borrarCita(cita.id)
-    //     .subscribe((data) => {
-    //       console.log("cita eliminada");
-    //       console.log(data);
-
-    //       this.citaServicio.getCitas(this.usuarioService.getUsuario().id)
-    //         .subscribe((data: Cita[]) => {
-    //           this.citas = data;
-    //           this.collectionSize = this.citas.length;
-    //           this.refreshPaginas();
-    //           this.successMessage = '';
-    //         });
-
-      
-    //   });
-    //     Swal.fire(
-    //       'Borrado!',
-    //       'El usuario ha sido borrado.',
-    //       'success'
-    //     )
-    //   }
-    // })
-
   
 
   open(content, valor: string, cita: Cita) {

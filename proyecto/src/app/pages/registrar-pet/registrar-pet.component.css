@@ -61,20 +61,13 @@ img{
     margin-bottom: 5%;
     font-family: 'Noto Serif', serif;
     color: white;
-    /* font-family: 'Chela One', cursive; font-size: 250%; */
     width: 100%;
-    /* background: radial-gradient(circle at 12.5% 12.5%, #EAFFFF 0, #94ADE1 50%, #414142 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent; */
+
 }
 b 
 {
     font-family: 'Noto Serif', serif;
     color: white;
-    /* font-family: 'Chela One', cursive; font-size: medium;
-    background: radial-gradient(circle at 12.5% 12.5%, #EAFFFF 0, #94ADE1 50%, #414142 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent; */
 }
 
 #date{

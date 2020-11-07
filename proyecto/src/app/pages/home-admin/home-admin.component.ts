@@ -72,8 +72,7 @@ export class HomeAdminComponent implements OnInit {
 
   confirmar(use: User) {
 
-    // let valor = confirm("¿Desea borrar el usuario X?");
-    // if (valor) {
+
 
       Swal.fire({
         title: 'Seguro que desea borrar este usuario?',
@@ -106,20 +105,7 @@ export class HomeAdminComponent implements OnInit {
           )
         }
       })
-      // this.usuarioService.borrarUsuario(use.id)
-      //   .subscribe((data: any) => {
-      //     if (data.affectedRows >= 1) {
-      //       this.usuarioService.obtenerUsuarios()
-      //       .subscribe((data: User[]) => {
-      //         this.usuarios = data;
-      //         console.log("Todos los usuarios guardados")
-      //       });
-      //       console.log("Eliminado usuario");
-      //     }
-      //     else {
-      //       console.log("No se ha eliminado usuario");
-      //     }
-      //   });
+
     
   }
 

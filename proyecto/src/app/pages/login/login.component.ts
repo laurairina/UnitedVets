@@ -80,7 +80,6 @@ export class LoginComponent implements OnInit {
          
       });
    
-     //console.log(this.encriptar.set('123456$#@$^@1ERF',this.password));
     
   }
 

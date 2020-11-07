@@ -22,20 +22,6 @@ export class ClienteService {
     return this.cliente;
   }
 
-  // buscar(usuario:string):Persona{
-  //   let user:Persona;
-  //   let i:number=0;
-  //   let encontrado:boolean;
-
-  //     while(i<this.listaPersona.length && !encontrado){
-  //       if(this.listaPersona[i].name.toLocaleLowerCase()== usuario.toLocaleLowerCase()){
-  //          user=this.listaPersona[i];
-  //          encontrado=true;
-  //       }
-  //       i++;
-  //     }
-  //     return user; 
-  // }
 
   putCliente(use:User){
     return this.http.put(this.url+"cliente", use);
